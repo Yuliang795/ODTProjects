@@ -36,8 +36,8 @@ for root, dirs, files in os.walk(consts_folder_path, topdown=False):
 consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.columns)], ignore_index=True)
 
 file_list = consts_path_query(consts_df,
-                                    in_data=["iris"],
-                                    in_seed=[1732],
+                                    in_data=[],
+                                    in_seed=[],
                                     in_kappa=[0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5])
 
 use_Chain=["nochain","euc"][0]
