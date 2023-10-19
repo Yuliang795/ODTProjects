@@ -43,7 +43,7 @@ file_list = consts_path_query(consts_df,
                                     in_data=[],
                                     in_seed=[],
                                     in_kappa=[])
-stage1_timeout=900
+stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
 
 for consts_path in file_list:
