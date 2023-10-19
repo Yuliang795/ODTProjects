@@ -41,7 +41,7 @@ file_list = consts_path_query(consts_df,
                                     in_kappa=[0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5])
 
 use_Chain=["nochain","euc"][0]
-stage1_timeout,stage2_timeout,stage3_timeout = [900,900,900]
+stage1_timeout,stage2_timeout,stage3_timeout = [1800,1800,1800]
 
 
 # file_list
