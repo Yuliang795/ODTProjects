@@ -1,6 +1,7 @@
 
 import os,sys,re, time, datetime
 import pandas as pd
+import subprocess
 
 # datafile list
 file_list = ['instance_iris', 'instance_wine', 'instance_glass',
@@ -42,7 +43,7 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 file_list = consts_path_query(consts_df,  
                                     in_data=[],
                                     in_seed=[],
-                                    in_kappa=[])
+                                    in_kappa=[0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5])
 stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
 
@@ -61,7 +62,7 @@ for consts_path in file_list:
     # - (7) stage1 solver timeout
     # - output path
     ## generate cmd
-    cmd = 'python clauses_gen.py ' +data_file_name + ' ' \
+    cmd = 'python3 clauses_gen.py ' +data_file_name + ' ' \
         + str(data_param_dict[data_file_name][0]) + ' ' \
         + str(data_param_dict[data_file_name][1] ) + ' ' \
         + consts_path + ' ' \
@@ -76,7 +77,7 @@ for consts_path in file_list:
     # time
     phase1_start = time.perf_counter()
     # print(cmd)
-    phase1_cmd_status = os.system(cmd)
+    phase1_cmd_status = subprocess.call(cmd, shell=True)
     phase1_end = time.perf_counter()
     
 

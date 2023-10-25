@@ -1,7 +1,7 @@
 
 import os,sys,re, time, datetime
 import pandas as pd
-
+import subprocess
 
 file_list = ['instance_iris', 'instance_wine', 'instance_glass',
              'instance_ionosphere', 'instance_seeds','instance_libras',
@@ -50,7 +50,7 @@ for ML_CL_ratio in ML_CL_ratio_set:
         data_file_name = 'instance_' + consts_name.split('_')[0]
         tmp_solution_path = './solutions/'+f'{consts_name}_e{str(data_param_dict[data_file_name][1])}_r{ML_CL_ratio}_{use_Chain}'+'/'
         # print('='*30 + f'')
-        print('='*35 + f"start to execute {data_file_name} @{curr_time()}" + '='*35)
+        print('='*35 + f"start to execute {consts_name} MLCL ratio: {ML_CL_ratio} @{curr_time()}" + '='*35)
         # - (1) data file path
         # - (2) tree_depth 
         # - (3) epsilon 
@@ -61,7 +61,7 @@ for ML_CL_ratio in ML_CL_ratio_set:
         # - (8) stage1 solver time out (s)
         # - (9) stage2 solver time out (s)
         # - output path
-        cmd = 'python clauses_gen_allPhases.py ' + data_file_name + ' ' \
+        cmd = 'python3 clauses_gen_allPhases.py ' + data_file_name + ' ' \
             + str(data_param_dict[data_file_name][0]) + ' '  \
             + str(data_param_dict[data_file_name][1] )+ ' ' \
             + consts_path  + ' ' \
@@ -79,7 +79,7 @@ for ML_CL_ratio in ML_CL_ratio_set:
         # time
         phase1_start = time.perf_counter()
         # print(cmd)
-        phase1_cmd_status = os.system(cmd)
+        phase1_cmd_status = subprocess.call(cmd, shell=True)
         phase1_end = time.perf_counter()
         if phase1_cmd_status!=0:
             curr_time = datetime.datetime.now().strftime("%y_%m_%d_%H_%M")

@@ -1,7 +1,7 @@
 
 import os,sys,re, time, datetime
 import pandas as pd
-
+import subprocess
 
 file_list = ['instance_iris', 'instance_wine', 'instance_glass',
              'instance_ionosphere', 'instance_seeds','instance_libras',
@@ -61,7 +61,7 @@ for consts_path in file_list:
     # - (8) stage2 solver time out (s)
     # - (9) stage3 solver time out (s)
 
-    cmd = 'python clauses_gen_allPhases.py ' + data_file_name + ' ' \
+    cmd = 'python3 clauses_gen_allPhases.py ' + data_file_name + ' ' \
         + str(data_param_dict[data_file_name][0]) + ' '  \
         + str(data_param_dict[data_file_name][1] )+ ' ' \
         + consts_path + ' ' \
@@ -80,7 +80,7 @@ for consts_path in file_list:
     allPhases_start = time.perf_counter()
     # print(cmd)
 #   allPhases_cmd_status=0
-    allPhases_cmd_status = os.system(cmd)
+    allPhases_cmd_status = subprocess.call(cmd, shell=True)
     allPhases_end = time.perf_counter()
     if allPhases_cmd_status!=0:
         curr_time = datetime.datetime.now().strftime("%y_%m_%d_%H_%M")
