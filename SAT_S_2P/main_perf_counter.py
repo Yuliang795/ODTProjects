@@ -38,9 +38,11 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 file_list = consts_path_query(consts_df,
                                     in_data=[],
                                     in_seed=[],
-                                    in_kappa=[0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5]) # kappa cannot be 0.0 must >0
+                                    in_kappa=[0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5]) 
+                                    # kappa cannot be 0.0 must >0
+                                    #0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5
 use_Chain=["nochain","euc"][0]
-ML_CL_ratio_set = ["1", "2", "3", "5", "10"]
+ML_CL_ratio_set = ["1"]
 stage1_timeout, stage2_timeout = [1800, 1800]
 
 for ML_CL_ratio in ML_CL_ratio_set:
