@@ -1,0 +1,48 @@
+original CL size: (12, 2)
+optimal CL size: {CL.shape}
+a: 1 - 28 -> 28  
+s: 29 - 1078 -> 1050
+z: 1079 - 2278 -> 1200
+g: 2279 - 2302 -> 24
+x: 2303 - 2752 -> 450
+ml: 2753 - 2755 -> 3
+cl: 2756 - 2767 -> 12
+
+clause_list_7 -size: 42
+clause_list_8 -size: 7
+clause_list_9 -size: 4172
+clause_list_10 -size: 3339
+clause_list_11 -size: 1800
+clause_list_12 -size: 1800
+clause_list_13 -size: 1200
+clause_list_14 -size: 28
+clause_list_15 -size: 28
+clause_list_16 -size: 8
+clause_list_17 -size: 2400
+clause_list_18 -size: 2400
+clause_list_19 -size: 2
+clause_list_21 -size: 1
+clause_list_22 -size: 12
+clause_list_23 -size: 12
+clause_list_24 -size: 12
+clause_list_25 -size: 6
+clause_list_26 -size: 6
+clauses20 -size:148
+the cl header --> p wcnf 2767 17438 4
+
+
+Start to read loandra res
+*loandra status: OPTIMUM FOUND
+-ml sat and violated: 3 | 0  | total #ml: 3 | 
+-cl sat and violated: 12 | 0  | total #cl: 12 | 
+V0 ML:(3, 2)-3, CL: (12, 2)-12
+22 -time: 0.00012 -dim: (12, 3)
+23 -time: 0.00007 -dim: (12, 3)
+24 -time: 0.00015 -dim: (12, 5)
+25 -time: 0.00009 -dim: (6, 3)
+26 -time: 0.00008 -dim: (6, 3)
+slvr_header -time: 0.01869 -dim: nan
+*solver* -time: 0.13657 -dim: nan
+Total -time: 0.25476 -dim: nan
+-- SUM CL TIME: 0.11819          |  solver Time: 0.13657          |  SUM TIME: 0.25476
+

@@ -36,8 +36,8 @@ for root, dirs, files in os.walk(consts_folder_path, topdown=False):
 consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.columns)], ignore_index=True)
 
 file_list = consts_path_query(consts_df,
-                                    in_data=[],
-                                    in_seed=[],
+                                    in_data=["iris"],
+                                    in_seed=[9689],
                                     in_kappa=[0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5]) 
                                     # kappa cannot be 0.0 must >0
                                     #0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5
@@ -94,10 +94,14 @@ for ML_CL_ratio in ML_CL_ratio_set:
 
 
         #     ## !!! CLEAN CLAUSE FILES !!! ##
-        cmd = 'find . -type f -name "*clauses_final" -exec rm {} +'
-        # os.system(cmd)
+        # this one deletes all matches under current directory
+        # cmd = 'find . -type f -name "*clauses_final" -exec rm {} +' 
+        # this one only deletes the matches under the current solution folder
+        cmd = f'find {tmp_solution_path} -type f -name "*clauses_final" -exec rm {{}} +'
+        os.system(cmd)
         ## !!! CLEAN ALL DC FILES !!! ##
-        cmd = 'find . -type f -name "DC" -exec rm {} +'
-        # os.system(cmd)
+        # cmd = 'find . -type f -name "DC" -exec rm {} +'
+        cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
+        os.system(cmd)
 
 

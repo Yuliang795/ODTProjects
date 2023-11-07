@@ -1,0 +1,47 @@
+num branch_node: 7
+num leaf_node: 8
+num feature: 4
+tree_depth: 3
+num label: 3
+nDC: 1219
+
+a: 1 - 28 -> 28  
+s: 29 - 1078 -> 1050
+z: 1079 - 2278 -> 1200
+g: 2279 - 2302 -> 24
+x: 2303 - 2752 -> 450
+cl: 2753 - 2776 -> 24
+
+
+###clauses counter 22 - 24
+the cl header --> p wcnf 2776 17471 25
+
+[clause generation] -> finished at 0.16855116095393896
+[loandra solver] -> started at 0.16856226604431868
+[loandra solver] -> finished at 0.24482371285557747
+
+Start to read loandra res
+*loandra status: OPTIMUM FOUND
+-cl sat and violated: 24 | 0  | total #cl: 24 | 
+DC -time: 0.03247 -dim: 1219
+7 -time: 0.00024 -dim: (42, 2)
+8 -time: 0.00009 -dim: (7, 4)
+9 -time: 0.01217 -dim: (4172, 3)
+10 -time: 0.01912 -dim: (3339, 3)
+11_12 -time: 0.00710 -dim: [3600, 2]
+13 -time: 0.00290 -dim: (1200, 4)
+14_15 -time: 0.00090 -dim: [56, 2]
+16 -time: 0.00007 -dim: (8, 2)
+17_18 -time: 0.01581 -dim: [4800, 3]
+19 -time: 0.00009 -dim: (2, 1)
+20 -time: 0.00840 -dim: (1, 150)
+21 -time: 0.00006 -dim: (1, 150)
+22 -time: 0.00002 -dim: (24, 3)
+23 -time: 0.00001 -dim: (24, 3)
+24 -time: 0.00002 -dim: (24, 5)
+clauseIO_22_24 -time: 0.00026 -dim: nan
+slvr_header -time: 0.02094 -dim: nan
+*solver* -time: 0.07609 -dim: nan
+Total -time: 0.24484 -dim: nan
+-- SUM CL TIME: 0.16875          |  solver Time: 0.07609          |  SUM TIME: 0.24484
+

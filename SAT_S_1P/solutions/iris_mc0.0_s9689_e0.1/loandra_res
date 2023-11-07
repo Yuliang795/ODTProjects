@@ -5312,57 +5312,57 @@ c Encoding PB with UB: 174 obj size 689
 c Encoding Done
 c Setting Card Vars currently: 14022 / orig 7626
 c Checking model
-c LIN best 1923 LB: 1749 at 1
+c LIN best 1923 LB: 1749 at 0
 o 1923
-c LIN GAP: 174 T 1
+c LIN GAP: 174 T 0
 c CardVars DONE  
-c SAT Call at 1
+c SAT Call at 0
 c Reduced cost 174 gap 174
 c Checking model
-c BOUND UPDATE RHS: 173 at 1
-c SAT Call at 1
+c BOUND UPDATE RHS: 173 at 0
+c SAT Call at 0
 c Reduced cost 173 gap 174
 c Checking model
-c LIN best 1922 LB: 1749 at 1
+c LIN best 1922 LB: 1749 at 0
 o 1922
-c LIN GAP: 173 T 1
-c BOUND UPDATE RHS: 172 at 1
-c SAT Call at 1
+c LIN GAP: 173 T 0
+c BOUND UPDATE RHS: 172 at 0
+c SAT Call at 0
 c Reduced cost 172 gap 173
 c Checking model
-c LIN best 1921 LB: 1749 at 1
+c LIN best 1921 LB: 1749 at 0
 o 1921
-c LIN GAP: 172 T 1
-c BOUND UPDATE RHS: 171 at 1
-c SAT Call at 1
+c LIN GAP: 172 T 0
+c BOUND UPDATE RHS: 171 at 0
+c SAT Call at 0
 c Reduced cost 171 gap 172
 c Checking model
-c LIN best 1920 LB: 1749 at 1
+c LIN best 1920 LB: 1749 at 0
 o 1920
-c LIN GAP: 171 T 1
-c BOUND UPDATE RHS: 170 at 1
-c SAT Call at 1
+c LIN GAP: 171 T 0
+c BOUND UPDATE RHS: 170 at 0
+c SAT Call at 0
 c Reduced cost 170 gap 171
 c Checking model
-c LIN best 1919 LB: 1749 at 1
+c LIN best 1919 LB: 1749 at 0
 o 1919
-c LIN GAP: 170 T 1
-c BOUND UPDATE RHS: 169 at 1
-c SAT Call at 1
+c LIN GAP: 170 T 0
+c BOUND UPDATE RHS: 169 at 0
+c SAT Call at 0
 c Reduced cost 169 gap 170
 c Checking model
-c LIN best 1918 LB: 1749 at 1
+c LIN best 1918 LB: 1749 at 0
 o 1918
-c LIN GAP: 169 T 1
-c BOUND UPDATE RHS: 168 at 1
-c SAT Call at 1
+c LIN GAP: 169 T 0
+c BOUND UPDATE RHS: 168 at 0
+c SAT Call at 0
 c Reduced cost 168 gap 169
 c Checking model
-c LIN best 1917 LB: 1749 at 1
+c LIN best 1917 LB: 1749 at 0
 o 1917
-c LIN GAP: 168 T 1
-c BOUND UPDATE RHS: 167 at 1
-c SAT Call at 1
+c LIN GAP: 168 T 0
+c BOUND UPDATE RHS: 167 at 0
+c SAT Call at 0
 c Reduced cost 167 gap 168
 c Checking model
 c LIN best 1916 LB: 1749 at 1

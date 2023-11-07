@@ -91,11 +91,12 @@ for consts_path in file_list:
 
 
     ## !!! CLEAN ALL CLAUSE FILES !!! ##
-    cmd = 'find . -type f -name "*clauses_final" -exec rm {} +'
-    # os.system(cmd) 
+    cmd = f'find {tmp_solution_path} -type f -name "*clauses_final" -exec rm {{}} +'
+    # print(cmd)
+    os.system(cmd) 
     ## !!! CLEAN ALL DC FILES !!! ##
-    cmd = 'find . -type f -name "DC" -exec rm {} +'
-    # os.system(cmd) 
+    cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
+    os.system(cmd) 
 
 ## generate csv from solutions
 # cmd = f'python solution_collect.py ./solutions/ output_csv_name'
