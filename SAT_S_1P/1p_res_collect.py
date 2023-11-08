@@ -51,7 +51,7 @@ for root, folders, files in os.walk(solution_path):
             p1_loandra_status = get_var(loandra_status_r, line, 1)
             
             sol_folder_path = folder_path
-            data, kappa,epsilon,seed = [re.sub(r'^(mc|s|r)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
+            data, kappa,seed, epsilon, = [re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
             
             # set the clauses generation time to total system time - solver time
             p1_clg_time = str(castFloat(p1_sum_time) - castFloat(p1_solver_time))
