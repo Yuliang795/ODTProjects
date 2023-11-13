@@ -27,27 +27,27 @@ consts size ml: 0, cl: 0
 SmartPair Finished, 34121 clauses write to ./solutions/iris_mc0.0_s1732_e0.1/clauses_iris_mc0.0_s1732
 ========= Smart Pair Finished =========
 
-df_consts -time: 0.00886 -dim: nan
-DC -time: 0.02686 -dim: 1219
-tree_var -time: 0.00006 -dim: nan
-7 -time: 0.00023 -dim: (42, 2)
-8 -time: 0.00008 -dim: (7, 4)
-9 -time: 0.01178 -dim: (4172, 3)
-10 -time: 0.02126 -dim: (3339, 3)
-11_12 -time: 0.00842 -dim: [3600, 2]
-13 -time: 0.00331 -dim: (1200, 4)
-14_15 -time: 0.00107 -dim: [56, 2]
-16 -time: 0.00008 -dim: (8, 2)
-17_18 -time: 0.01765 -dim: [4800, 3]
-19 -time: 0.00006 -dim: (2, 1)
-20 -time: 0.00893 -dim: (1, 150)
-21 -time: 0.00007 -dim: (1, 150)
-32_33_34 -time: 0.00784 -dim: (3655, 2)
-smtPr_22_31 -time: 0.36933 -dim: nan
-cl_file_header -time: 0.09957 -dim: nan
-*solver* -time: 0.61329 -dim: nan
-Total -time: 1.24293 -dim: nan
--- SUM CL TIME: 0.62964          |  solver Time: 0.61329          |  SUM TIME: 1.24293
+df_consts -time: 0.00629 -dim: nan
+DC -time: 0.02384 -dim: 1219
+tree_var -time: 0.00016 -dim: nan
+7 -time: 0.00031 -dim: (42, 2)
+8 -time: 0.00010 -dim: (7, 4)
+9 -time: 0.01235 -dim: (4172, 3)
+10 -time: 0.01644 -dim: (3339, 3)
+11_12 -time: 0.00660 -dim: [3600, 2]
+13 -time: 0.00259 -dim: (1200, 4)
+14_15 -time: 0.00082 -dim: [56, 2]
+16 -time: 0.00006 -dim: (8, 2)
+17_18 -time: 0.01407 -dim: [4800, 3]
+19 -time: 0.00005 -dim: (2, 1)
+20 -time: 0.00680 -dim: (1, 150)
+21 -time: 0.00005 -dim: (1, 150)
+32_33_34 -time: 0.00612 -dim: (3655, 2)
+smtPr_22_31 -time: 0.30995 -dim: nan
+cl_file_header -time: 0.05141 -dim: nan
+*solver* -time: 1.08314 -dim: nan
+Total -time: 1.56948 -dim: nan
+-- SUM CL TIME: 0.48634          |  solver Time: 1.08314          |  SUM TIME: 1.56948
 
 
 loandra header: p wcnf 5190 57589 2439

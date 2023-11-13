@@ -1,0 +1,3832 @@
+c
+c LOANDRA:	 an extension of Open-WBO to core-boosted linear search.
+c Version:	 July 2019 2018 -- Release: 1.0
+c Authors:	 Jeremias Berg, Emir Demirovic, Peter Stuckey
+c We thank the developers of Open-WBO for their work
+c
+c Open-WBO:	 a Modular MaxSAT Solver -- based on Glucose4.1 (core version)
+c Version:	 September 2018 -- Release: 2.1
+c Authors:	 Ruben Martins, Vasco Manquinho, Ines Lynce
+c Contributors:	 Miguel Neves, Saurabh Joshi, Norbert Manthey, Mikolas Janota
+c Contact:	 open-wbo@sat.inesc-id.pt -- http://sat.inesc-id.pt/open-wbo/
+c
+c WARNING: for repeatability, setting FPU to use double precision
+c |                                                                                                       |
+c ========================================[ Problem Statistics ]===========================================
+c |                                                                                                       |
+c |  Problem Format:             MaxSAT                                                                   |
+c |  Problem Type:           Unweighted                                                                   |
+c |  Number of variables:          5190                                                                   |
+c |  Number of hard clauses:      42957                                                                   |
+c |  Number of soft clauses:       2438                                                                   |
+c |  Number of cardinality:           0                                                                   |
+c |  Number of PB :                   0                                                                   |
+c |  Parse time:                   0.02 s                                                                 |
+c |                                                                                                       |
+c PMRES ALGORITHM WITH LINEAR SEARCH 
+c PMRES LINEAR STRAT=1
+c PMRES LINEAR DIVISION=1
+c PMRES CORE DIVISION=0
+c PMRES CORE LIMIT (-1 = no limit)=30
+c PMRES RELAX BEFORE STRAT =0
+c PMRES INCREMENTAL LIN DIVISION =0
+c PMRES MINIM =1
+c PMRES MINIM STRAT =0
+c PRE hard clauses before: 45395
+c PRE soft literals before: 2438
+c PRE time: 0 removed weight: 1438
+c PRE hard clauses after: 36214
+c PRE soft literals after: 1000
+c Checking model
+c CG best 2431 LB: 1438 at 0
+o 2431
+c CG GAP: 993 T 0
+c CG New weight: 1 at 0
+c PMRES CORE LIMIT (-1 = no limit)=30
+c Core budget remaining 30
+c CG GAP: 992 T 0
+c LB : 1439         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 991 T 0
+c LB : 1440         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 990 T 0
+c LB : 1441         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 989 T 0
+c LB : 1442         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 988 T 0
+c LB : 1443         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 987 T 0
+c LB : 1444         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 986 T 0
+c LB : 1445         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 985 T 0
+c LB : 1446         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 984 T 0
+c LB : 1447         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 983 T 0
+c LB : 1448         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 982 T 0
+c LB : 1449         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 981 T 0
+c LB : 1450         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 980 T 0
+c LB : 1451         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 979 T 0
+c LB : 1452         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 978 T 0
+c LB : 1453         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 977 T 0
+c LB : 1454         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 976 T 0
+c LB : 1455         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 975 T 0
+c LB : 1456         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 974 T 0
+c LB : 1457         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 973 T 0
+c LB : 1458         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 972 T 0
+c LB : 1459         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 971 T 0
+c LB : 1460         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 970 T 0
+c LB : 1461         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 969 T 0
+c LB : 1462         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 968 T 0
+c LB : 1463         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 967 T 0
+c LB : 1464         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 966 T 0
+c LB : 1465         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 965 T 0
+c LB : 1466         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 964 T 0
+c LB : 1467         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 963 T 0
+c LB : 1468         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 962 T 0
+c LB : 1469         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 961 T 0
+c LB : 1470         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 960 T 0
+c LB : 1471         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 959 T 0
+c LB : 1472         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 958 T 0
+c LB : 1473         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 957 T 0
+c LB : 1474         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 956 T 0
+c LB : 1475         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 955 T 0
+c LB : 1476         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 954 T 0
+c LB : 1477         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 953 T 0
+c LB : 1478         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 952 T 0
+c LB : 1479         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 951 T 0
+c LB : 1480         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 950 T 0
+c LB : 1481         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 949 T 0
+c LB : 1482         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 948 T 0
+c LB : 1483         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 947 T 0
+c LB : 1484         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 946 T 0
+c LB : 1485         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 945 T 0
+c LB : 1486         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 944 T 0
+c LB : 1487         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 943 T 0
+c LB : 1488         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 942 T 0
+c LB : 1489         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 941 T 0
+c LB : 1490         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 940 T 0
+c LB : 1491         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 939 T 0
+c LB : 1492         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 938 T 0
+c LB : 1493         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 937 T 0
+c LB : 1494         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 936 T 0
+c LB : 1495         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 935 T 0
+c LB : 1496         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 934 T 0
+c LB : 1497         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 933 T 0
+c LB : 1498         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 932 T 0
+c LB : 1499         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 931 T 0
+c LB : 1500         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 930 T 0
+c LB : 1501         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 929 T 0
+c LB : 1502         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 928 T 0
+c LB : 1503         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 927 T 0
+c LB : 1504         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 926 T 0
+c LB : 1505         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 925 T 0
+c LB : 1506         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 924 T 0
+c LB : 1507         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 923 T 0
+c LB : 1508         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 922 T 0
+c LB : 1509         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 921 T 0
+c LB : 1510         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 920 T 0
+c LB : 1511         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 919 T 0
+c LB : 1512         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 918 T 0
+c LB : 1513         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 917 T 0
+c LB : 1514         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 916 T 0
+c LB : 1515         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 915 T 0
+c LB : 1516         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 914 T 0
+c LB : 1517         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 913 T 0
+c LB : 1518         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 912 T 0
+c LB : 1519         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 911 T 0
+c LB : 1520         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 910 T 0
+c LB : 1521         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 909 T 0
+c LB : 1522         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 908 T 0
+c LB : 1523         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 907 T 0
+c LB : 1524         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 906 T 0
+c LB : 1525         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 905 T 0
+c LB : 1526         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 904 T 0
+c LB : 1527         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 903 T 0
+c LB : 1528         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 902 T 0
+c LB : 1529         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 901 T 0
+c LB : 1530         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 900 T 0
+c LB : 1531         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 899 T 0
+c LB : 1532         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 898 T 0
+c LB : 1533         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 897 T 0
+c LB : 1534         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 896 T 0
+c LB : 1535         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 895 T 0
+c LB : 1536         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 894 T 0
+c LB : 1537         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 893 T 0
+c LB : 1538         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 892 T 0
+c LB : 1539         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 891 T 0
+c LB : 1540         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 890 T 0
+c LB : 1541         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 889 T 0
+c LB : 1542         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 888 T 0
+c LB : 1543         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 887 T 0
+c LB : 1544         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 886 T 0
+c LB : 1545         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 885 T 0
+c LB : 1546         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 884 T 0
+c LB : 1547         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 883 T 0
+c LB : 1548         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 882 T 0
+c LB : 1549         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 881 T 0
+c LB : 1550         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 880 T 0
+c LB : 1551         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 879 T 0
+c LB : 1552         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 878 T 0
+c LB : 1553         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 877 T 0
+c LB : 1554         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 876 T 0
+c LB : 1555         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 875 T 0
+c LB : 1556         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 874 T 0
+c LB : 1557         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 873 T 0
+c LB : 1558         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 872 T 0
+c LB : 1559         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 871 T 0
+c LB : 1560         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 870 T 0
+c LB : 1561         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 869 T 0
+c LB : 1562         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 868 T 0
+c LB : 1563         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 867 T 0
+c LB : 1564         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 866 T 0
+c LB : 1565         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 865 T 0
+c LB : 1566         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 864 T 0
+c LB : 1567         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 863 T 0
+c LB : 1568         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 862 T 0
+c LB : 1569         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 861 T 0
+c LB : 1570         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 860 T 0
+c LB : 1571         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 859 T 0
+c LB : 1572         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 858 T 0
+c LB : 1573         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 857 T 0
+c LB : 1574         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 856 T 0
+c LB : 1575         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 855 T 0
+c LB : 1576         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 854 T 0
+c LB : 1577         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 853 T 0
+c LB : 1578         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 852 T 0
+c LB : 1579         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 851 T 0
+c LB : 1580         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 850 T 0
+c LB : 1581         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 849 T 0
+c LB : 1582         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 848 T 0
+c LB : 1583         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 847 T 0
+c LB : 1584         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 846 T 0
+c LB : 1585         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 845 T 0
+c LB : 1586         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 844 T 0
+c LB : 1587         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 843 T 0
+c LB : 1588         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 842 T 0
+c LB : 1589         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 841 T 0
+c LB : 1590         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 840 T 0
+c LB : 1591         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 839 T 0
+c LB : 1592         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 838 T 0
+c LB : 1593         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 837 T 0
+c LB : 1594         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 836 T 0
+c LB : 1595         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 835 T 0
+c LB : 1596         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 834 T 0
+c LB : 1597         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 833 T 0
+c LB : 1598         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 832 T 0
+c LB : 1599         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 831 T 0
+c LB : 1600         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 830 T 0
+c LB : 1601         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 829 T 0
+c LB : 1602         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 828 T 0
+c LB : 1603         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 827 T 0
+c LB : 1604         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 826 T 0
+c LB : 1605         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 825 T 0
+c LB : 1606         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 824 T 0
+c LB : 1607         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 823 T 0
+c LB : 1608         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 822 T 0
+c LB : 1609         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 821 T 0
+c LB : 1610         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 820 T 0
+c LB : 1611         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 819 T 0
+c LB : 1612         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 818 T 0
+c LB : 1613         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 817 T 0
+c LB : 1614         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 816 T 0
+c LB : 1615         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 815 T 0
+c LB : 1616         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 814 T 0
+c LB : 1617         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 813 T 0
+c LB : 1618         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 812 T 0
+c LB : 1619         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 811 T 0
+c LB : 1620         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 810 T 0
+c LB : 1621         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 809 T 0
+c LB : 1622         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 808 T 0
+c LB : 1623         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 807 T 0
+c LB : 1624         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 806 T 0
+c LB : 1625         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 805 T 0
+c LB : 1626         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 804 T 0
+c LB : 1627         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 803 T 0
+c LB : 1628         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 802 T 0
+c LB : 1629         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 801 T 0
+c LB : 1630         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 800 T 0
+c LB : 1631         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 799 T 0
+c LB : 1632         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 798 T 0
+c LB : 1633         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 797 T 0
+c LB : 1634         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 796 T 0
+c LB : 1635         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 795 T 0
+c LB : 1636         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 794 T 0
+c LB : 1637         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 793 T 0
+c LB : 1638         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 792 T 0
+c LB : 1639         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 791 T 0
+c LB : 1640         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 790 T 0
+c LB : 1641         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 789 T 0
+c LB : 1642         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 788 T 0
+c LB : 1643         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 787 T 0
+c LB : 1644         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 786 T 0
+c LB : 1645         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 785 T 0
+c LB : 1646         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 784 T 0
+c LB : 1647         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 783 T 0
+c LB : 1648         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 782 T 0
+c LB : 1649         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 781 T 0
+c LB : 1650         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 780 T 0
+c LB : 1651         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 779 T 0
+c LB : 1652         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 778 T 0
+c LB : 1653         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 777 T 0
+c LB : 1654         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 776 T 0
+c LB : 1655         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 775 T 0
+c LB : 1656         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 774 T 0
+c LB : 1657         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 773 T 0
+c LB : 1658         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 772 T 0
+c LB : 1659         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 771 T 0
+c LB : 1660         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 770 T 0
+c LB : 1661         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 769 T 0
+c LB : 1662         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 768 T 0
+c LB : 1663         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 767 T 0
+c LB : 1664         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 766 T 0
+c LB : 1665         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 765 T 0
+c LB : 1666         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 764 T 0
+c LB : 1667         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 763 T 0
+c LB : 1668         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 762 T 0
+c LB : 1669         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 761 T 0
+c LB : 1670         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 760 T 0
+c LB : 1671         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 759 T 0
+c LB : 1672         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 758 T 0
+c LB : 1673         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 757 T 0
+c LB : 1674         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 756 T 0
+c LB : 1675         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 755 T 0
+c LB : 1676         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 754 T 0
+c LB : 1677         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 753 T 0
+c LB : 1678         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 752 T 0
+c LB : 1679         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 751 T 0
+c LB : 1680         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 750 T 0
+c LB : 1681         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 749 T 0
+c LB : 1682         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 748 T 0
+c LB : 1683         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 747 T 0
+c LB : 1684         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 746 T 0
+c LB : 1685         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 745 T 0
+c LB : 1686         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 744 T 0
+c LB : 1687         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 743 T 0
+c LB : 1688         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 742 T 0
+c LB : 1689         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 741 T 0
+c LB : 1690         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 740 T 0
+c LB : 1691         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 739 T 0
+c LB : 1692         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 738 T 0
+c LB : 1693         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 737 T 0
+c LB : 1694         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 736 T 0
+c LB : 1695         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 735 T 0
+c LB : 1696         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 734 T 0
+c LB : 1697         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 733 T 0
+c LB : 1698         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 732 T 0
+c LB : 1699         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 731 T 0
+c LB : 1700         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 730 T 0
+c LB : 1701         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 729 T 0
+c LB : 1702         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 728 T 0
+c LB : 1703         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 727 T 0
+c LB : 1704         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 726 T 0
+c LB : 1705         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 725 T 0
+c LB : 1706         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 724 T 0
+c LB : 1707         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 723 T 0
+c LB : 1708         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 722 T 0
+c LB : 1709         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 721 T 0
+c LB : 1710         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 720 T 0
+c LB : 1711         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 719 T 0
+c LB : 1712         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 718 T 0
+c LB : 1713         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 717 T 0
+c LB : 1714         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 716 T 0
+c LB : 1715         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 715 T 0
+c LB : 1716         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 714 T 0
+c LB : 1717         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 713 T 0
+c LB : 1718         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 712 T 0
+c LB : 1719         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 711 T 0
+c LB : 1720         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 710 T 0
+c LB : 1721         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 709 T 0
+c LB : 1722         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 708 T 0
+c LB : 1723         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 707 T 0
+c LB : 1724         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 706 T 0
+c LB : 1725         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 705 T 0
+c LB : 1726         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 704 T 0
+c LB : 1727         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 703 T 0
+c LB : 1728         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 702 T 0
+c LB : 1729         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 701 T 0
+c LB : 1730         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 700 T 0
+c LB : 1731         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 699 T 0
+c LB : 1732         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 698 T 0
+c LB : 1733         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 697 T 0
+c LB : 1734         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 696 T 0
+c LB : 1735         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 695 T 0
+c LB : 1736         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 694 T 0
+c LB : 1737         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 693 T 0
+c LB : 1738         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 692 T 0
+c LB : 1739         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 691 T 0
+c LB : 1740         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 690 T 0
+c LB : 1741         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 689 T 0
+c LB : 1742         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 688 T 0
+c LB : 1743         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 687 T 0
+c LB : 1744         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 686 T 0
+c LB : 1745         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 685 T 0
+c LB : 1746         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 684 T 0
+c LB : 1747         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 683 T 0
+c LB : 1748         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 682 T 0
+c LB : 1749         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 681 T 0
+c LB : 1750         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 680 T 0
+c LB : 1751         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 679 T 0
+c LB : 1752         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 678 T 0
+c LB : 1753         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 677 T 0
+c LB : 1754         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 676 T 0
+c LB : 1755         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 675 T 0
+c LB : 1756         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 674 T 0
+c LB : 1757         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 673 T 0
+c LB : 1758         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 672 T 0
+c LB : 1759         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 671 T 0
+c LB : 1760         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 670 T 0
+c LB : 1761         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 669 T 0
+c LB : 1762         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 668 T 0
+c LB : 1763         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 667 T 0
+c LB : 1764         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 666 T 0
+c LB : 1765         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 665 T 0
+c LB : 1766         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 664 T 0
+c LB : 1767         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 663 T 0
+c LB : 1768         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 662 T 0
+c LB : 1769         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 661 T 0
+c LB : 1770         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 660 T 0
+c LB : 1771         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 659 T 0
+c LB : 1772         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 658 T 0
+c LB : 1773         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 657 T 0
+c LB : 1774         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 656 T 0
+c LB : 1775         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 655 T 0
+c LB : 1776         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 654 T 0
+c LB : 1777         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 653 T 0
+c LB : 1778         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 652 T 0
+c LB : 1779         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 651 T 0
+c LB : 1780         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 650 T 0
+c LB : 1781         CS : 1            W  : 1           
+c Core budget remaining 30
+c CG GAP: 649 T 0
+c LB : 1782         CS : 9            W  : 1           
+c Core budget remaining 30
+c CG GAP: 648 T 0
+c LB : 1783         CS : 17           W  : 1           
+c Core budget remaining 30
+c CG GAP: 647 T 0
+c LB : 1784         CS : 11           W  : 1           
+c Core budget remaining 30
+c CG GAP: 646 T 0
+c LB : 1785         CS : 8            W  : 1           
+c Core budget remaining 30
+c CG GAP: 645 T 0
+c LB : 1786         CS : 8            W  : 1           
+c Core budget remaining 30
+c CG GAP: 644 T 0
+c LB : 1787         CS : 8            W  : 1           
+c Core budget remaining 30
+c CG GAP: 643 T 0
+c LB : 1788         CS : 10           W  : 1           
+c Core budget remaining 30
+c CG GAP: 642 T 0
+c LB : 1789         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 641 T 0
+c LB : 1790         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 640 T 0
+c LB : 1791         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 639 T 0
+c LB : 1792         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 638 T 0
+c LB : 1793         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 637 T 0
+c LB : 1794         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 636 T 0
+c LB : 1795         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 635 T 0
+c LB : 1796         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 634 T 0
+c LB : 1797         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 633 T 0
+c LB : 1798         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 632 T 0
+c LB : 1799         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 631 T 0
+c LB : 1800         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 630 T 0
+c LB : 1801         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 629 T 0
+c LB : 1802         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 628 T 0
+c LB : 1803         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 627 T 0
+c LB : 1804         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 626 T 0
+c LB : 1805         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 625 T 0
+c LB : 1806         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 624 T 0
+c LB : 1807         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 623 T 0
+c LB : 1808         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 622 T 0
+c LB : 1809         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 621 T 0
+c LB : 1810         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 620 T 0
+c LB : 1811         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 619 T 0
+c LB : 1812         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 618 T 0
+c LB : 1813         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 617 T 0
+c LB : 1814         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 616 T 0
+c LB : 1815         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 615 T 0
+c LB : 1816         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 614 T 0
+c LB : 1817         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 613 T 0
+c LB : 1818         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 612 T 0
+c LB : 1819         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 611 T 0
+c LB : 1820         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 610 T 0
+c LB : 1821         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 609 T 0
+c LB : 1822         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 608 T 0
+c LB : 1823         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 607 T 0
+c LB : 1824         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 606 T 0
+c LB : 1825         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 605 T 0
+c LB : 1826         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 604 T 0
+c LB : 1827         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 603 T 0
+c LB : 1828         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 602 T 0
+c LB : 1829         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 601 T 0
+c LB : 1830         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 600 T 0
+c LB : 1831         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 599 T 0
+c LB : 1832         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 598 T 0
+c LB : 1833         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 597 T 0
+c LB : 1834         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 596 T 0
+c LB : 1835         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 595 T 0
+c LB : 1836         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 594 T 0
+c LB : 1837         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 593 T 0
+c LB : 1838         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 592 T 0
+c LB : 1839         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 591 T 0
+c LB : 1840         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 590 T 0
+c LB : 1841         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 589 T 0
+c LB : 1842         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 588 T 0
+c LB : 1843         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 587 T 0
+c LB : 1844         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 586 T 0
+c LB : 1845         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 585 T 0
+c LB : 1846         CS : 7            W  : 1           
+c Core budget remaining 30
+c CG GAP: 584 T 0
+c LB : 1847         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 583 T 0
+c LB : 1848         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 582 T 0
+c LB : 1849         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 581 T 0
+c LB : 1850         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 580 T 0
+c LB : 1851         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 579 T 0
+c LB : 1852         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 578 T 0
+c LB : 1853         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 577 T 0
+c LB : 1854         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 576 T 0
+c LB : 1855         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 575 T 0
+c LB : 1856         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 574 T 0
+c LB : 1857         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 573 T 0
+c LB : 1858         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 572 T 0
+c LB : 1859         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 571 T 0
+c LB : 1860         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 570 T 0
+c LB : 1861         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 569 T 0
+c LB : 1862         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 568 T 0
+c LB : 1863         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 567 T 0
+c LB : 1864         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 566 T 0
+c LB : 1865         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 565 T 0
+c LB : 1866         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 564 T 0
+c LB : 1867         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 563 T 0
+c LB : 1868         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 562 T 0
+c LB : 1869         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 561 T 0
+c LB : 1870         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 560 T 0
+c LB : 1871         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 559 T 0
+c LB : 1872         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 558 T 0
+c LB : 1873         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 557 T 0
+c LB : 1874         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 556 T 0
+c LB : 1875         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 555 T 0
+c LB : 1876         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 554 T 0
+c LB : 1877         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 553 T 0
+c LB : 1878         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 552 T 0
+c LB : 1879         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 551 T 0
+c LB : 1880         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 550 T 0
+c LB : 1881         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 549 T 0
+c LB : 1882         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 548 T 0
+c LB : 1883         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 547 T 0
+c LB : 1884         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 546 T 0
+c LB : 1885         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 545 T 0
+c LB : 1886         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 544 T 0
+c LB : 1887         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 543 T 0
+c LB : 1888         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 542 T 0
+c LB : 1889         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 541 T 0
+c LB : 1890         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 540 T 0
+c LB : 1891         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 539 T 0
+c LB : 1892         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 538 T 0
+c LB : 1893         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 537 T 0
+c LB : 1894         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 536 T 0
+c LB : 1895         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 535 T 0
+c LB : 1896         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 534 T 0
+c LB : 1897         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 533 T 0
+c LB : 1898         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 532 T 0
+c LB : 1899         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 531 T 0
+c LB : 1900         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 530 T 0
+c LB : 1901         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 529 T 0
+c LB : 1902         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 528 T 0
+c LB : 1903         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 527 T 0
+c LB : 1904         CS : 3            W  : 1           
+c Core budget remaining 30
+c CG GAP: 526 T 0
+c LB : 1905         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 525 T 0
+c LB : 1906         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 524 T 0
+c LB : 1907         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 523 T 0
+c LB : 1908         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 522 T 0
+c LB : 1909         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 521 T 0
+c LB : 1910         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 520 T 0
+c LB : 1911         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 519 T 0
+c LB : 1912         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 518 T 0
+c LB : 1913         CS : 5            W  : 1           
+c Core budget remaining 30
+c CG GAP: 517 T 0
+c LB : 1914         CS : 6            W  : 1           
+c Core budget remaining 30
+c CG GAP: 516 T 0
+c LB : 1915         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 515 T 0
+c LB : 1916         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 514 T 0
+c LB : 1917         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 513 T 0
+c LB : 1918         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 512 T 0
+c LB : 1919         CS : 4            W  : 1           
+c Core budget remaining 30
+c CG GAP: 511 T 0
+c LB : 1920         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 510 T 0
+c LB : 1921         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 509 T 0
+c LB : 1922         CS : 2            W  : 1           
+c Core budget remaining 30
+c CG GAP: 508 T 0
+c LB : 1923         CS : 2            W  : 1           
+c Core budget remaining 30
+c SAT-During core guided phase at 0
+c Checking model
+c CG best 2273 LB: 1923 at 0
+o 2273
+c CG GAP: 350 T 0
+c Hardening with gap: 350
+c Hardened in total: 0 clauses
+c Hardening again at gap 1
+c Strat 2 Relax
+c Updating solver at 0
+c Starting lin search with: LB: 1923 UB: 2273 UB - LB: 350 Time 0
+c Deleting solver
+c CG New factor 1
+c Extending best model to full formula
+c Checking model
+c Reduced cost 350 gap 350
+c Building new PB
+c Considering 515 of 515 soft clauses
+c Minimizing in init
+c Minimization time 1 init minsize 350 skipped 0
+c Reduced cost 350 gap 350
+c Encoding PB with UB: 350 obj size 515
+c Encoding Done
+c Setting Card Vars currently: 11441 / orig 6188
+c Checking model
+c Found same cost model covering more variables
+c CardVars DONE  
+c SAT Call at 1
+c Reduced cost 350 gap 350
+c Checking model
+c BOUND UPDATE RHS: 349 at 1
+c SAT Call at 1
+c Reduced cost 349 gap 350
+c Checking model
+c LIN best 2272 LB: 1923 at 1
+o 2272
+c LIN GAP: 349 T 1
+c BOUND UPDATE RHS: 348 at 1
+c SAT Call at 1
+c Reduced cost 348 gap 349
+c Checking model
+c LIN best 2271 LB: 1923 at 1
+o 2271
+c LIN GAP: 348 T 1
+c BOUND UPDATE RHS: 347 at 1
+c SAT Call at 1
+c Reduced cost 347 gap 348
+c Checking model
+c LIN best 2270 LB: 1923 at 1
+o 2270
+c LIN GAP: 347 T 1
+c BOUND UPDATE RHS: 346 at 1
+c SAT Call at 1
+c Reduced cost 346 gap 347
+c Checking model
+c LIN best 2269 LB: 1923 at 1
+o 2269
+c LIN GAP: 346 T 1
+c BOUND UPDATE RHS: 345 at 1
+c SAT Call at 1
+c Reduced cost 345 gap 346
+c Checking model
+c LIN best 2268 LB: 1923 at 1
+o 2268
+c LIN GAP: 345 T 1
+c BOUND UPDATE RHS: 344 at 1
+c SAT Call at 1
+c Reduced cost 344 gap 345
+c Checking model
+c LIN best 2267 LB: 1923 at 1
+o 2267
+c LIN GAP: 344 T 1
+c BOUND UPDATE RHS: 343 at 1
+c SAT Call at 1
+c Reduced cost 343 gap 344
+c Checking model
+c LIN best 2266 LB: 1923 at 1
+o 2266
+c LIN GAP: 343 T 1
+c BOUND UPDATE RHS: 342 at 1
+c SAT Call at 1
+c Reduced cost 342 gap 343
+c Checking model
+c LIN best 2265 LB: 1923 at 1
+o 2265
+c LIN GAP: 342 T 1
+c BOUND UPDATE RHS: 341 at 1
+c SAT Call at 1
+c Reduced cost 341 gap 342
+c Checking model
+c LIN best 2264 LB: 1923 at 1
+o 2264
+c LIN GAP: 341 T 1
+c BOUND UPDATE RHS: 340 at 1
+c SAT Call at 1
+c Reduced cost 340 gap 341
+c Checking model
+c LIN best 2263 LB: 1923 at 1
+o 2263
+c LIN GAP: 340 T 1
+c BOUND UPDATE RHS: 339 at 1
+c SAT Call at 1
+c Reduced cost 339 gap 340
+c Checking model
+c LIN best 2262 LB: 1923 at 1
+o 2262
+c LIN GAP: 339 T 1
+c BOUND UPDATE RHS: 338 at 1
+c SAT Call at 1
+c Reduced cost 338 gap 339
+c Checking model
+c LIN best 2261 LB: 1923 at 1
+o 2261
+c LIN GAP: 338 T 1
+c BOUND UPDATE RHS: 337 at 1
+c SAT Call at 1
+c Reduced cost 337 gap 338
+c Checking model
+c LIN best 2260 LB: 1923 at 1
+o 2260
+c LIN GAP: 337 T 1
+c BOUND UPDATE RHS: 336 at 1
+c SAT Call at 1
+c Reduced cost 336 gap 337
+c Checking model
+c LIN best 2259 LB: 1923 at 1
+o 2259
+c LIN GAP: 336 T 1
+c BOUND UPDATE RHS: 335 at 1
+c SAT Call at 1
+c Reduced cost 335 gap 336
+c Checking model
+c LIN best 2258 LB: 1923 at 1
+o 2258
+c LIN GAP: 335 T 1
+c BOUND UPDATE RHS: 334 at 1
+c SAT Call at 1
+c Reduced cost 334 gap 335
+c Checking model
+c LIN best 2257 LB: 1923 at 1
+o 2257
+c LIN GAP: 334 T 1
+c BOUND UPDATE RHS: 333 at 1
+c SAT Call at 1
+c Reduced cost 333 gap 334
+c Checking model
+c LIN best 2256 LB: 1923 at 1
+o 2256
+c LIN GAP: 333 T 1
+c BOUND UPDATE RHS: 332 at 1
+c SAT Call at 1
+c Reduced cost 332 gap 333
+c Checking model
+c LIN best 2255 LB: 1923 at 1
+o 2255
+c LIN GAP: 332 T 1
+c BOUND UPDATE RHS: 331 at 1
+c SAT Call at 1
+c Reduced cost 331 gap 332
+c Checking model
+c LIN best 2254 LB: 1923 at 1
+o 2254
+c LIN GAP: 331 T 1
+c BOUND UPDATE RHS: 330 at 1
+c SAT Call at 1
+c Reduced cost 330 gap 331
+c Checking model
+c LIN best 2253 LB: 1923 at 1
+o 2253
+c LIN GAP: 330 T 1
+c BOUND UPDATE RHS: 329 at 1
+c SAT Call at 1
+c Reduced cost 329 gap 330
+c Checking model
+c LIN best 2252 LB: 1923 at 1
+o 2252
+c LIN GAP: 329 T 1
+c BOUND UPDATE RHS: 328 at 1
+c SAT Call at 1
+c Reduced cost 328 gap 329
+c Checking model
+c LIN best 2251 LB: 1923 at 1
+o 2251
+c LIN GAP: 328 T 1
+c BOUND UPDATE RHS: 327 at 1
+c SAT Call at 1
+c Reduced cost 327 gap 328
+c Checking model
+c LIN best 2250 LB: 1923 at 1
+o 2250
+c LIN GAP: 327 T 1
+c BOUND UPDATE RHS: 326 at 1
+c SAT Call at 1
+c Reduced cost 326 gap 327
+c Checking model
+c LIN best 2249 LB: 1923 at 1
+o 2249
+c LIN GAP: 326 T 1
+c BOUND UPDATE RHS: 325 at 1
+c SAT Call at 1
+c Reduced cost 325 gap 326
+c Checking model
+c LIN best 2248 LB: 1923 at 1
+o 2248
+c LIN GAP: 325 T 1
+c BOUND UPDATE RHS: 324 at 1
+c SAT Call at 1
+c Reduced cost 324 gap 325
+c Checking model
+c LIN best 2247 LB: 1923 at 1
+o 2247
+c LIN GAP: 324 T 1
+c BOUND UPDATE RHS: 323 at 1
+c SAT Call at 1
+c Reduced cost 323 gap 324
+c Checking model
+c LIN best 2246 LB: 1923 at 1
+o 2246
+c LIN GAP: 323 T 1
+c BOUND UPDATE RHS: 322 at 1
+c SAT Call at 1
+c Reduced cost 322 gap 323
+c Checking model
+c LIN best 2245 LB: 1923 at 1
+o 2245
+c LIN GAP: 322 T 1
+c BOUND UPDATE RHS: 321 at 1
+c SAT Call at 1
+c Reduced cost 321 gap 322
+c Checking model
+c LIN best 2244 LB: 1923 at 1
+o 2244
+c LIN GAP: 321 T 1
+c BOUND UPDATE RHS: 320 at 1
+c SAT Call at 1
+c Reduced cost 320 gap 321
+c Checking model
+c LIN best 2243 LB: 1923 at 1
+o 2243
+c LIN GAP: 320 T 1
+c BOUND UPDATE RHS: 319 at 1
+c SAT Call at 1
+c Reduced cost 319 gap 320
+c Checking model
+c LIN best 2242 LB: 1923 at 1
+o 2242
+c LIN GAP: 319 T 1
+c BOUND UPDATE RHS: 318 at 1
+c SAT Call at 1
+c Reduced cost 318 gap 319
+c Checking model
+c LIN best 2241 LB: 1923 at 1
+o 2241
+c LIN GAP: 318 T 1
+c BOUND UPDATE RHS: 317 at 1
+c SAT Call at 1
+c Reduced cost 317 gap 318
+c Checking model
+c LIN best 2240 LB: 1923 at 1
+o 2240
+c LIN GAP: 317 T 1
+c BOUND UPDATE RHS: 316 at 1
+c SAT Call at 1
+c Reduced cost 316 gap 317
+c Checking model
+c LIN best 2239 LB: 1923 at 1
+o 2239
+c LIN GAP: 316 T 1
+c BOUND UPDATE RHS: 315 at 1
+c SAT Call at 1
+c Reduced cost 315 gap 316
+c Checking model
+c LIN best 2238 LB: 1923 at 1
+o 2238
+c LIN GAP: 315 T 1
+c BOUND UPDATE RHS: 314 at 1
+c SAT Call at 1
+c Reduced cost 314 gap 315
+c Checking model
+c LIN best 2237 LB: 1923 at 1
+o 2237
+c LIN GAP: 314 T 1
+c BOUND UPDATE RHS: 313 at 1
+c SAT Call at 1
+c Reduced cost 313 gap 314
+c Checking model
+c LIN best 2236 LB: 1923 at 1
+o 2236
+c LIN GAP: 313 T 1
+c BOUND UPDATE RHS: 312 at 1
+c SAT Call at 1
+c Reduced cost 312 gap 313
+c Checking model
+c LIN best 2235 LB: 1923 at 1
+o 2235
+c LIN GAP: 312 T 1
+c BOUND UPDATE RHS: 311 at 1
+c SAT Call at 1
+c Reduced cost 311 gap 312
+c Checking model
+c LIN best 2234 LB: 1923 at 1
+o 2234
+c LIN GAP: 311 T 1
+c BOUND UPDATE RHS: 310 at 1
+c SAT Call at 1
+c Reduced cost 310 gap 311
+c Checking model
+c LIN best 2233 LB: 1923 at 1
+o 2233
+c LIN GAP: 310 T 1
+c BOUND UPDATE RHS: 309 at 1
+c SAT Call at 1
+c Reduced cost 309 gap 310
+c Checking model
+c LIN best 2232 LB: 1923 at 1
+o 2232
+c LIN GAP: 309 T 1
+c BOUND UPDATE RHS: 308 at 1
+c SAT Call at 1
+c Reduced cost 308 gap 309
+c Checking model
+c LIN best 2231 LB: 1923 at 1
+o 2231
+c LIN GAP: 308 T 1
+c BOUND UPDATE RHS: 307 at 1
+c SAT Call at 1
+c Reduced cost 307 gap 308
+c Checking model
+c LIN best 2230 LB: 1923 at 1
+o 2230
+c LIN GAP: 307 T 1
+c BOUND UPDATE RHS: 306 at 1
+c SAT Call at 1
+c Reduced cost 306 gap 307
+c Checking model
+c LIN best 2229 LB: 1923 at 1
+o 2229
+c LIN GAP: 306 T 1
+c BOUND UPDATE RHS: 305 at 1
+c SAT Call at 1
+c Reduced cost 305 gap 306
+c Checking model
+c LIN best 2228 LB: 1923 at 1
+o 2228
+c LIN GAP: 305 T 1
+c BOUND UPDATE RHS: 304 at 1
+c SAT Call at 1
+c Reduced cost 304 gap 305
+c Checking model
+c LIN best 2227 LB: 1923 at 1
+o 2227
+c LIN GAP: 304 T 1
+c BOUND UPDATE RHS: 303 at 1
+c SAT Call at 1
+c Reduced cost 303 gap 304
+c Checking model
+c LIN best 2226 LB: 1923 at 1
+o 2226
+c LIN GAP: 303 T 1
+c BOUND UPDATE RHS: 302 at 1
+c SAT Call at 1
+c Reduced cost 302 gap 303
+c Checking model
+c LIN best 2225 LB: 1923 at 1
+o 2225
+c LIN GAP: 302 T 1
+c BOUND UPDATE RHS: 301 at 1
+c SAT Call at 1
+c Reduced cost 301 gap 302
+c Checking model
+c LIN best 2224 LB: 1923 at 1
+o 2224
+c LIN GAP: 301 T 1
+c BOUND UPDATE RHS: 300 at 1
+c SAT Call at 1
+c Reduced cost 300 gap 301
+c Checking model
+c LIN best 2223 LB: 1923 at 1
+o 2223
+c LIN GAP: 300 T 1
+c BOUND UPDATE RHS: 299 at 1
+c SAT Call at 1
+c Reduced cost 299 gap 300
+c Checking model
+c LIN best 2222 LB: 1923 at 1
+o 2222
+c LIN GAP: 299 T 1
+c BOUND UPDATE RHS: 298 at 1
+c SAT Call at 1
+c Reduced cost 298 gap 299
+c Checking model
+c LIN best 2221 LB: 1923 at 1
+o 2221
+c LIN GAP: 298 T 1
+c BOUND UPDATE RHS: 297 at 1
+c SAT Call at 1
+c Reduced cost 297 gap 298
+c Checking model
+c LIN best 2220 LB: 1923 at 1
+o 2220
+c LIN GAP: 297 T 1
+c BOUND UPDATE RHS: 296 at 1
+c SAT Call at 1
+c Reduced cost 296 gap 297
+c Checking model
+c LIN best 2219 LB: 1923 at 1
+o 2219
+c LIN GAP: 296 T 1
+c BOUND UPDATE RHS: 295 at 1
+c SAT Call at 1
+c Reduced cost 295 gap 296
+c Checking model
+c LIN best 2218 LB: 1923 at 1
+o 2218
+c LIN GAP: 295 T 1
+c BOUND UPDATE RHS: 294 at 1
+c SAT Call at 1
+c Reduced cost 294 gap 295
+c Checking model
+c LIN best 2217 LB: 1923 at 1
+o 2217
+c LIN GAP: 294 T 1
+c BOUND UPDATE RHS: 293 at 1
+c SAT Call at 1
+c Reduced cost 293 gap 294
+c Checking model
+c LIN best 2216 LB: 1923 at 1
+o 2216
+c LIN GAP: 293 T 1
+c BOUND UPDATE RHS: 292 at 1
+c SAT Call at 1
+c Reduced cost 292 gap 293
+c Checking model
+c LIN best 2215 LB: 1923 at 1
+o 2215
+c LIN GAP: 292 T 1
+c BOUND UPDATE RHS: 291 at 1
+c SAT Call at 1
+c Reduced cost 291 gap 292
+c Checking model
+c LIN best 2214 LB: 1923 at 1
+o 2214
+c LIN GAP: 291 T 1
+c BOUND UPDATE RHS: 290 at 1
+c SAT Call at 1
+c Reduced cost 290 gap 291
+c Checking model
+c LIN best 2213 LB: 1923 at 1
+o 2213
+c LIN GAP: 290 T 1
+c BOUND UPDATE RHS: 289 at 1
+c SAT Call at 1
+c Reduced cost 289 gap 290
+c Checking model
+c LIN best 2212 LB: 1923 at 1
+o 2212
+c LIN GAP: 289 T 1
+c BOUND UPDATE RHS: 288 at 1
+c SAT Call at 1
+c Reduced cost 288 gap 289
+c Checking model
+c LIN best 2211 LB: 1923 at 1
+o 2211
+c LIN GAP: 288 T 1
+c BOUND UPDATE RHS: 287 at 1
+c SAT Call at 1
+c Reduced cost 287 gap 288
+c Checking model
+c LIN best 2210 LB: 1923 at 1
+o 2210
+c LIN GAP: 287 T 1
+c BOUND UPDATE RHS: 286 at 1
+c SAT Call at 1
+c Reduced cost 286 gap 287
+c Checking model
+c LIN best 2209 LB: 1923 at 1
+o 2209
+c LIN GAP: 286 T 1
+c BOUND UPDATE RHS: 285 at 1
+c SAT Call at 1
+c Reduced cost 285 gap 286
+c Checking model
+c LIN best 2208 LB: 1923 at 1
+o 2208
+c LIN GAP: 285 T 1
+c BOUND UPDATE RHS: 284 at 1
+c SAT Call at 1
+c Reduced cost 284 gap 285
+c Checking model
+c LIN best 2207 LB: 1923 at 1
+o 2207
+c LIN GAP: 284 T 1
+c BOUND UPDATE RHS: 283 at 1
+c SAT Call at 1
+c Reduced cost 283 gap 284
+c Checking model
+c LIN best 2206 LB: 1923 at 1
+o 2206
+c LIN GAP: 283 T 1
+c BOUND UPDATE RHS: 282 at 1
+c SAT Call at 1
+c Reduced cost 282 gap 283
+c Checking model
+c LIN best 2205 LB: 1923 at 1
+o 2205
+c LIN GAP: 282 T 1
+c BOUND UPDATE RHS: 281 at 1
+c SAT Call at 1
+c Reduced cost 281 gap 282
+c Checking model
+c LIN best 2204 LB: 1923 at 1
+o 2204
+c LIN GAP: 281 T 1
+c BOUND UPDATE RHS: 280 at 1
+c SAT Call at 1
+c Reduced cost 280 gap 281
+c Checking model
+c LIN best 2203 LB: 1923 at 1
+o 2203
+c LIN GAP: 280 T 1
+c BOUND UPDATE RHS: 279 at 1
+c SAT Call at 1
+c Reduced cost 279 gap 280
+c Checking model
+c LIN best 2202 LB: 1923 at 1
+o 2202
+c LIN GAP: 279 T 1
+c BOUND UPDATE RHS: 278 at 1
+c SAT Call at 1
+c Reduced cost 278 gap 279
+c Checking model
+c LIN best 2201 LB: 1923 at 1
+o 2201
+c LIN GAP: 278 T 1
+c BOUND UPDATE RHS: 277 at 1
+c SAT Call at 1
+c Reduced cost 277 gap 278
+c Checking model
+c LIN best 2200 LB: 1923 at 1
+o 2200
+c LIN GAP: 277 T 1
+c BOUND UPDATE RHS: 276 at 1
+c SAT Call at 1
+c Reduced cost 276 gap 277
+c Checking model
+c LIN best 2199 LB: 1923 at 1
+o 2199
+c LIN GAP: 276 T 1
+c BOUND UPDATE RHS: 275 at 1
+c SAT Call at 1
+c Reduced cost 275 gap 276
+c Checking model
+c LIN best 2198 LB: 1923 at 1
+o 2198
+c LIN GAP: 275 T 1
+c BOUND UPDATE RHS: 274 at 1
+c SAT Call at 1
+c Reduced cost 274 gap 275
+c Checking model
+c LIN best 2197 LB: 1923 at 1
+o 2197
+c LIN GAP: 274 T 1
+c BOUND UPDATE RHS: 273 at 1
+c SAT Call at 1
+c Reduced cost 273 gap 274
+c Checking model
+c LIN best 2196 LB: 1923 at 1
+o 2196
+c LIN GAP: 273 T 1
+c BOUND UPDATE RHS: 272 at 1
+c SAT Call at 1
+c Reduced cost 272 gap 273
+c Checking model
+c LIN best 2195 LB: 1923 at 1
+o 2195
+c LIN GAP: 272 T 1
+c BOUND UPDATE RHS: 271 at 1
+c SAT Call at 1
+c Reduced cost 271 gap 272
+c Checking model
+c LIN best 2194 LB: 1923 at 1
+o 2194
+c LIN GAP: 271 T 1
+c BOUND UPDATE RHS: 270 at 1
+c SAT Call at 1
+c Reduced cost 270 gap 271
+c Checking model
+c LIN best 2193 LB: 1923 at 1
+o 2193
+c LIN GAP: 270 T 1
+c BOUND UPDATE RHS: 269 at 1
+c SAT Call at 1
+c Reduced cost 269 gap 270
+c Checking model
+c LIN best 2192 LB: 1923 at 1
+o 2192
+c LIN GAP: 269 T 1
+c BOUND UPDATE RHS: 268 at 1
+c SAT Call at 1
+c Reduced cost 268 gap 269
+c Checking model
+c LIN best 2191 LB: 1923 at 1
+o 2191
+c LIN GAP: 268 T 1
+c BOUND UPDATE RHS: 267 at 1
+c SAT Call at 1
+c Reduced cost 267 gap 268
+c Checking model
+c LIN best 2190 LB: 1923 at 1
+o 2190
+c LIN GAP: 267 T 1
+c BOUND UPDATE RHS: 266 at 1
+c SAT Call at 1
+c Reduced cost 266 gap 267
+c Checking model
+c LIN best 2189 LB: 1923 at 1
+o 2189
+c LIN GAP: 266 T 1
+c BOUND UPDATE RHS: 265 at 1
+c SAT Call at 1
+c Reduced cost 265 gap 266
+c Checking model
+c LIN best 2188 LB: 1923 at 1
+o 2188
+c LIN GAP: 265 T 1
+c BOUND UPDATE RHS: 264 at 1
+c SAT Call at 1
+c Reduced cost 264 gap 265
+c Checking model
+c LIN best 2187 LB: 1923 at 1
+o 2187
+c LIN GAP: 264 T 1
+c BOUND UPDATE RHS: 263 at 1
+c SAT Call at 1
+c Reduced cost 263 gap 264
+c Checking model
+c LIN best 2186 LB: 1923 at 1
+o 2186
+c LIN GAP: 263 T 1
+c BOUND UPDATE RHS: 262 at 1
+c SAT Call at 1
+c Reduced cost 262 gap 263
+c Checking model
+c LIN best 2185 LB: 1923 at 1
+o 2185
+c LIN GAP: 262 T 1
+c BOUND UPDATE RHS: 261 at 1
+c SAT Call at 1
+c Reduced cost 261 gap 262
+c Checking model
+c LIN best 2184 LB: 1923 at 1
+o 2184
+c LIN GAP: 261 T 1
+c BOUND UPDATE RHS: 260 at 1
+c SAT Call at 1
+c Reduced cost 260 gap 261
+c Checking model
+c LIN best 2183 LB: 1923 at 1
+o 2183
+c LIN GAP: 260 T 1
+c BOUND UPDATE RHS: 259 at 1
+c SAT Call at 1
+c Reduced cost 259 gap 260
+c Checking model
+c LIN best 2182 LB: 1923 at 1
+o 2182
+c LIN GAP: 259 T 1
+c BOUND UPDATE RHS: 258 at 1
+c SAT Call at 1
+c Reduced cost 258 gap 259
+c Checking model
+c LIN best 2181 LB: 1923 at 1
+o 2181
+c LIN GAP: 258 T 1
+c BOUND UPDATE RHS: 257 at 1
+c SAT Call at 1
+c Reduced cost 257 gap 258
+c Checking model
+c LIN best 2180 LB: 1923 at 1
+o 2180
+c LIN GAP: 257 T 1
+c BOUND UPDATE RHS: 256 at 1
+c SAT Call at 1
+c Reduced cost 256 gap 257
+c Checking model
+c LIN best 2179 LB: 1923 at 1
+o 2179
+c LIN GAP: 256 T 1
+c BOUND UPDATE RHS: 255 at 1
+c SAT Call at 1
+c Reduced cost 255 gap 256
+c Checking model
+c LIN best 2178 LB: 1923 at 1
+o 2178
+c LIN GAP: 255 T 1
+c BOUND UPDATE RHS: 254 at 1
+c SAT Call at 1
+c Reduced cost 254 gap 255
+c Checking model
+c LIN best 2177 LB: 1923 at 1
+o 2177
+c LIN GAP: 254 T 1
+c BOUND UPDATE RHS: 253 at 1
+c SAT Call at 1
+c Reduced cost 253 gap 254
+c Checking model
+c LIN best 2176 LB: 1923 at 1
+o 2176
+c LIN GAP: 253 T 1
+c BOUND UPDATE RHS: 252 at 1
+c SAT Call at 1
+c Reduced cost 252 gap 253
+c Checking model
+c LIN best 2175 LB: 1923 at 1
+o 2175
+c LIN GAP: 252 T 1
+c BOUND UPDATE RHS: 251 at 1
+c SAT Call at 1
+c Reduced cost 251 gap 252
+c Checking model
+c LIN best 2174 LB: 1923 at 1
+o 2174
+c LIN GAP: 251 T 1
+c BOUND UPDATE RHS: 250 at 1
+c SAT Call at 1
+c Reduced cost 250 gap 251
+c Checking model
+c LIN best 2173 LB: 1923 at 1
+o 2173
+c LIN GAP: 250 T 1
+c BOUND UPDATE RHS: 249 at 1
+c SAT Call at 1
+c Reduced cost 249 gap 250
+c Checking model
+c LIN best 2172 LB: 1923 at 1
+o 2172
+c LIN GAP: 249 T 1
+c BOUND UPDATE RHS: 248 at 1
+c SAT Call at 1
+c Reduced cost 248 gap 249
+c Checking model
+c LIN best 2171 LB: 1923 at 1
+o 2171
+c LIN GAP: 248 T 1
+c BOUND UPDATE RHS: 247 at 1
+c SAT Call at 1
+c Reduced cost 247 gap 248
+c Checking model
+c LIN best 2170 LB: 1923 at 1
+o 2170
+c LIN GAP: 247 T 1
+c BOUND UPDATE RHS: 246 at 1
+c SAT Call at 1
+c Reduced cost 246 gap 247
+c Checking model
+c LIN best 2169 LB: 1923 at 1
+o 2169
+c LIN GAP: 246 T 1
+c BOUND UPDATE RHS: 245 at 1
+c SAT Call at 1
+c Reduced cost 245 gap 246
+c Checking model
+c LIN best 2168 LB: 1923 at 1
+o 2168
+c LIN GAP: 245 T 1
+c BOUND UPDATE RHS: 244 at 1
+c SAT Call at 1
+c Reduced cost 244 gap 245
+c Checking model
+c LIN best 2167 LB: 1923 at 1
+o 2167
+c LIN GAP: 244 T 1
+c BOUND UPDATE RHS: 243 at 1
+c SAT Call at 1
+c Reduced cost 243 gap 244
+c Checking model
+c LIN best 2166 LB: 1923 at 1
+o 2166
+c LIN GAP: 243 T 1
+c BOUND UPDATE RHS: 242 at 1
+c SAT Call at 1
+c Reduced cost 242 gap 243
+c Checking model
+c LIN best 2165 LB: 1923 at 1
+o 2165
+c LIN GAP: 242 T 1
+c BOUND UPDATE RHS: 241 at 1
+c SAT Call at 1
+c Reduced cost 241 gap 242
+c Checking model
+c LIN best 2164 LB: 1923 at 1
+o 2164
+c LIN GAP: 241 T 1
+c BOUND UPDATE RHS: 240 at 1
+c SAT Call at 1
+c Reduced cost 240 gap 241
+c Checking model
+c LIN best 2163 LB: 1923 at 1
+o 2163
+c LIN GAP: 240 T 1
+c BOUND UPDATE RHS: 239 at 1
+c SAT Call at 1
+c Reduced cost 239 gap 240
+c Checking model
+c LIN best 2162 LB: 1923 at 1
+o 2162
+c LIN GAP: 239 T 1
+c BOUND UPDATE RHS: 238 at 1
+c SAT Call at 1
+c Reduced cost 238 gap 239
+c Checking model
+c LIN best 2161 LB: 1923 at 1
+o 2161
+c LIN GAP: 238 T 1
+c BOUND UPDATE RHS: 237 at 1
+c SAT Call at 1
+c Reduced cost 237 gap 238
+c Checking model
+c LIN best 2160 LB: 1923 at 1
+o 2160
+c LIN GAP: 237 T 1
+c BOUND UPDATE RHS: 236 at 1
+c SAT Call at 1
+c Reduced cost 236 gap 237
+c Checking model
+c LIN best 2159 LB: 1923 at 1
+o 2159
+c LIN GAP: 236 T 1
+c BOUND UPDATE RHS: 235 at 1
+c SAT Call at 1
+c Reduced cost 235 gap 236
+c Checking model
+c LIN best 2158 LB: 1923 at 1
+o 2158
+c LIN GAP: 235 T 1
+c BOUND UPDATE RHS: 234 at 1
+c SAT Call at 1
+c Reduced cost 234 gap 235
+c Checking model
+c LIN best 2157 LB: 1923 at 1
+o 2157
+c LIN GAP: 234 T 1
+c BOUND UPDATE RHS: 233 at 1
+c SAT Call at 1
+c Reduced cost 233 gap 234
+c Checking model
+c LIN best 2156 LB: 1923 at 1
+o 2156
+c LIN GAP: 233 T 1
+c BOUND UPDATE RHS: 232 at 1
+c SAT Call at 1
+c Reduced cost 232 gap 233
+c Checking model
+c LIN best 2155 LB: 1923 at 1
+o 2155
+c LIN GAP: 232 T 1
+c BOUND UPDATE RHS: 231 at 1
+c SAT Call at 1
+c Reduced cost 231 gap 232
+c Checking model
+c LIN best 2154 LB: 1923 at 1
+o 2154
+c LIN GAP: 231 T 1
+c BOUND UPDATE RHS: 230 at 1
+c SAT Call at 1
+c Reduced cost 230 gap 231
+c Checking model
+c LIN best 2153 LB: 1923 at 1
+o 2153
+c LIN GAP: 230 T 1
+c BOUND UPDATE RHS: 229 at 1
+c SAT Call at 1
+c Reduced cost 229 gap 230
+c Checking model
+c LIN best 2152 LB: 1923 at 1
+o 2152
+c LIN GAP: 229 T 1
+c BOUND UPDATE RHS: 228 at 1
+c SAT Call at 1
+c Reduced cost 228 gap 229
+c Checking model
+c LIN best 2151 LB: 1923 at 1
+o 2151
+c LIN GAP: 228 T 1
+c BOUND UPDATE RHS: 227 at 1
+c SAT Call at 1
+c Reduced cost 227 gap 228
+c Checking model
+c LIN best 2150 LB: 1923 at 1
+o 2150
+c LIN GAP: 227 T 1
+c BOUND UPDATE RHS: 226 at 1
+c SAT Call at 1
+c Reduced cost 226 gap 227
+c Checking model
+c LIN best 2149 LB: 1923 at 1
+o 2149
+c LIN GAP: 226 T 1
+c BOUND UPDATE RHS: 225 at 1
+c SAT Call at 1
+c Reduced cost 225 gap 226
+c Checking model
+c LIN best 2148 LB: 1923 at 1
+o 2148
+c LIN GAP: 225 T 1
+c BOUND UPDATE RHS: 224 at 1
+c SAT Call at 1
+c Reduced cost 224 gap 225
+c Checking model
+c LIN best 2147 LB: 1923 at 1
+o 2147
+c LIN GAP: 224 T 1
+c BOUND UPDATE RHS: 223 at 1
+c SAT Call at 1
+c Reduced cost 223 gap 224
+c Checking model
+c LIN best 2145 LB: 1923 at 1
+o 2145
+c LIN GAP: 222 T 1
+c BOUND UPDATE RHS: 222 at 1
+c SAT Call at 1
+c Reduced cost 222 gap 222
+c Checking model
+c BOUND UPDATE RHS: 221 at 1
+c SAT Call at 1
+c Reduced cost 221 gap 222
+c Checking model
+c LIN best 2143 LB: 1923 at 1
+o 2143
+c LIN GAP: 220 T 1
+c BOUND UPDATE RHS: 220 at 1
+c SAT Call at 1
+c Reduced cost 220 gap 220
+c Checking model
+c BOUND UPDATE RHS: 219 at 1
+c SAT Call at 1
+c Reduced cost 219 gap 220
+c Checking model
+c LIN best 2141 LB: 1923 at 1
+o 2141
+c LIN GAP: 218 T 1
+c BOUND UPDATE RHS: 218 at 1
+c SAT Call at 1
+c Reduced cost 218 gap 218
+c Checking model
+c BOUND UPDATE RHS: 217 at 1
+c SAT Call at 1
+c Reduced cost 217 gap 218
+c Checking model
+c LIN best 2139 LB: 1923 at 1
+o 2139
+c LIN GAP: 216 T 1
+c BOUND UPDATE RHS: 216 at 1
+c SAT Call at 1
+c Reduced cost 216 gap 216
+c Checking model
+c BOUND UPDATE RHS: 215 at 1
+c SAT Call at 1
+c Reduced cost 215 gap 216
+c Checking model
+c LIN best 2138 LB: 1923 at 1
+o 2138
+c LIN GAP: 215 T 1
+c BOUND UPDATE RHS: 214 at 1
+c SAT Call at 1
+c Reduced cost 214 gap 215
+c Checking model
+c LIN best 2137 LB: 1923 at 1
+o 2137
+c LIN GAP: 214 T 1
+c BOUND UPDATE RHS: 213 at 1
+c SAT Call at 1
+c Reduced cost 213 gap 214
+c Checking model
+c LIN best 2136 LB: 1923 at 1
+o 2136
+c LIN GAP: 213 T 1
+c BOUND UPDATE RHS: 212 at 1
+c SAT Call at 1
+c Reduced cost 212 gap 213
+c Checking model
+c LIN best 2135 LB: 1923 at 1
+o 2135
+c LIN GAP: 212 T 1
+c BOUND UPDATE RHS: 211 at 1
+c SAT Call at 1
+c Reduced cost 211 gap 212
+c Checking model
+c LIN best 2134 LB: 1923 at 1
+o 2134
+c LIN GAP: 211 T 1
+c BOUND UPDATE RHS: 210 at 1
+c SAT Call at 1
+c Reduced cost 210 gap 211
+c Checking model
+c LIN best 2133 LB: 1923 at 1
+o 2133
+c LIN GAP: 210 T 1
+c BOUND UPDATE RHS: 209 at 1
+c SAT Call at 1
+c Reduced cost 209 gap 210
+c Checking model
+c LIN best 2132 LB: 1923 at 1
+o 2132
+c LIN GAP: 209 T 1
+c BOUND UPDATE RHS: 208 at 1
+c SAT Call at 1
+c Reduced cost 208 gap 209
+c Checking model
+c LIN best 2131 LB: 1923 at 1
+o 2131
+c LIN GAP: 208 T 1
+c BOUND UPDATE RHS: 207 at 1
+c SAT Call at 1
+c Reduced cost 207 gap 208
+c Checking model
+c LIN best 2129 LB: 1923 at 1
+o 2129
+c LIN GAP: 206 T 1
+c BOUND UPDATE RHS: 206 at 1
+c SAT Call at 1
+c Reduced cost 206 gap 206
+c Checking model
+c LIN best 2128 LB: 1923 at 1
+o 2128
+c LIN GAP: 205 T 1
+c BOUND UPDATE RHS: 205 at 1
+c SAT Call at 1
+c Reduced cost 205 gap 205
+c Checking model
+c LIN best 2127 LB: 1923 at 1
+o 2127
+c LIN GAP: 204 T 1
+c BOUND UPDATE RHS: 204 at 1
+c SAT Call at 1
+c Reduced cost 204 gap 204
+c Checking model
+c LIN best 2126 LB: 1923 at 1
+o 2126
+c LIN GAP: 203 T 1
+c BOUND UPDATE RHS: 203 at 1
+c SAT Call at 1
+c Reduced cost 203 gap 203
+c Checking model
+c BOUND UPDATE RHS: 202 at 1
+c SAT Call at 1
+c Reduced cost 202 gap 203
+c Checking model
+c LIN best 2124 LB: 1923 at 1
+o 2124
+c LIN GAP: 201 T 1
+c BOUND UPDATE RHS: 201 at 1
+c SAT Call at 1
+c Reduced cost 201 gap 201
+c Checking model
+c LIN best 2123 LB: 1923 at 1
+o 2123
+c LIN GAP: 200 T 1
+c BOUND UPDATE RHS: 200 at 1
+c SAT Call at 1
+c Reduced cost 200 gap 200
+c Checking model
+c LIN best 2122 LB: 1923 at 1
+o 2122
+c LIN GAP: 199 T 1
+c BOUND UPDATE RHS: 199 at 1
+c SAT Call at 1
+c Reduced cost 199 gap 199
+c Checking model
+c BOUND UPDATE RHS: 198 at 1
+c SAT Call at 1
+c Reduced cost 198 gap 199
+c Checking model
+c LIN best 2120 LB: 1923 at 1
+o 2120
+c LIN GAP: 197 T 1
+c BOUND UPDATE RHS: 197 at 1
+c SAT Call at 1
+c Reduced cost 197 gap 197
+c Checking model
+c BOUND UPDATE RHS: 196 at 1
+c SAT Call at 1
+c Reduced cost 196 gap 197
+c Checking model
+c LIN best 2118 LB: 1923 at 1
+o 2118
+c LIN GAP: 195 T 1
+c BOUND UPDATE RHS: 195 at 1
+c SAT Call at 1
+c Reduced cost 195 gap 195
+c Checking model
+c BOUND UPDATE RHS: 194 at 1
+c SAT Call at 1
+c Reduced cost 194 gap 195
+c Checking model
+c LIN best 2116 LB: 1923 at 1
+o 2116
+c LIN GAP: 193 T 1
+c BOUND UPDATE RHS: 193 at 1
+c SAT Call at 1
+c Reduced cost 193 gap 193
+c Checking model
+c BOUND UPDATE RHS: 192 at 1
+c SAT Call at 1
+c Reduced cost 192 gap 193
+c Checking model
+c LIN best 2114 LB: 1923 at 1
+o 2114
+c LIN GAP: 191 T 1
+c BOUND UPDATE RHS: 191 at 1
+c SAT Call at 1
+c Reduced cost 191 gap 191
+c Checking model
+c LIN best 2113 LB: 1923 at 1
+o 2113
+c LIN GAP: 190 T 1
+c BOUND UPDATE RHS: 190 at 1
+c SAT Call at 1
+c Reduced cost 190 gap 190
+c Checking model
+c LIN best 2112 LB: 1923 at 1
+o 2112
+c LIN GAP: 189 T 1
+c BOUND UPDATE RHS: 189 at 1
+c SAT Call at 1
+c Reduced cost 189 gap 189
+c Checking model
+c LIN best 2111 LB: 1923 at 1
+o 2111
+c LIN GAP: 188 T 1
+c BOUND UPDATE RHS: 188 at 1
+c SAT Call at 1
+c Reduced cost 188 gap 188
+c Checking model
+c LIN best 2110 LB: 1923 at 1
+o 2110
+c LIN GAP: 187 T 1
+c BOUND UPDATE RHS: 187 at 1
+c SAT Call at 1
+c Reduced cost 187 gap 187
+c Checking model
+c BOUND UPDATE RHS: 186 at 1
+c SAT Call at 1
+c Reduced cost 186 gap 187
+c Checking model
+c LIN best 2108 LB: 1923 at 1
+o 2108
+c LIN GAP: 185 T 1
+c BOUND UPDATE RHS: 185 at 1
+c SAT Call at 1
+c Reduced cost 185 gap 185
+c Checking model
+c LIN best 2106 LB: 1923 at 1
+o 2106
+c LIN GAP: 183 T 1
+c BOUND UPDATE RHS: 184 at 1
+c SAT Call at 1
+c Reduced cost 184 gap 183
+c Checking model
+c LIN best 2105 LB: 1923 at 1
+o 2105
+c LIN GAP: 182 T 1
+c BOUND UPDATE RHS: 183 at 1
+c SAT Call at 1
+c Reduced cost 183 gap 182
+c Checking model
+c LIN best 2103 LB: 1923 at 1
+o 2103
+c LIN GAP: 180 T 1
+c BOUND UPDATE RHS: 182 at 1
+c SAT Call at 1
+c Reduced cost 182 gap 180
+c Checking model
+c LIN best 2102 LB: 1923 at 1
+o 2102
+c LIN GAP: 179 T 1
+c BOUND UPDATE RHS: 181 at 1
+c SAT Call at 1
+c Reduced cost 181 gap 179
+c Checking model
+c BOUND UPDATE RHS: 180 at 1
+c SAT Call at 1
+c Reduced cost 180 gap 179
+c Checking model
+c BOUND UPDATE RHS: 179 at 1
+c SAT Call at 1
+c Reduced cost 179 gap 179
+c Checking model
+c BOUND UPDATE RHS: 178 at 1
+c SAT Call at 1
+c Reduced cost 178 gap 179
+c Checking model
+c LIN best 2101 LB: 1923 at 1
+o 2101
+c LIN GAP: 178 T 1
+c BOUND UPDATE RHS: 177 at 1
+c SAT Call at 1
+c Reduced cost 177 gap 178
+c Checking model
+c LIN best 2099 LB: 1923 at 1
+o 2099
+c LIN GAP: 176 T 1
+c BOUND UPDATE RHS: 176 at 1
+c SAT Call at 1
+c Reduced cost 176 gap 176
+c Checking model
+c LIN best 2098 LB: 1923 at 1
+o 2098
+c LIN GAP: 175 T 1
+c BOUND UPDATE RHS: 175 at 1
+c SAT Call at 1
+c Reduced cost 175 gap 175
+c Checking model
+c BOUND UPDATE RHS: 174 at 1
+c SAT Call at 1
+c Reduced cost 174 gap 175
+c Checking model
+c LIN best 2096 LB: 1923 at 1
+o 2096
+c LIN GAP: 173 T 1
+c BOUND UPDATE RHS: 173 at 1
+c SAT Call at 1
+c Reduced cost 173 gap 173
+c Checking model
+c BOUND UPDATE RHS: 172 at 1
+c SAT Call at 1
+c Reduced cost 172 gap 173
+c Checking model
+c LIN best 2094 LB: 1923 at 1
+o 2094
+c LIN GAP: 171 T 1
+c BOUND UPDATE RHS: 171 at 1
+c SAT Call at 1
+c Reduced cost 171 gap 171
+c Checking model
+c BOUND UPDATE RHS: 170 at 1
+c SAT Call at 1
+c Reduced cost 170 gap 171
+c Checking model
+c LIN best 2092 LB: 1923 at 1
+o 2092
+c LIN GAP: 169 T 1
+c BOUND UPDATE RHS: 169 at 1
+c SAT Call at 1
+c Reduced cost 169 gap 169
+c Checking model
+c LIN best 2091 LB: 1923 at 1
+o 2091
+c LIN GAP: 168 T 1
+c BOUND UPDATE RHS: 168 at 1
+c SAT Call at 1
+c Reduced cost 168 gap 168
+c Checking model
+c LIN best 2090 LB: 1923 at 1
+o 2090
+c LIN GAP: 167 T 1
+c BOUND UPDATE RHS: 167 at 1
+c SAT Call at 1
+c Reduced cost 167 gap 167
+c Checking model
+c LIN best 2089 LB: 1923 at 1
+o 2089
+c LIN GAP: 166 T 1
+c BOUND UPDATE RHS: 166 at 1
+c SAT Call at 1
+c Reduced cost 166 gap 166
+c Checking model
+c LIN best 2088 LB: 1923 at 1
+o 2088
+c LIN GAP: 165 T 1
+c BOUND UPDATE RHS: 165 at 1
+c SAT Call at 1
+c Reduced cost 165 gap 165
+c Checking model
+c LIN best 2087 LB: 1923 at 1
+o 2087
+c LIN GAP: 164 T 1
+c BOUND UPDATE RHS: 164 at 1
+c SAT Call at 1
+c Reduced cost 164 gap 164
+c Checking model
+c LIN best 2086 LB: 1923 at 1
+o 2086
+c LIN GAP: 163 T 1
+c BOUND UPDATE RHS: 163 at 1
+c SAT Call at 1
+c Reduced cost 163 gap 163
+c Checking model
+c LIN best 2085 LB: 1923 at 1
+o 2085
+c LIN GAP: 162 T 1
+c BOUND UPDATE RHS: 162 at 1
+c SAT Call at 1
+c Reduced cost 162 gap 162
+c Checking model
+c LIN best 2084 LB: 1923 at 1
+o 2084
+c LIN GAP: 161 T 1
+c BOUND UPDATE RHS: 161 at 1
+c SAT Call at 1
+c Reduced cost 161 gap 161
+c Checking model
+c LIN best 2083 LB: 1923 at 1
+o 2083
+c LIN GAP: 160 T 1
+c BOUND UPDATE RHS: 160 at 1
+c SAT Call at 1
+c Reduced cost 160 gap 160
+c Checking model
+c LIN best 2082 LB: 1923 at 1
+o 2082
+c LIN GAP: 159 T 1
+c BOUND UPDATE RHS: 159 at 1
+c SAT Call at 1
+c Reduced cost 159 gap 159
+c Checking model
+c LIN best 2081 LB: 1923 at 1
+o 2081
+c LIN GAP: 158 T 1
+c BOUND UPDATE RHS: 158 at 1
+c SAT Call at 1
+c Reduced cost 158 gap 158
+c Checking model
+c LIN best 2080 LB: 1923 at 1
+o 2080
+c LIN GAP: 157 T 1
+c BOUND UPDATE RHS: 157 at 1
+c SAT Call at 1
+c Reduced cost 157 gap 157
+c Checking model
+c LIN best 2079 LB: 1923 at 1
+o 2079
+c LIN GAP: 156 T 1
+c BOUND UPDATE RHS: 156 at 1
+c SAT Call at 1
+c Reduced cost 156 gap 156
+c Checking model
+c LIN best 2078 LB: 1923 at 1
+o 2078
+c LIN GAP: 155 T 1
+c BOUND UPDATE RHS: 155 at 1
+c SAT Call at 1
+c Reduced cost 155 gap 155
+c Checking model
+c LIN best 2077 LB: 1923 at 1
+o 2077
+c LIN GAP: 154 T 1
+c BOUND UPDATE RHS: 154 at 1
+c SAT Call at 1
+c Reduced cost 154 gap 154
+c Checking model
+c LIN best 2076 LB: 1923 at 1
+o 2076
+c LIN GAP: 153 T 1
+c BOUND UPDATE RHS: 153 at 1
+c SAT Call at 1
+c Reduced cost 153 gap 153
+c Checking model
+c LIN best 2075 LB: 1923 at 1
+o 2075
+c LIN GAP: 152 T 1
+c BOUND UPDATE RHS: 152 at 1
+c SAT Call at 1
+c Reduced cost 152 gap 152
+c Checking model
+c LIN best 2074 LB: 1923 at 1
+o 2074
+c LIN GAP: 151 T 1
+c BOUND UPDATE RHS: 151 at 1
+c SAT Call at 1
+c Reduced cost 151 gap 151
+c Checking model
+c LIN best 2073 LB: 1923 at 1
+o 2073
+c LIN GAP: 150 T 1
+c BOUND UPDATE RHS: 150 at 1
+c SAT Call at 1
+c Reduced cost 150 gap 150
+c Checking model
+c LIN best 2072 LB: 1923 at 1
+o 2072
+c LIN GAP: 149 T 1
+c BOUND UPDATE RHS: 149 at 1
+c SAT Call at 1
+c Reduced cost 149 gap 149
+c Checking model
+c LIN best 2071 LB: 1923 at 1
+o 2071
+c LIN GAP: 148 T 1
+c BOUND UPDATE RHS: 148 at 1
+c SAT Call at 1
+c Reduced cost 148 gap 148
+c Checking model
+c LIN best 2070 LB: 1923 at 1
+o 2070
+c LIN GAP: 147 T 1
+c BOUND UPDATE RHS: 147 at 1
+c SAT Call at 1
+c Reduced cost 147 gap 147
+c Checking model
+c LIN best 2069 LB: 1923 at 1
+o 2069
+c LIN GAP: 146 T 1
+c BOUND UPDATE RHS: 146 at 1
+c SAT Call at 1
+c Reduced cost 146 gap 146
+c Checking model
+c LIN best 2068 LB: 1923 at 1
+o 2068
+c LIN GAP: 145 T 1
+c BOUND UPDATE RHS: 145 at 1
+c SAT Call at 1
+c Reduced cost 145 gap 145
+c Checking model
+c LIN best 2067 LB: 1923 at 1
+o 2067
+c LIN GAP: 144 T 1
+c BOUND UPDATE RHS: 144 at 1
+c SAT Call at 1
+c Reduced cost 144 gap 144
+c Checking model
+c LIN best 2066 LB: 1923 at 1
+o 2066
+c LIN GAP: 143 T 1
+c BOUND UPDATE RHS: 143 at 1
+c SAT Call at 1
+c Reduced cost 143 gap 143
+c Checking model
+c LIN best 2065 LB: 1923 at 1
+o 2065
+c LIN GAP: 142 T 1
+c BOUND UPDATE RHS: 142 at 1
+c SAT Call at 1
+c Reduced cost 142 gap 142
+c Checking model
+c LIN best 2064 LB: 1923 at 1
+o 2064
+c LIN GAP: 141 T 1
+c BOUND UPDATE RHS: 141 at 1
+c SAT Call at 1
+c Reduced cost 141 gap 141
+c Checking model
+c BOUND UPDATE RHS: 140 at 1
+c SAT Call at 1
+c Reduced cost 140 gap 141
+c Checking model
+c LIN best 2063 LB: 1923 at 1
+o 2063
+c LIN GAP: 140 T 1
+c BOUND UPDATE RHS: 139 at 1
+c SAT Call at 1
+c Reduced cost 139 gap 140
+c Checking model
+c LIN best 2062 LB: 1923 at 1
+o 2062
+c LIN GAP: 139 T 1
+c BOUND UPDATE RHS: 138 at 1
+c SAT Call at 1
+c Reduced cost 138 gap 139
+c Checking model
+c LIN best 2061 LB: 1923 at 1
+o 2061
+c LIN GAP: 138 T 1
+c BOUND UPDATE RHS: 137 at 1
+c SAT Call at 1
+c Reduced cost 137 gap 138
+c Checking model
+c LIN best 2060 LB: 1923 at 1
+o 2060
+c LIN GAP: 137 T 1
+c BOUND UPDATE RHS: 136 at 1
+c SAT Call at 1
+c Reduced cost 136 gap 137
+c Checking model
+c LIN best 2059 LB: 1923 at 1
+o 2059
+c LIN GAP: 136 T 1
+c BOUND UPDATE RHS: 135 at 1
+c SAT Call at 1
+c Reduced cost 135 gap 136
+c Checking model
+c LIN best 2058 LB: 1923 at 1
+o 2058
+c LIN GAP: 135 T 1
+c BOUND UPDATE RHS: 134 at 1
+c SAT Call at 1
+c Reduced cost 134 gap 135
+c Checking model
+c LIN best 2057 LB: 1923 at 1
+o 2057
+c LIN GAP: 134 T 1
+c BOUND UPDATE RHS: 133 at 1
+c SAT Call at 1
+c Reduced cost 133 gap 134
+c Checking model
+c LIN best 2056 LB: 1923 at 1
+o 2056
+c LIN GAP: 133 T 1
+c BOUND UPDATE RHS: 132 at 1
+c SAT Call at 1
+c Reduced cost 132 gap 133
+c Checking model
+c LIN best 2055 LB: 1923 at 1
+o 2055
+c LIN GAP: 132 T 1
+c BOUND UPDATE RHS: 131 at 1
+c SAT Call at 1
+c Reduced cost 131 gap 132
+c Checking model
+c LIN best 2054 LB: 1923 at 1
+o 2054
+c LIN GAP: 131 T 1
+c BOUND UPDATE RHS: 130 at 1
+c SAT Call at 1
+c Reduced cost 130 gap 131
+c Checking model
+c LIN best 2053 LB: 1923 at 1
+o 2053
+c LIN GAP: 130 T 1
+c BOUND UPDATE RHS: 129 at 1
+c SAT Call at 1
+c Reduced cost 129 gap 130
+c Checking model
+c LIN best 2052 LB: 1923 at 1
+o 2052
+c LIN GAP: 129 T 1
+c BOUND UPDATE RHS: 128 at 1
+c SAT Call at 1
+c Reduced cost 128 gap 129
+c Checking model
+c LIN best 2051 LB: 1923 at 1
+o 2051
+c LIN GAP: 128 T 1
+c BOUND UPDATE RHS: 127 at 1
+c SAT Call at 1
+c Reduced cost 127 gap 128
+c Checking model
+c LIN best 2050 LB: 1923 at 1
+o 2050
+c LIN GAP: 127 T 1
+c BOUND UPDATE RHS: 126 at 1
+c SAT Call at 1
+c Reduced cost 126 gap 127
+c Checking model
+c LIN best 2049 LB: 1923 at 1
+o 2049
+c LIN GAP: 126 T 1
+c BOUND UPDATE RHS: 125 at 1
+c SAT Call at 1
+c Reduced cost 125 gap 126
+c Checking model
+c LIN best 2048 LB: 1923 at 1
+o 2048
+c LIN GAP: 125 T 1
+c BOUND UPDATE RHS: 124 at 1
+c SAT Call at 1
+c Reduced cost 124 gap 125
+c Checking model
+c LIN best 2047 LB: 1923 at 1
+o 2047
+c LIN GAP: 124 T 1
+c BOUND UPDATE RHS: 123 at 1
+c SAT Call at 1
+c Reduced cost 123 gap 124
+c Checking model
+c LIN best 2046 LB: 1923 at 1
+o 2046
+c LIN GAP: 123 T 1
+c BOUND UPDATE RHS: 122 at 1
+c SAT Call at 1
+c Reduced cost 122 gap 123
+c Checking model
+c LIN best 2045 LB: 1923 at 1
+o 2045
+c LIN GAP: 122 T 1
+c BOUND UPDATE RHS: 121 at 1
+c SAT Call at 1
+c Reduced cost 121 gap 122
+c Checking model
+c LIN best 2044 LB: 1923 at 1
+o 2044
+c LIN GAP: 121 T 1
+c BOUND UPDATE RHS: 120 at 1
+c SAT Call at 1
+c Reduced cost 120 gap 121
+c Checking model
+c LIN best 2043 LB: 1923 at 1
+o 2043
+c LIN GAP: 120 T 1
+c BOUND UPDATE RHS: 119 at 1
+c SAT Call at 1
+c Reduced cost 119 gap 120
+c Checking model
+c LIN best 2042 LB: 1923 at 1
+o 2042
+c LIN GAP: 119 T 1
+c BOUND UPDATE RHS: 118 at 1
+c SAT Call at 1
+c Reduced cost 118 gap 119
+c Checking model
+c LIN best 2041 LB: 1923 at 1
+o 2041
+c LIN GAP: 118 T 1
+c BOUND UPDATE RHS: 117 at 1
+c SAT Call at 1
+c Reduced cost 117 gap 118
+c Checking model
+c LIN best 2040 LB: 1923 at 1
+o 2040
+c LIN GAP: 117 T 1
+c BOUND UPDATE RHS: 116 at 1
+c SAT Call at 1
+c Reduced cost 116 gap 117
+c Checking model
+c LIN best 2039 LB: 1923 at 1
+o 2039
+c LIN GAP: 116 T 1
+c BOUND UPDATE RHS: 115 at 1
+c SAT Call at 1
+c Reduced cost 115 gap 116
+c Checking model
+c LIN best 2038 LB: 1923 at 1
+o 2038
+c LIN GAP: 115 T 1
+c BOUND UPDATE RHS: 114 at 1
+c SAT Call at 1
+c Reduced cost 114 gap 115
+c Checking model
+c LIN best 2037 LB: 1923 at 1
+o 2037
+c LIN GAP: 114 T 1
+c BOUND UPDATE RHS: 113 at 1
+c SAT Call at 1
+c Reduced cost 113 gap 114
+c Checking model
+c LIN best 2036 LB: 1923 at 1
+o 2036
+c LIN GAP: 113 T 1
+c BOUND UPDATE RHS: 112 at 1
+c SAT Call at 1
+c Reduced cost 112 gap 113
+c Checking model
+c LIN best 2035 LB: 1923 at 1
+o 2035
+c LIN GAP: 112 T 1
+c BOUND UPDATE RHS: 111 at 1
+c SAT Call at 1
+c Reduced cost 111 gap 112
+c Checking model
+c LIN best 2034 LB: 1923 at 1
+o 2034
+c LIN GAP: 111 T 1
+c BOUND UPDATE RHS: 110 at 1
+c SAT Call at 1
+c Reduced cost 110 gap 111
+c Checking model
+c LIN best 2033 LB: 1923 at 1
+o 2033
+c LIN GAP: 110 T 1
+c BOUND UPDATE RHS: 109 at 1
+c SAT Call at 1
+c Reduced cost 109 gap 110
+c Checking model
+c LIN best 2032 LB: 1923 at 1
+o 2032
+c LIN GAP: 109 T 1
+c BOUND UPDATE RHS: 108 at 1
+c SAT Call at 1
+c Reduced cost 108 gap 109
+c Checking model
+c LIN best 2031 LB: 1923 at 1
+o 2031
+c LIN GAP: 108 T 1
+c BOUND UPDATE RHS: 107 at 1
+c SAT Call at 1
+c Reduced cost 107 gap 108
+c Checking model
+c LIN best 2030 LB: 1923 at 1
+o 2030
+c LIN GAP: 107 T 1
+c BOUND UPDATE RHS: 106 at 1
+c SAT Call at 1
+c Reduced cost 106 gap 107
+c Checking model
+c LIN best 2029 LB: 1923 at 1
+o 2029
+c LIN GAP: 106 T 1
+c BOUND UPDATE RHS: 105 at 1
+c SAT Call at 1
+c Reduced cost 105 gap 106
+c Checking model
+c LIN best 2028 LB: 1923 at 1
+o 2028
+c LIN GAP: 105 T 1
+c BOUND UPDATE RHS: 104 at 1
+c SAT Call at 1
+c Reduced cost 104 gap 105
+c Checking model
+c LIN best 2027 LB: 1923 at 1
+o 2027
+c LIN GAP: 104 T 1
+c BOUND UPDATE RHS: 103 at 1
+c SAT Call at 1
+c Reduced cost 103 gap 104
+c Checking model
+c LIN best 2026 LB: 1923 at 1
+o 2026
+c LIN GAP: 103 T 1
+c BOUND UPDATE RHS: 102 at 1
+c SAT Call at 1
+c Reduced cost 102 gap 103
+c Checking model
+c LIN best 2025 LB: 1923 at 1
+o 2025
+c LIN GAP: 102 T 1
+c BOUND UPDATE RHS: 101 at 1
+c SAT Call at 1
+c Reduced cost 101 gap 102
+c Checking model
+c LIN best 2024 LB: 1923 at 1
+o 2024
+c LIN GAP: 101 T 1
+c BOUND UPDATE RHS: 100 at 1
+c SAT Call at 1
+c Reduced cost 100 gap 101
+c Checking model
+c LIN best 2023 LB: 1923 at 1
+o 2023
+c LIN GAP: 100 T 1
+c BOUND UPDATE RHS: 99 at 1
+c SAT Call at 1
+c Reduced cost 99 gap 100
+c Checking model
+c LIN best 2022 LB: 1923 at 1
+o 2022
+c LIN GAP: 99 T 1
+c BOUND UPDATE RHS: 98 at 1
+c SAT Call at 1
+c Reduced cost 98 gap 99
+c Checking model
+c LIN best 2021 LB: 1923 at 1
+o 2021
+c LIN GAP: 98 T 1
+c BOUND UPDATE RHS: 97 at 1
+c SAT Call at 1
+c Reduced cost 97 gap 98
+c Checking model
+c LIN best 2020 LB: 1923 at 1
+o 2020
+c LIN GAP: 97 T 1
+c BOUND UPDATE RHS: 96 at 1
+c SAT Call at 1
+c Reduced cost 96 gap 97
+c Checking model
+c LIN best 2019 LB: 1923 at 1
+o 2019
+c LIN GAP: 96 T 1
+c BOUND UPDATE RHS: 95 at 1
+c SAT Call at 1
+c Reduced cost 95 gap 96
+c Checking model
+c LIN best 2018 LB: 1923 at 1
+o 2018
+c LIN GAP: 95 T 1
+c BOUND UPDATE RHS: 94 at 1
+c SAT Call at 1
+c Reduced cost 94 gap 95
+c Checking model
+c LIN best 2017 LB: 1923 at 1
+o 2017
+c LIN GAP: 94 T 1
+c BOUND UPDATE RHS: 93 at 1
+c SAT Call at 1
+c Reduced cost 93 gap 94
+c Checking model
+c LIN best 2016 LB: 1923 at 1
+o 2016
+c LIN GAP: 93 T 1
+c BOUND UPDATE RHS: 92 at 1
+c SAT Call at 1
+c Reduced cost 92 gap 93
+c Checking model
+c LIN best 2015 LB: 1923 at 1
+o 2015
+c LIN GAP: 92 T 1
+c BOUND UPDATE RHS: 91 at 1
+c SAT Call at 1
+c Reduced cost 91 gap 92
+c Checking model
+c LIN best 2014 LB: 1923 at 1
+o 2014
+c LIN GAP: 91 T 1
+c BOUND UPDATE RHS: 90 at 1
+c SAT Call at 1
+c Reduced cost 90 gap 91
+c Checking model
+c LIN best 2013 LB: 1923 at 1
+o 2013
+c LIN GAP: 90 T 1
+c BOUND UPDATE RHS: 89 at 1
+c SAT Call at 1
+c Reduced cost 89 gap 90
+c Checking model
+c LIN best 2012 LB: 1923 at 1
+o 2012
+c LIN GAP: 89 T 1
+c BOUND UPDATE RHS: 88 at 1
+c SAT Call at 1
+c Reduced cost 88 gap 89
+c Checking model
+c LIN best 2011 LB: 1923 at 1
+o 2011
+c LIN GAP: 88 T 1
+c BOUND UPDATE RHS: 87 at 1
+c SAT Call at 1
+c Reduced cost 87 gap 88
+c Checking model
+c LIN best 2010 LB: 1923 at 1
+o 2010
+c LIN GAP: 87 T 1
+c BOUND UPDATE RHS: 86 at 1
+c SAT Call at 1
+c Reduced cost 86 gap 87
+c Checking model
+c LIN best 2009 LB: 1923 at 1
+o 2009
+c LIN GAP: 86 T 1
+c BOUND UPDATE RHS: 85 at 1
+c SAT Call at 1
+c Reduced cost 85 gap 86
+c Checking model
+c LIN best 2008 LB: 1923 at 1
+o 2008
+c LIN GAP: 85 T 1
+c BOUND UPDATE RHS: 84 at 1
+c SAT Call at 1
+c Reduced cost 84 gap 85
+c Checking model
+c LIN best 2007 LB: 1923 at 1
+o 2007
+c LIN GAP: 84 T 1
+c BOUND UPDATE RHS: 83 at 1
+c SAT Call at 1
+c Reduced cost 83 gap 84
+c Checking model
+c LIN best 2006 LB: 1923 at 1
+o 2006
+c LIN GAP: 83 T 1
+c BOUND UPDATE RHS: 82 at 1
+c SAT Call at 1
+c Reduced cost 82 gap 83
+c Checking model
+c LIN best 2005 LB: 1923 at 1
+o 2005
+c LIN GAP: 82 T 1
+c BOUND UPDATE RHS: 81 at 1
+c SAT Call at 1
+c Reduced cost 81 gap 82
+c Checking model
+c LIN best 2004 LB: 1923 at 1
+o 2004
+c LIN GAP: 81 T 1
+c BOUND UPDATE RHS: 80 at 1
+c SAT Call at 1
+c Reduced cost 80 gap 81
+c Checking model
+c LIN best 2003 LB: 1923 at 1
+o 2003
+c LIN GAP: 80 T 1
+c BOUND UPDATE RHS: 79 at 1
+c SAT Call at 1
+c Reduced cost 79 gap 80
+c Checking model
+c LIN best 2002 LB: 1923 at 1
+o 2002
+c LIN GAP: 79 T 1
+c BOUND UPDATE RHS: 78 at 1
+c SAT Call at 1
+c Reduced cost 78 gap 79
+c Checking model
+c LIN best 2001 LB: 1923 at 1
+o 2001
+c LIN GAP: 78 T 1
+c BOUND UPDATE RHS: 77 at 1
+c SAT Call at 1
+c Reduced cost 77 gap 78
+c Checking model
+c LIN best 2000 LB: 1923 at 1
+o 2000
+c LIN GAP: 77 T 1
+c BOUND UPDATE RHS: 76 at 1
+c SAT Call at 1
+c Reduced cost 76 gap 77
+c Checking model
+c LIN best 1999 LB: 1923 at 1
+o 1999
+c LIN GAP: 76 T 1
+c BOUND UPDATE RHS: 75 at 1
+c SAT Call at 1
+c Reduced cost 75 gap 76
+c Checking model
+c LIN best 1998 LB: 1923 at 1
+o 1998
+c LIN GAP: 75 T 1
+c BOUND UPDATE RHS: 74 at 1
+c SAT Call at 1
+c Reduced cost 74 gap 75
+c Checking model
+c LIN best 1997 LB: 1923 at 1
+o 1997
+c LIN GAP: 74 T 1
+c BOUND UPDATE RHS: 73 at 1
+c SAT Call at 1
+c Reduced cost 73 gap 74
+c Checking model
+c LIN best 1996 LB: 1923 at 1
+o 1996
+c LIN GAP: 73 T 1
+c BOUND UPDATE RHS: 72 at 1
+c SAT Call at 1
+c Reduced cost 72 gap 73
+c Checking model
+c LIN best 1995 LB: 1923 at 1
+o 1995
+c LIN GAP: 72 T 1
+c BOUND UPDATE RHS: 71 at 1
+c SAT Call at 1
+c Reduced cost 71 gap 72
+c Checking model
+c LIN best 1994 LB: 1923 at 1
+o 1994
+c LIN GAP: 71 T 1
+c BOUND UPDATE RHS: 70 at 1
+c SAT Call at 1
+c Reduced cost 70 gap 71
+c Checking model
+c LIN best 1993 LB: 1923 at 1
+o 1993
+c LIN GAP: 70 T 1
+c BOUND UPDATE RHS: 69 at 1
+c SAT Call at 1
+c Reduced cost 69 gap 70
+c Checking model
+c LIN best 1992 LB: 1923 at 1
+o 1992
+c LIN GAP: 69 T 1
+c BOUND UPDATE RHS: 68 at 1
+c SAT Call at 1
+c Reduced cost 68 gap 69
+c Checking model
+c LIN best 1991 LB: 1923 at 1
+o 1991
+c LIN GAP: 68 T 1
+c BOUND UPDATE RHS: 67 at 1
+c SAT Call at 1
+c Reduced cost 67 gap 68
+c Checking model
+c LIN best 1990 LB: 1923 at 1
+o 1990
+c LIN GAP: 67 T 1
+c BOUND UPDATE RHS: 66 at 1
+c SAT Call at 1
+c Reduced cost 66 gap 67
+c Checking model
+c LIN best 1989 LB: 1923 at 1
+o 1989
+c LIN GAP: 66 T 1
+c BOUND UPDATE RHS: 65 at 1
+c SAT Call at 1
+c Reduced cost 65 gap 66
+c Checking model
+c LIN best 1988 LB: 1923 at 1
+o 1988
+c LIN GAP: 65 T 1
+c BOUND UPDATE RHS: 64 at 1
+c SAT Call at 1
+c Reduced cost 64 gap 65
+c Checking model
+c LIN best 1987 LB: 1923 at 1
+o 1987
+c LIN GAP: 64 T 1
+c BOUND UPDATE RHS: 63 at 1
+c SAT Call at 1
+c Reduced cost 63 gap 64
+c Checking model
+c LIN best 1986 LB: 1923 at 1
+o 1986
+c LIN GAP: 63 T 1
+c BOUND UPDATE RHS: 62 at 1
+c SAT Call at 1
+c Reduced cost 62 gap 63
+c Checking model
+c LIN best 1985 LB: 1923 at 1
+o 1985
+c LIN GAP: 62 T 1
+c BOUND UPDATE RHS: 61 at 1
+c SAT Call at 1
+c Reduced cost 61 gap 62
+c Checking model
+c LIN best 1984 LB: 1923 at 1
+o 1984
+c LIN GAP: 61 T 1
+c BOUND UPDATE RHS: 60 at 1
+c SAT Call at 1
+c Reduced cost 60 gap 61
+c Checking model
+c LIN best 1983 LB: 1923 at 1
+o 1983
+c LIN GAP: 60 T 1
+c BOUND UPDATE RHS: 59 at 1
+c SAT Call at 1
+c Reduced cost 59 gap 60
+c Checking model
+c LIN best 1982 LB: 1923 at 1
+o 1982
+c LIN GAP: 59 T 1
+c BOUND UPDATE RHS: 58 at 1
+c SAT Call at 1
+c Reduced cost 58 gap 59
+c Checking model
+c LIN best 1981 LB: 1923 at 1
+o 1981
+c LIN GAP: 58 T 1
+c BOUND UPDATE RHS: 57 at 1
+c SAT Call at 1
+c Reduced cost 57 gap 58
+c Checking model
+c LIN best 1980 LB: 1923 at 1
+o 1980
+c LIN GAP: 57 T 1
+c BOUND UPDATE RHS: 56 at 1
+c SAT Call at 1
+c Reduced cost 56 gap 57
+c Checking model
+c LIN best 1979 LB: 1923 at 1
+o 1979
+c LIN GAP: 56 T 1
+c BOUND UPDATE RHS: 55 at 1
+c SAT Call at 1
+c Reduced cost 55 gap 56
+c Checking model
+c LIN best 1978 LB: 1923 at 1
+o 1978
+c LIN GAP: 55 T 1
+c BOUND UPDATE RHS: 54 at 1
+c SAT Call at 1
+c Reduced cost 54 gap 55
+c Checking model
+c LIN best 1977 LB: 1923 at 1
+o 1977
+c LIN GAP: 54 T 1
+c BOUND UPDATE RHS: 53 at 1
+c SAT Call at 1
+c Reduced cost 53 gap 54
+c Checking model
+c LIN best 1976 LB: 1923 at 1
+o 1976
+c LIN GAP: 53 T 1
+c BOUND UPDATE RHS: 52 at 1
+c SAT Call at 1
+c Reduced cost 52 gap 53
+c Checking model
+c LIN best 1975 LB: 1923 at 1
+o 1975
+c LIN GAP: 52 T 1
+c BOUND UPDATE RHS: 51 at 1
+c SAT Call at 1
+c Reduced cost 51 gap 52
+c Checking model
+c LIN best 1974 LB: 1923 at 1
+o 1974
+c LIN GAP: 51 T 1
+c BOUND UPDATE RHS: 50 at 1
+c SAT Call at 1
+c Reduced cost 50 gap 51
+c Checking model
+c LIN best 1973 LB: 1923 at 1
+o 1973
+c LIN GAP: 50 T 1
+c BOUND UPDATE RHS: 49 at 1
+c SAT Call at 1
+c Reduced cost 49 gap 50
+c Checking model
+c LIN best 1972 LB: 1923 at 1
+o 1972
+c LIN GAP: 49 T 1
+c BOUND UPDATE RHS: 48 at 1
+c SAT Call at 1
+c Reduced cost 48 gap 49
+c Checking model
+c LIN best 1971 LB: 1923 at 1
+o 1971
+c LIN GAP: 48 T 1
+c BOUND UPDATE RHS: 47 at 1
+c SAT Call at 1
+c Reduced cost 47 gap 48
+c Checking model
+c LIN best 1970 LB: 1923 at 1
+o 1970
+c LIN GAP: 47 T 1
+c BOUND UPDATE RHS: 46 at 1
+c SAT Call at 1
+c Reduced cost 46 gap 47
+c Checking model
+c LIN best 1969 LB: 1923 at 1
+o 1969
+c LIN GAP: 46 T 1
+c BOUND UPDATE RHS: 45 at 1
+c SAT Call at 1
+c Reduced cost 45 gap 46
+c Checking model
+c LIN best 1968 LB: 1923 at 1
+o 1968
+c LIN GAP: 45 T 1
+c BOUND UPDATE RHS: 44 at 1
+c SAT Call at 1
+c Reduced cost 44 gap 45
+c Checking model
+c LIN best 1967 LB: 1923 at 1
+o 1967
+c LIN GAP: 44 T 1
+c BOUND UPDATE RHS: 43 at 1
+c SAT Call at 1
+c Reduced cost 43 gap 44
+c Checking model
+c LIN best 1966 LB: 1923 at 1
+o 1966
+c LIN GAP: 43 T 1
+c BOUND UPDATE RHS: 42 at 1
+c SAT Call at 1
+c Reduced cost 42 gap 43
+c Checking model
+c LIN best 1965 LB: 1923 at 1
+o 1965
+c LIN GAP: 42 T 1
+c BOUND UPDATE RHS: 41 at 1
+c SAT Call at 1
+c Reduced cost 41 gap 42
+c Checking model
+c LIN best 1964 LB: 1923 at 1
+o 1964
+c LIN GAP: 41 T 1
+c BOUND UPDATE RHS: 40 at 1
+c SAT Call at 1
+c Reduced cost 40 gap 41
+c Checking model
+c LIN best 1963 LB: 1923 at 1
+o 1963
+c LIN GAP: 40 T 1
+c BOUND UPDATE RHS: 39 at 1
+c SAT Call at 1
+c Reduced cost 39 gap 40
+c Checking model
+c LIN best 1962 LB: 1923 at 1
+o 1962
+c LIN GAP: 39 T 1
+c BOUND UPDATE RHS: 38 at 1
+c SAT Call at 1
+c Reduced cost 38 gap 39
+c Checking model
+c LIN best 1961 LB: 1923 at 1
+o 1961
+c LIN GAP: 38 T 1
+c BOUND UPDATE RHS: 37 at 1
+c SAT Call at 1
+c Reduced cost 37 gap 38
+c Checking model
+c LIN best 1960 LB: 1923 at 1
+o 1960
+c LIN GAP: 37 T 1
+c BOUND UPDATE RHS: 36 at 1
+c SAT Call at 1
+c Reduced cost 36 gap 37
+c Checking model
+c LIN best 1959 LB: 1923 at 1
+o 1959
+c LIN GAP: 36 T 1
+c BOUND UPDATE RHS: 35 at 1
+c SAT Call at 1
+c Reduced cost 35 gap 36
+c Checking model
+c LIN best 1958 LB: 1923 at 1
+o 1958
+c LIN GAP: 35 T 1
+c BOUND UPDATE RHS: 34 at 1
+c SAT Call at 1
+c Reduced cost 34 gap 35
+c Checking model
+c LIN best 1957 LB: 1923 at 1
+o 1957
+c LIN GAP: 34 T 1
+c BOUND UPDATE RHS: 33 at 1
+c SAT Call at 1
+c Reduced cost 33 gap 34
+c Checking model
+c LIN best 1956 LB: 1923 at 1
+o 1956
+c LIN GAP: 33 T 1
+c BOUND UPDATE RHS: 32 at 1
+c SAT Call at 1
+c Reduced cost 32 gap 33
+c Checking model
+c LIN best 1955 LB: 1923 at 1
+o 1955
+c LIN GAP: 32 T 1
+c BOUND UPDATE RHS: 31 at 1
+c SAT Call at 1
+c Reduced cost 31 gap 32
+c Checking model
+c LIN best 1954 LB: 1923 at 1
+o 1954
+c LIN GAP: 31 T 1
+c BOUND UPDATE RHS: 30 at 1
+c SAT Call at 1
+c Reduced cost 30 gap 31
+c Checking model
+c LIN best 1953 LB: 1923 at 1
+o 1953
+c LIN GAP: 30 T 1
+c BOUND UPDATE RHS: 29 at 1
+c SAT Call at 1
+c Reduced cost 29 gap 30
+c Checking model
+c LIN best 1952 LB: 1923 at 1
+o 1952
+c LIN GAP: 29 T 1
+c BOUND UPDATE RHS: 28 at 1
+c SAT Call at 1
+c Reduced cost 28 gap 29
+c Checking model
+c LIN best 1951 LB: 1923 at 1
+o 1951
+c LIN GAP: 28 T 1
+c BOUND UPDATE RHS: 27 at 1
+c SAT Call at 1
+c Reduced cost 27 gap 28
+c Checking model
+c LIN best 1950 LB: 1923 at 1
+o 1950
+c LIN GAP: 27 T 1
+c BOUND UPDATE RHS: 26 at 1
+c SAT Call at 1
+c Reduced cost 26 gap 27
+c Checking model
+c LIN best 1949 LB: 1923 at 1
+o 1949
+c LIN GAP: 26 T 1
+c BOUND UPDATE RHS: 25 at 1
+c SAT Call at 1
+c Reduced cost 25 gap 26
+c Checking model
+c LIN best 1948 LB: 1923 at 1
+o 1948
+c LIN GAP: 25 T 1
+c BOUND UPDATE RHS: 24 at 1
+c SAT Call at 1
+c Reduced cost 24 gap 25
+c Checking model
+c LIN best 1947 LB: 1923 at 1
+o 1947
+c LIN GAP: 24 T 1
+c BOUND UPDATE RHS: 23 at 1
+c SAT Call at 1
+c Reduced cost 23 gap 24
+c Checking model
+c LIN best 1946 LB: 1923 at 1
+o 1946
+c LIN GAP: 23 T 1
+c BOUND UPDATE RHS: 22 at 1
+c SAT Call at 1
+c Reduced cost 22 gap 23
+c Checking model
+c LIN best 1945 LB: 1923 at 1
+o 1945
+c LIN GAP: 22 T 1
+c BOUND UPDATE RHS: 21 at 1
+c SAT Call at 1
+c Reduced cost 21 gap 22
+c Checking model
+c LIN best 1944 LB: 1923 at 1
+o 1944
+c LIN GAP: 21 T 1
+c BOUND UPDATE RHS: 20 at 1
+c SAT Call at 1
+c Reduced cost 20 gap 21
+c Checking model
+c LIN best 1943 LB: 1923 at 1
+o 1943
+c LIN GAP: 20 T 1
+c BOUND UPDATE RHS: 19 at 1
+c SAT Call at 1
+c Reduced cost 19 gap 20
+c Checking model
+c LIN best 1942 LB: 1923 at 1
+o 1942
+c LIN GAP: 19 T 1
+c BOUND UPDATE RHS: 18 at 1
+c SAT Call at 1
+c Reduced cost 18 gap 19
+c Checking model
+c LIN best 1941 LB: 1923 at 1
+o 1941
+c LIN GAP: 18 T 1
+c BOUND UPDATE RHS: 17 at 1
+c SAT Call at 1
+c Reduced cost 17 gap 18
+c Checking model
+c LIN best 1940 LB: 1923 at 1
+o 1940
+c LIN GAP: 17 T 1
+c BOUND UPDATE RHS: 16 at 1
+c SAT Call at 1
+c Reduced cost 16 gap 17
+c Checking model
+c LIN best 1939 LB: 1923 at 1
+o 1939
+c LIN GAP: 16 T 1
+c BOUND UPDATE RHS: 15 at 1
+c SAT Call at 1
+c Reduced cost 15 gap 16
+c Checking model
+c LIN best 1938 LB: 1923 at 1
+o 1938
+c LIN GAP: 15 T 1
+c BOUND UPDATE RHS: 14 at 1
+c SAT Call at 1
+c Reconstructing in print answer
+c Reconstruction time: 0
+c new cost: 1938
+s OPTIMUM FOUND
+v 001000100100001001000100000111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001110100111010011101001111111111010011101001110100111010011101001110100111010011101001000000110000010000001111011100000011000001000000111100110000001110000111101111000001111011100000011100001100000110000011000001101011111100110000000110000100100110000001100000110000010000001000000110000011100001111001111100111100001000000110000011000001000000110101111000001111001110000010000001110000111101111000001100000110000011000001111001110000010000000000000000000000000000000000000000001010011000000000100100000000000000000000000000000001001000000000000000000000000000000000000001011100000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000001000000100000000000000000000000000000000000000000000000000000000000000000000000000000001001000000000000000000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000000000001000010000000000100100000000000010000100000000001001000000000000100100000001000000000100000100000000000010010000000001000000010000000100000010000001000000000000010100000000001000000000100001000000010000000000100000001000010000010000000100000001000000010000000000001000010000000100000000001000100000000100000100000000010000000000100100000001000000000100000001000000010000000100000100000000010000000000010000000100000001000000010000000100000001000100000000000100001000000000010000000100000001000000010000100000000001000000010000000100000001000000010000100000000001000000010000000100000001000000010000000100000001000000010000000100000010000000010000000100000001000000100000001000000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000100000000001000000010000000100110111110111110110111100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100100110110110110110110110110110110110110110110110110110110111110111110111110110110110110110110110110110110110110110111110110110110110110110110110110110110111111111111111111110111111111111111111111111111111111111111111111111111111111111111111110111111111110110111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

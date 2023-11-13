@@ -1,0 +1,59 @@
+--- len ml cl ---   ml: 7, cl: 8
+num branch_node: 7
+num leaf_node: 8
+num feature: 4
+tree_depth: 3
+nDC: 1219
+
+a: 1 - 28 -> 28  
+s: 29 - 1078 -> 1050
+z: 1079 - 2278 -> 1200
+g: 2279 - 2302 -> 24
+x: 2303 - 2752 -> 450
+b0: 2753 - 3971 -> 1219
+b1: 3972 - 5190 -> 1219
+ ---> [debug] ---> (2438, 1)   ndc: 1219
+./content/instance_iris ./consts/3556/consts_k0.1_s3556/iris_mc0.1_s3556 ./solutions/iris_mc0.1_s3556_e0.1/ ./solutions/iris_mc0.1_s3556_e0.1/clauses_iris_mc0.1_s3556
+Smart Pair jar 
+java -DconstsPath=./consts/3556/consts_k0.1_s3556/iris_mc0.1_s3556 -DdataPath=./content/instance_iris -DxStartInd=2303 -Db0StartInd=2753 -DhardClauseWeight=2439 -DdistanceClassPath=./solutions/iris_mc0.1_s3556_e0.1/DC -DoutFileName=./solutions/iris_mc0.1_s3556_e0.1/clauses_iris_mc0.1_s3556 -jar smart-pair.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/iris_mc0.1_s3556_e0.1/DC
+df length: 150, num label: 3, num DC: 1219
+x: 150-3, b0: 1219, b1: 1219
+flags: l, 150, 4, 3
+distance class size : 1219 
+consts size ml: 7, cl: 8
+12-20 crossing break[2439 -4008 0] |pairInd: 77:116 |cc: 2:1
+21-29 crossing break[2439 -4008 0, 2439 3007 0] |pairInd: 62:78 |cc: 6:6
+SmartPair Finished, 21927 clauses write to ./solutions/iris_mc0.1_s3556_e0.1/clauses_iris_mc0.1_s3556
+========= Smart Pair Finished =========
+
+df_consts -time: 0.00677 -dim: nan
+DC -time: 0.01873 -dim: 1219
+tree_var -time: 0.00006 -dim: nan
+7 -time: 0.00018 -dim: (42, 2)
+8 -time: 0.00006 -dim: (7, 4)
+9 -time: 0.00923 -dim: (4172, 3)
+10 -time: 0.01868 -dim: (3339, 3)
+11_12 -time: 0.00710 -dim: [3600, 2]
+13 -time: 0.00296 -dim: (1200, 4)
+14_15 -time: 0.00087 -dim: [56, 2]
+16 -time: 0.00006 -dim: (8, 2)
+17_18 -time: 0.01548 -dim: [4800, 3]
+19 -time: 0.00005 -dim: (2, 1)
+20 -time: 0.00724 -dim: (1, 150)
+21 -time: 0.00006 -dim: (1, 150)
+32_33_34 -time: 0.00679 -dim: (3655, 2)
+smtPr_22_31 -time: 0.32675 -dim: nan
+cl_file_header -time: 0.03927 -dim: nan
+*solver* -time: 0.89655 -dim: nan
+Total -time: 1.37216 -dim: nan
+-- SUM CL TIME: 0.47561          |  solver Time: 0.89655          |  SUM TIME: 1.37216
+
+
+loandra header: p wcnf 5190 45395 2439
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.8507972789115646
+b0_final: 755 | 0_ind: 755
+b1_final: 36 | 0_ind: 36
