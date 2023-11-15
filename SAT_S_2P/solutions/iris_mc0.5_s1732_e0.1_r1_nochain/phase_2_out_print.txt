@@ -1,0 +1,54 @@
+a: 1 - 28 -> 28  
+s: 29 - 1078 -> 1050
+z: 1079 - 2278 -> 1200
+g: 2279 - 2302 -> 24
+x: 2303 - 2752 -> 450
+b0: 2753 - 3971 -> 1219
+b1: 3972 - 5190 -> 1219
+--- len ml cl ---   ml: 32, cl: 43
+ ---> [debug] ---> (2438, 1)   ndc: 1219
+clause_list_7 -size: 42
+clause_list_8 -size: 7
+clause_list_9 -size: 4172
+clause_list_10 -size: 3339
+clause_list_11 -size: 1800
+clause_list_12 -size: 1800
+clause_list_13 -size: 1200
+clause_list_14 -size: 28
+clause_list_15 -size: 28
+clause_list_16 -size: 8
+clause_list_17 -size: 2400
+clause_list_18 -size: 2400
+clause_list_19 -size: 2
+clause_list_21 -size: 1
+clause_list_32_33_34 -size: 3655
+clauses20 -size:148
+content/instance_iris ./consts/1732/consts_k0.5_s1732/iris_mc0.5_s1732 ./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/ ./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/clauses_iris_mc0.5_s1732
+Smart Pair jar 
+java -DconstsPath=./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/optimalConsts_iris_mc0.5_s1732 -DdataPath=content/instance_iris -DxStartInd=2303 -Db0StartInd=2753 -DhardClauseWeight=2439 -DdistanceClassPath=./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/DC -DoutFileName=./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/clauses_iris_mc0.5_s1732 -jar smart-pair.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/DC
+df length: 150, num label: 3, num DC: 1219
+x: 150-3, b0: 1219, b1: 1219
+flags: l, 150, 4, 3
+distance class size : 1219 
+consts size ml: 32, cl: 43
+12-20 crossing break[2439 -4003 0] |pairInd: 54:133 |cc: 1:11
+21-29 crossing break[2439 -4003 0, 2439 3261 0] |pairInd: 127:131 |cc: 17:17
+SmartPair Finished, 10950 clauses write to ./solutions/iris_mc0.5_s1732_e0.1_r1_nochain/clauses_iris_mc0.5_s1732
+========= Smart Pair Finished =========
+
+
+loandra header: p wcnf 5190 34418 2439
+
+clausesIO_7-21_32-34 -time: 0.08721 -dim: nan
+smtPr_22-31 -time: 0.32832 -dim: nan
+cl_file_header -time: 0.06660 -dim: nan
+*solver* -time: 0.06660 -dim: nan
+Total -time: 0.62627 -dim: nan
+-- SUM CL TIME: 0.55967          |  solver Time: 0.0666          |  SUM TIME: 0.62627
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.9410122562924206
+b0_final: 755 | 0_ind: 755
+b1_final: 31 | 0_ind: 31
