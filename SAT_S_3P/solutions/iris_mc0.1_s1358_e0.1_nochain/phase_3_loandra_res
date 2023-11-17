@@ -21,7 +21,7 @@ c |  Number of hard clauses:      34454                                         
 c |  Number of soft clauses:       2438                                                                   |
 c |  Number of cardinality:           0                                                                   |
 c |  Number of PB :                   0                                                                   |
-c |  Parse time:                   0.01 s                                                                 |
+c |  Parse time:                   0.02 s                                                                 |
 c |                                                                                                       |
 c PMRES ALGORITHM WITH LINEAR SEARCH 
 c PMRES LINEAR STRAT=1

@@ -36,13 +36,13 @@ Start to read loandra res
 -ml sat and violated: 6 | 0  | total #ml: 6 | 
 -cl sat and violated: 9 | 0  | total #cl: 9 | 
 V0 ML:(6, 2)-6, CL: (9, 2)-9
-22 -time: 0.00008 -dim: (9, 3)
-23 -time: 0.00006 -dim: (9, 3)
-24 -time: 0.00009 -dim: (9, 5)
-25 -time: 0.00010 -dim: (12, 3)
-26 -time: 0.00006 -dim: (12, 3)
-slvr_header -time: 0.01863 -dim: nan
-*solver* -time: 0.06058 -dim: nan
-Total -time: 0.14748 -dim: nan
--- SUM CL TIME: 0.08690          |  solver Time: 0.06058          |  SUM TIME: 0.14748
+22 -time: 0.00007 -dim: (9, 3)
+23 -time: 0.00005 -dim: (9, 3)
+24 -time: 0.00008 -dim: (9, 5)
+25 -time: 0.00008 -dim: (12, 3)
+26 -time: 0.00005 -dim: (12, 3)
+slvr_header -time: 0.01172 -dim: nan
+*solver* -time: 0.05922 -dim: nan
+Total -time: 0.13534 -dim: nan
+-- SUM CL TIME: 0.07612          |  solver Time: 0.05922          |  SUM TIME: 0.13534
 

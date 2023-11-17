@@ -34,21 +34,21 @@ c PMRES MINIM =1
 c PMRES MINIM STRAT =0
 c PRE hard clauses before: 17411
 c PRE soft literals before: 9
-c PRE time: 1 removed weight: 0
+c PRE time: 0 removed weight: 0
 c PRE hard clauses after: 12438
 c PRE soft literals after: 9
 c Checking model
-c CG best 1 LB: 0 at 1
+c CG best 1 LB: 0 at 0
 o 1
-c CG GAP: 1 T 1
-c CG New weight: 1 at 1
-c PMRES CORE LIMIT (-1 = no limit)=31
+c CG GAP: 1 T 0
+c CG New weight: 1 at 0
+c PMRES CORE LIMIT (-1 = no limit)=30
 c Core budget remaining 30
-c SAT-During core guided phase at 1
+c SAT-During core guided phase at 0
 c Checking model
-c CG best 0 LB: 0 at 1
+c CG best 0 LB: 0 at 0
 o 0
-c CG GAP: 0 T 1
+c CG GAP: 0 T 0
 c LB = UB
 c Reconstructing in print answer
 c Reconstruction time: 0
