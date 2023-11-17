@@ -187,12 +187,32 @@ def unique_encode_generator():
 
 # param: the path to the constraint file
 # return: ML and CL values in numpy array
+# def get_ML_CL(consts_path):
+#   consts_df = pd.read_csv(consts_path, header=None, delimiter=r"\s+")
+#   ML_CL_end_index = consts_df.loc[consts_df[0]=='*'].index
+#   ML = consts_df.head(ML_CL_end_index[0]).to_numpy(dtype='int')
+#   CL = consts_df.iloc[ML_CL_end_index[0] + 1 : ML_CL_end_index[1]].to_numpy(dtype='int')
+#   return ML,CL
 def get_ML_CL(consts_path):
-  consts_df = pd.read_csv(consts_path, header=None, delimiter=r"\s+")
-  ML_CL_end_index = consts_df.loc[consts_df[0]=='*'].index
-  ML = consts_df.head(ML_CL_end_index[0]).to_numpy(dtype='int')
-  CL = consts_df.iloc[ML_CL_end_index[0] + 1 : ML_CL_end_index[1]].to_numpy(dtype='int')
-  return ML,CL
+    # initialize empty lists for ML and CL
+    list_ML,list_CL = [],[]
+    with open(consts_path, 'r') as f:
+        current_list = list_ML
+        for line in f:
+            if not line.strip():
+                continue
+            # ML first switch to CL when reach *
+            if line.strip() == "*":
+                current_list = list_CL
+                continue
+            # split the line into a pair of integers
+            # add the pair to the current list
+            current_list.append(tuple(map(int, line.split())))
+    # if the ML/CL consts block is empty, the empty numpy still has to maintain the format
+    array_ML = np.array(list_ML, dtype='int').reshape(-1,2) if list_ML else np.array([], dtype='int').reshape(-1,2)
+    array_CL = np.array(list_CL, dtype='int').reshape(-1,2) if list_CL else np.array([], dtype='int').reshape(-1,2)
+    # 
+    return array_ML, array_CL
 
 
 def write_clauses_to_file(f_handle, clause_list, WEIGHT):

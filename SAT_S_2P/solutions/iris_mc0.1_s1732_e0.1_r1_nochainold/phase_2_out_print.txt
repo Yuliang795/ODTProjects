@@ -41,12 +41,12 @@ SmartPair Finished, 15371 clauses write to ./solutions/iris_mc0.1_s1732_e0.1_r1_
 
 loandra header: p wcnf 5190 38839 2439
 
-clausesIO_7-21_32-34 -time: 0.07271 -dim: nan
-smtPr_22-31 -time: 0.28792 -dim: nan
-cl_file_header -time: 0.04124 -dim: nan
-*solver* -time: 0.04124 -dim: nan
-Total -time: 0.64470 -dim: nan
--- SUM CL TIME: 0.60346          |  solver Time: 0.04124          |  SUM TIME: 0.64470
+clausesIO_7-21_32-34 -time: 0.11715 -dim: nan
+smtPr_22-31 -time: 0.34404 -dim: nan
+cl_file_header -time: 0.06386 -dim: nan
+*solver* -time: 0.06386 -dim: nan
+Total -time: 0.78868 -dim: nan
+-- SUM CL TIME: 0.72482          |  solver Time: 0.06386          |  SUM TIME: 0.78868
 
 *loandra status: OPTIMUM FOUND
 ARI: 0.8511690525435782

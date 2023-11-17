@@ -107,7 +107,7 @@ for root, folders, files in os.walk(solution_path):
 
 
 
-current_time = datetime.datetime.now().strftime("%y_%m_%d_%H:%M")
+current_time = datetime.datetime.now().strftime("%y%m%d_%H%M")
 out_file_name = f"2p_out_df_{useChain}_{current_time}"
 out_df.to_csv("./output/"+out_file_name,index=False)
 print(f'\n***at {current_time} iterated {sol_folder_counter} res folders \n dataframe({out_df.shape}) output to ./output/{out_file_name}\n')

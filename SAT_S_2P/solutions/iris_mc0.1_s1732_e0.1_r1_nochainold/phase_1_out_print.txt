@@ -24,26 +24,26 @@ Start to read loandra res
 *loandra status: OPTIMUM FOUND
 -ml sat and violated: 7 | 0  | total #ml: 7 | -violated weight: 0
 -cl sat and violated: 8 | 0  | total #cl: 8 | -violated weight: 0
-7 -time: 0.00018 -dim: (42, 2)
-8 -time: 0.00005 -dim: (7, 4)
-9 -time: 0.00957 -dim: (4172, 3)
-10 -time: 0.01787 -dim: (3339, 3)
-11_12 -time: 0.00702 -dim: [3600, 2]
-13 -time: 0.00277 -dim: (1200, 4)
-14_15 -time: 0.00088 -dim: [56, 2]
-16 -time: 0.00006 -dim: (8, 2)
-17_18 -time: 0.01447 -dim: [4800, 3]
+7 -time: 0.00077 -dim: (42, 2)
+8 -time: 0.00026 -dim: (7, 4)
+9 -time: 0.02437 -dim: (4172, 3)
+10 -time: 0.01913 -dim: (3339, 3)
+11_12 -time: 0.00741 -dim: [3600, 2]
+13 -time: 0.00306 -dim: (1200, 4)
+14_15 -time: 0.00091 -dim: [56, 2]
+16 -time: 0.00007 -dim: (8, 2)
+17_18 -time: 0.01591 -dim: [4800, 3]
 19 -time: 0.00005 -dim: (2, 1)
-20 -time: 0.00731 -dim: (1, 150)
-21 -time: 0.00006 -dim: (1, 150)
+20 -time: 0.00784 -dim: (1, 150)
+21 -time: 0.00007 -dim: (1, 150)
 25 -time: 0.00002 -dim: (14, 3)
-26 -time: 0.00001 -dim: (14, 3)
+26 -time: 0.00002 -dim: (14, 3)
 22 -time: 0.00002 -dim: (8, 3)
 23 -time: 0.00001 -dim: (8, 3)
 24 -time: 0.00002 -dim: (8, 5)
-writeIO 22-26 -time: 0.00026 -dim: nan
-slvr_header -time: 0.01102 -dim: nan
-*solver* -time: 0.09356 -dim: nan
-Total -time: 0.20108 -dim: nan
--- SUM CL TIME: 0.10752          |  solver Time: 0.09356          |  SUM TIME: 0.20108
+writeIO 22-26 -time: 0.00029 -dim: nan
+slvr_header -time: 0.01513 -dim: nan
+*solver* -time: 0.10846 -dim: nan
+Total -time: 0.31365 -dim: nan
+-- SUM CL TIME: 0.20519          |  solver Time: 0.10846          |  SUM TIME: 0.31365
 
