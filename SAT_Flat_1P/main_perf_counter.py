@@ -17,6 +17,36 @@ data_param_dict = {key: [tree_depth, epsilon] for key, tree_depth, epsilon in zi
 def curr_time():
      return datetime.datetime.now().strftime("%H:%M:%S")
 
+def check_completed_setting(path, stage_num):
+    results = []
+    # Iterate over the items in the directory
+    for item in os.listdir(path):
+        # Construct the full path
+        item_path = os.path.join(path, item)
+        # Check if the item is a directory
+        if os.path.isdir(item_path):
+            # Initialize a list for the existence status of each file
+            file_exists = [os.path.isfile(os.path.join(item_path, f'phase_{i}_loandra_res')) for i in range(1, stage_num+1)]
+            # Append the result to the list
+            results.append([*[re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in item.split('_')],
+                            sum(file_exists) == stage_num] + file_exists)
+    # Generate the column names
+    columns = ['data', 'kappa', 'seed','epsilon', 'cl_ml_ratio', 'useChain', 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
+    # Convert the results to a pandas DataFrame
+    return pd.DataFrame(results, columns=columns)
+
+
+def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value):
+  mask = (df['data'] == data_value) & \
+         (df['kappa'] == kappa_value) & \
+         (df['seed'] == seed_value) & \
+         (df['epsilon'] == epsilon_value) 
+  if mask.any():
+    return df[mask]['complete'].values[0]
+  else:
+    return False
+  
+
 def consts_path_query(consts_df, in_data=[],in_seed=[],in_kappa=[]):
     tmp_df = consts_df
     if len(in_data)>0:
@@ -43,16 +73,33 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 file_list = consts_path_query(consts_df,  
                                     in_data=["spam"],
                                     in_seed=[1732],
-                                    in_kappa=[0.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
+                                    in_kappa=[0.1, 0.25, 0.5, 1.0, 1.5, 2.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
 stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
 obj_ = ["mdms", "md"][0]
+
+
+
+# check for completed settings
+completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
 
 for consts_path in file_list:
     consts_name=consts_path.split('/')[-1]
     data_file_name = 'instance_' + consts_name.split('_')[0]
     tmp_solution_path = f'./solutions/{consts_name}_e{str(data_param_dict[data_file_name][1])}_{obj_}/'
     print(f"--------------------------------- start to execute {data_file_name} @{curr_time()}")
+
+    ###
+    # check if the current setting is already compelted, skip existing solutions
+    data, kappa, seed = [re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in consts_name.split('_')]
+    epsilon = str(data_param_dict[data_file_name][1])
+    if check_complete_status_1stage(df=completed_settings_df,
+                                  data_value=data,
+                                  kappa_value=kappa,
+                                  seed_value=seed,
+                                  epsilon_value=epsilon):
+        print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} |")
+        continue
     ### Phase 1
     # - (1) data file path
     # - (2) tree_depth
