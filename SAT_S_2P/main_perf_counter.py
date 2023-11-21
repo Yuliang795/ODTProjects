@@ -131,8 +131,8 @@ for ML_CL_ratio in ML_CL_ratio_set:
         phase1_cmd_status = subprocess.call(cmd, shell=True)
         phase1_end = time.perf_counter()
         if phase1_cmd_status!=0:
-            curr_time = datetime.datetime.now().strftime("%y_%m_%d_%H_%M")
-            print(f'***{curr_time} {consts_path}\nstage-1 status error code: {phase1_cmd_status}\n')
+            # curr_time = datetime.datetime.now().strftime("%y_%m_%d_%H_%M")
+            print(f'***{curr_time()} {consts_path}\nstage-1 status error code: {phase1_cmd_status}\n')
             # sys.exit()
             # continue
         print(f"finished successfully @{curr_time()}")
