@@ -1,0 +1,58 @@
+--- len ml cl ---   ml: 0, cl: 0
+num branch_node: 7
+num leaf_node: 8
+num feature: 57
+tree_depth: 3
+nDC: 2432
+
+a: 1 - 399 -> 399  
+s: 400 - 32606 -> 32207
+z: 32607 - 69414 -> 36808
+g: 69415 - 69430 -> 16
+x: 69431 - 78632 -> 9202
+b0: 78633 - 81064 -> 2432
+b1: 81065 - 83496 -> 2432
+ ---> [debug] ---> (4864, 1)   ndc: 2432
+./content/instance_spam ./consts/1358/consts_k0.0_s1358/spam_mc0.0_s1358 ./solutions/spam_mc0.0_s1358_e0.1/ ./solutions/spam_mc0.0_s1358_e0.1/clauses_spam_mc0.0_s1358
+Smart Pair jar 
+java -DdataPath=./content/instance_spam -DxStartInd=69431 -Db0StartInd=78633 -DhardClauseWeight=4865 -DdistanceClassPath=./solutions/spam_mc0.0_s1358_e0.1/DC -DoutFileName=./solutions/spam_mc0.0_s1358_e0.1/clauses_spam_mc0.0_s1358 -jar smart-pair.jar
+========= Smart Pair started =========
+No constsPath provided -Implementing Smart Pair without ML CL Constraints
+extracting DC from ./solutions/spam_mc0.0_s1358_e0.1/DC
+df length: 4601, num label: 2, num DC: 2432
+x: 4601-2, b0: 2432, b1: 2432
+flags: l, 4601, 57, 2
+distance class size : 2432 
+consts size ml: 0, cl: 0
+SmartPair Finished, 21173800 clauses write to ./solutions/spam_mc0.0_s1358_e0.1/clauses_spam_mc0.0_s1358
+========= Smart Pair Finished =========
+
+df_consts -time: 0.06134 -dim: nan
+DC -time: 40.83799 -dim: 2432
+tree_var -time: 0.00076 -dim: nan
+7 -time: 0.02854 -dim: (11172, 2)
+8 -time: 0.00022 -dim: (7, 57)
+9 -time: 5.87953 -dim: (1835400, 3)
+10 -time: 7.31053 -dim: (1730141, 3)
+11_12 -time: 0.25888 -dim: [110424, 2]
+13 -time: 0.10344 -dim: (36808, 4)
+14_15 -time: 0.05321 -dim: [798, 2]
+16 -time: 0.00002 -dim: (0, 2)
+17_18 -time: 0.27563 -dim: [73616, 3]
+19 -time: 0.00015 -dim: (1, 1)
+20 -time: 0.34154 -dim: (0, 4601)
+21 -time: 0.00119 -dim: (1, 4601)
+32_33_34 -time: 0.01686 -dim: (7294, 2)
+smtPr_22_31 -time: 35.08796 -dim: nan
+cl_file_header -time: 28.12794 -dim: nan
+*solver* -time: 361.59855 -dim: nan
+Total -time: 481.06869 -dim: nan
+-- SUM CL TIME: 119.47014          |  solver Time: 361.59855          |  SUM TIME: 481.06869
+
+
+loandra header: p wcnf 83496 24984326 4865
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.00023375822891462115
+b0_final: 2432 | 0_ind: 0
+b1_final: 1355 | 0_ind: 1355

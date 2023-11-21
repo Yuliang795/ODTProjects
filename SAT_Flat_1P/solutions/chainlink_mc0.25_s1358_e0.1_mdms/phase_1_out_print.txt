@@ -1,0 +1,55 @@
+--- len ml cl ---   ml: 108, cl: 142
+num branch_node: 7
+num leaf_node: 8
+num feature: 3
+tree_depth: 3
+nDC: 990
+
+x: 1 - 2000 -> 2000
+b0: 2001 - 2990 -> 990
+
+b1: 2991 - 3980 -> 990
+ ---> [obj] ---> b0: (990, 1) |b1: (990, 1) | num dc: 990
+./content/instance_chainlink ./consts/1358/consts_k0.25_s1358/chainlink_mc0.25_s1358 ./solutions/chainlink_mc0.25_s1358_e0.1_mdms/ ./solutions/chainlink_mc0.25_s1358_e0.1_mdms/clauses_chainlink_mc0.25_s1358
+Smart Pair jar 
+java -DconstsPath=./consts/1358/consts_k0.25_s1358/chainlink_mc0.25_s1358 -DdataPath=./content/instance_chainlink -DxStartInd=1 -Db0StartInd=2001 -DhardClauseWeight=1981 -DdistanceClassPath=./solutions/chainlink_mc0.25_s1358_e0.1_mdms/DC -DoutFileName=./solutions/chainlink_mc0.25_s1358_e0.1_mdms/clauses_chainlink_mc0.25_s1358 -Dobj_=mdms -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/chainlink_mc0.25_s1358_e0.1_mdms/DC
+df length: 1000, num label: 2, num DC: 990
+x: 1000-2, b0: 990, b1: 990
+flags: l, 1000, 3, 2
+distance class size : 990 
+consts size ml: 108, cl: 142
+12-20 crossing break[1981 -3250 0] |pairInd: 24:704 |cc: 1:0
+21-29 crossing break[1981 -3250 0, 1981 2932 0] |pairInd: 701:933 |cc: 87:87
+SmartPair Finished, 15718 clauses write to ./solutions/chainlink_mc0.25_s1358_e0.1_mdms/clauses_chainlink_mc0.25_s1358
+clauseList_22_23: 284
+clauseList_24: 0
+clauseList_25_26: 216
+clauseList_27_28: 13436
+clauseList_29: 0
+clauseList_30_31: 1780
+clauseList_b0_b1: 2
+========= Smart Pair Finished =========
+
+df_consts -time: 0.01149 -dim: nan
+DC -time: 1.49415 -dim: 990
+tree_var -time: 0.00037 -dim: nan
+19 -time: 0.00011 -dim: (1, 1)
+20 -time: 0.07669 -dim: (0, 1000)
+21 -time: 0.00027 -dim: (1, 1000)
+32_33_34 -time: 0.00682 -dim: (2968, 2)
+39 -time: 0.00003 -dim: (0, 2)
+smtPr_22_31 -time: 1.43902 -dim: nan
+cl_file_header -time: 0.05981 -dim: nan
+*solver* -time: 0.20306 -dim: nan
+Total -time: 3.33379 -dim: nan
+-- SUM CL TIME: 3.13073          |  solver Time: 0.20306          |  SUM TIME: 3.33379
+
+
+loandra header: p wcnf 3980 20668 1981
+
+*loandra status: OPTIMUM FOUND
+ARI: 1.0
+b0_final: 989 | 0_ind: 989
+b1_final: 259 | 0_ind: 259

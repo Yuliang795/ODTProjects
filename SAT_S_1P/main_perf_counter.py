@@ -69,13 +69,14 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 
 
 file_list = consts_path_query(consts_df,  
-                                    in_data=[],
-                                    in_seed=[],
-                                    in_kappa=[0.1, 0.25, 0.5, 1.0, 1.5, 2.0]) 
+                                    in_data=["spam"],
+                                    in_seed=[1358],
+                                    in_kappa=[0.0]) 
                                         # 0.1, 0.25, 0.5, 1.0, 1.5, 2.0
                                         #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
 stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
+obj_ = ["mdms", "md"][0] # md not ready yet
 
 # check for completed settings
 completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
@@ -106,6 +107,7 @@ for consts_path in file_list:
     # - (5) solution folder path
     # - (6) SmartPair Flag <use_SmartPair>
     # - (7) stage1 solver timeout
+    # - (8) obj 
     # - output path
     ## generate cmd
     cmd = 'python3 clauses_gen.py ' +data_file_name + ' ' \
@@ -114,7 +116,8 @@ for consts_path in file_list:
         + consts_path + ' ' \
         + tmp_solution_path + ' ' \
         + SmartPairFlag   +' ' \
-        + str(stage1_timeout) 
+        + str(stage1_timeout) +' ' \
+        + obj_
 
     #
     # create the folder for the constraints

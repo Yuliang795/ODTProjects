@@ -1,0 +1,55 @@
+--- len ml cl ---   ml: 6, cl: 9
+num branch_node: 7
+num leaf_node: 8
+num feature: 4
+tree_depth: 3
+nDC: 1219
+
+x: 1 - 450 -> 450
+b0: 451 - 1669 -> 1219
+
+b1: 1670 - 2888 -> 1219
+ ---> [obj] ---> b0: (1219, 1) |b1: (1219, 1) | num dc: 1219
+./content/instance_iris ./consts/1358/consts_k0.1_s1358/iris_mc0.1_s1358 ./solutions/iris_mc0.1_s1358_e0.1_mdms/ ./solutions/iris_mc0.1_s1358_e0.1_mdms/clauses_iris_mc0.1_s1358
+Smart Pair jar 
+java -DconstsPath=./consts/1358/consts_k0.1_s1358/iris_mc0.1_s1358 -DdataPath=./content/instance_iris -DxStartInd=1 -Db0StartInd=451 -DhardClauseWeight=2439 -DdistanceClassPath=./solutions/iris_mc0.1_s1358_e0.1_mdms/DC -DoutFileName=./solutions/iris_mc0.1_s1358_e0.1_mdms/clauses_iris_mc0.1_s1358 -Dobj_=mdms -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/iris_mc0.1_s1358_e0.1_mdms/DC
+df length: 150, num label: 3, num DC: 1219
+x: 150-3, b0: 1219, b1: 1219
+flags: l, 150, 4, 3
+distance class size : 1219 
+consts size ml: 6, cl: 9
+12-20 crossing break[2439 -1706 0] |pairInd: 77:116 |cc: 2:0
+21-29 crossing break[2439 -1706 0, 2439 1023 0] |pairInd: 50:93 |cc: 5:5
+SmartPair Finished, 13424 clauses write to ./solutions/iris_mc0.1_s1358_e0.1_mdms/clauses_iris_mc0.1_s1358
+clauseList_22_23: 18
+clauseList_24: 9
+clauseList_25_26: 24
+clauseList_27_28: 8602
+clauseList_29: 4301
+clauseList_30_31: 468
+clauseList_b0_b1: 2
+========= Smart Pair Finished =========
+
+df_consts -time: 0.01965 -dim: nan
+DC -time: 0.02828 -dim: 1219
+tree_var -time: 0.00005 -dim: nan
+19 -time: 0.00007 -dim: (2, 1)
+20 -time: 0.00947 -dim: (1, 150)
+21 -time: 0.00007 -dim: (1, 150)
+32_33_34 -time: 0.00746 -dim: (3655, 2)
+39 -time: 0.00002 -dim: (150, 2)
+smtPr_22_31 -time: 0.33227 -dim: nan
+cl_file_header -time: 0.05883 -dim: nan
+*solver* -time: 0.16130 -dim: nan
+Total -time: 0.64084 -dim: nan
+-- SUM CL TIME: 0.47954          |  solver Time: 0.1613          |  SUM TIME: 0.64084
+
+
+loandra header: p wcnf 2888 19668 2439
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.6893776563939301
+b0_final: 755 | 0_ind: 755
+b1_final: 15 | 0_ind: 15

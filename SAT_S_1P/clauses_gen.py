@@ -29,7 +29,8 @@ tmp_solution_path = sys.argv[5]
 ## smart pair
 use_SmartPair = sys.argv[6]
 stage1_timeout = sys.argv[7]
-
+# objective
+obj_ = sys.argv[8]
 
 stage1MsgOutPath = tmp_solution_path+"phase_1_out_print.txt"
 try:
@@ -645,8 +646,9 @@ if use_SmartPair=='smart':
                     f'-DhardClauseWeight={HARD_CLAUSE_W}', 
                     f'-DdistanceClassPath={tmp_solution_path}DC', 
                     f'-DoutFileName={clause_file_name}', 
+                    # f'-Dobj_={obj_}', 
                     '-jar', 
-                    'smart-pair.jar']
+                    'smart-pair.jar'] # smart-pair_obj_j11
     if 'mc0.0' not in consts_path.split('/')[-1]:
         paramConsts = f'-DconstsPath={consts_path}'
         command.insert(1, paramConsts)

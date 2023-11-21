@@ -1,0 +1,54 @@
+--- len ml cl ---   ml: 0, cl: 0
+num branch_node: 7
+num leaf_node: 8
+num feature: 57
+tree_depth: 3
+nDC: 2432
+
+x: 1 - 9202 -> 9202
+b0: 9203 - 11634 -> 2432
+
+b1: 11635 - 14066 -> 2432
+ ---> [obj] ---> b0: (2432, 1) |b1: (2432, 1) | num dc: 2432
+./content/instance_spam ./consts/1732/consts_k0.0_s1732/spam_mc0.0_s1732 ./solutions/spam_mc0.0_s1732_e0.1_mdms/ ./solutions/spam_mc0.0_s1732_e0.1_mdms/clauses_spam_mc0.0_s1732
+Smart Pair jar 
+java -DdataPath=./content/instance_spam -DxStartInd=1 -Db0StartInd=9203 -DhardClauseWeight=4865 -DdistanceClassPath=./solutions/spam_mc0.0_s1732_e0.1_mdms/DC -DoutFileName=./solutions/spam_mc0.0_s1732_e0.1_mdms/clauses_spam_mc0.0_s1732 -Dobj_=mdms -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+No constsPath provided -Implementing Smart Pair without ML CL Constraints
+extracting DC from ./solutions/spam_mc0.0_s1732_e0.1_mdms/DC
+df length: 4601, num label: 2, num DC: 2432
+x: 4601-2, b0: 2432, b1: 2432
+flags: l, 4601, 57, 2
+distance class size : 2432 
+consts size ml: 0, cl: 0
+SmartPair Finished, 21173800 clauses write to ./solutions/spam_mc0.0_s1732_e0.1_mdms/clauses_spam_mc0.0_s1732
+clauseList_22_23: 0
+clauseList_24: 0
+clauseList_25_26: 0
+clauseList_27_28: 21164600
+clauseList_29: 0
+clauseList_30_31: 9200
+clauseList_b0_b1: 0
+========= Smart Pair Finished =========
+
+df_consts -time: 0.05388 -dim: nan
+DC -time: 39.64586 -dim: 2432
+tree_var -time: 0.00027 -dim: nan
+19 -time: 0.00012 -dim: (1, 1)
+20 -time: 0.85696 -dim: (0, 4601)
+21 -time: 0.00112 -dim: (1, 4601)
+32_33_34 -time: 0.01620 -dim: (7294, 2)
+39 -time: 0.00004 -dim: (0, 2)
+smtPr_22_31 -time: 31.72219 -dim: nan
+cl_file_header -time: 22.65965 -dim: nan
+*solver* -time: 154.53234 -dim: nan
+Total -time: 249.53647 -dim: nan
+-- SUM CL TIME: 95.00413          |  solver Time: 154.53234          |  SUM TIME: 249.53647
+
+
+loandra header: p wcnf 14066 21185960 4865
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.00023375822891462115
+b0_final: 2432 | 0_ind: 0
+b1_final: 1355 | 0_ind: 1355

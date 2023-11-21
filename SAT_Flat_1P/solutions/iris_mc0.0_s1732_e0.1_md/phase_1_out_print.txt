@@ -1,0 +1,52 @@
+--- len ml cl ---   ml: 0, cl: 0
+num branch_node: 7
+num leaf_node: 8
+num feature: 4
+tree_depth: 3
+nDC: 1219
+
+x: 1 - 450 -> 450
+b0: 451 - 1669 -> 1219
+
+ ---> [obj] ---> b0: (1219, 1) | ndc: 1219
+./content/instance_iris ./consts/1732/consts_k0.0_s1732/iris_mc0.0_s1732 ./solutions/iris_mc0.0_s1732_e0.1_md/ ./solutions/iris_mc0.0_s1732_e0.1_md/clauses_iris_mc0.0_s1732
+Smart Pair jar 
+java -DdataPath=./content/instance_iris -DxStartInd=1 -Db0StartInd=451 -DhardClauseWeight=2439 -DdistanceClassPath=./solutions/iris_mc0.0_s1732_e0.1_md/DC -DoutFileName=./solutions/iris_mc0.0_s1732_e0.1_md/clauses_iris_mc0.0_s1732 -Dobj_=md -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+No constsPath provided -Implementing Smart Pair without ML CL Constraints
+extracting DC from ./solutions/iris_mc0.0_s1732_e0.1_md/DC
+df length: 150, num label: 3, num DC: 1219
+x: 150-3, b0: 1219, b1: 1219
+flags: l, 150, 4, 3
+distance class size : 1219 
+consts size ml: 0, cl: 0
+*opt for md only, skipping 12-20
+SmartPair Finished, 33525 clauses write to ./solutions/iris_mc0.0_s1732_e0.1_md/clauses_iris_mc0.0_s1732
+clauseList_22_23: 0
+clauseList_24: 0
+clauseList_25_26: 0
+clauseList_27_28: 22350
+clauseList_29: 11175
+clauseList_30_31: 0
+clauseList_b0_b1: 0
+========= Smart Pair Finished =========
+
+df_consts -time: 0.00637 -dim: nan
+DC -time: 0.03653 -dim: 1219
+tree_var -time: 0.00013 -dim: nan
+19 -time: 0.00029 -dim: (2, 1)
+20 -time: 0.01400 -dim: (1, 150)
+21 -time: 0.00008 -dim: (1, 150)
+39 -time: 0.00002 -dim: (150, 2)
+smtPr_22_31 -time: 0.35879 -dim: nan
+cl_file_header -time: 0.07299 -dim: nan
+*solver* -time: 0.24331 -dim: nan
+Total -time: 0.76487 -dim: nan
+-- SUM CL TIME: 0.52156          |  solver Time: 0.24331          |  SUM TIME: 0.76487
+
+
+loandra header: p wcnf 1669 36113 2439
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.6997969063548527
+b0_final: 726 | 0_ind: 726

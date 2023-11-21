@@ -1,0 +1,52 @@
+--- len ml cl ---   ml: 59, cl: 41
+num branch_node: 7
+num leaf_node: 8
+num feature: 3
+tree_depth: 3
+nDC: 990
+
+x: 1 - 2000 -> 2000
+b0: 2001 - 2990 -> 990
+
+ ---> [obj] ---> b0: (990, 1) | ndc: 990
+./content/instance_chainlink ./consts/1732/consts_k0.1_s1732/chainlink_mc0.1_s1732 ./solutions/chainlink_mc0.1_s1732_e0.1_md/ ./solutions/chainlink_mc0.1_s1732_e0.1_md/clauses_chainlink_mc0.1_s1732
+Smart Pair jar 
+java -DconstsPath=./consts/1732/consts_k0.1_s1732/chainlink_mc0.1_s1732 -DdataPath=./content/instance_chainlink -DxStartInd=1 -Db0StartInd=2001 -DhardClauseWeight=1981 -DdistanceClassPath=./solutions/chainlink_mc0.1_s1732_e0.1_md/DC -DoutFileName=./solutions/chainlink_mc0.1_s1732_e0.1_md/clauses_chainlink_mc0.1_s1732 -Dobj_=md -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/chainlink_mc0.1_s1732_e0.1_md/DC
+df length: 1000, num label: 2, num DC: 990
+x: 1000-2, b0: 990, b1: 990
+flags: l, 1000, 3, 2
+distance class size : 990 
+consts size ml: 59, cl: 41
+*opt for md only, skipping 12-20
+21-29 crossing break[1981 2907 0] |pairInd: 8:198 |cc: 54:54
+SmartPair Finished, 38603 clauses write to ./solutions/chainlink_mc0.1_s1732_e0.1_md/clauses_chainlink_mc0.1_s1732
+clauseList_22_23: 82
+clauseList_24: 0
+clauseList_25_26: 118
+clauseList_27_28: 38402
+clauseList_29: 0
+clauseList_30_31: 0
+clauseList_b0_b1: 1
+========= Smart Pair Finished =========
+
+df_consts -time: 0.02779 -dim: nan
+DC -time: 1.46033 -dim: 990
+tree_var -time: 0.00022 -dim: nan
+19 -time: 0.00013 -dim: (1, 1)
+20 -time: 0.07043 -dim: (0, 1000)
+21 -time: 0.00028 -dim: (1, 1000)
+39 -time: 0.00001 -dim: (0, 2)
+smtPr_22_31 -time: 1.17959 -dim: nan
+cl_file_header -time: 0.07734 -dim: nan
+*solver* -time: 0.45410 -dim: nan
+Total -time: 3.31992 -dim: nan
+-- SUM CL TIME: 2.86582          |  solver Time: 0.4541          |  SUM TIME: 3.31992
+
+
+loandra header: p wcnf 2990 40584 1981
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.11078775266198454
+b0_final: 957 | 0_ind: 957
