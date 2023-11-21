@@ -113,7 +113,7 @@ baseStartInd = start_ind
 ml_var = np.arange(start_ind, start_ind+len(ML))
 start_ind += len(ML)
 cl_var = np.arange(start_ind, start_ind+len(CL))
-
+start_ind += len(CL)
 
 print('***variables')
 print(f'a: {a[0,0]} - {a[-1,-1]} -> {a[-1,-1] - a[0,0] +1}\n'
@@ -121,10 +121,12 @@ print(f'a: {a[0,0]} - {a[-1,-1]} -> {a[-1,-1] - a[0,0] +1}\n'
       f'z: {z[0,0]} - {z[-1,-1]} -> {z[-1,-1] - z[0,0] +1}\n'
       f'g: {g[0,0]} - {g[-1,-1]} -> {g[-1,-1] - g[0,0] +1}\n'
       f'x: {x[0,0]} - {x[-1,-1]} -> {x[-1,-1] - x[0,0] +1}\n'
-      
-      f'ml: {ml_var[0]} - {ml_var[-1]} -> {ml_var[-1] - ml_var[0] +1}\n'
-      f'cl: {cl_var[0]} - {cl_var[-1]} -> {cl_var[-1] - cl_var[0] +1}\n'
       )
+
+if len(ML)>0:
+    print(f'ml: {ml_var[0]} - {ml_var[-1]} -> {ml_var[-1] - ml_var[0] +1}\n')
+if len(CL)>0:
+    print(f'cl: {cl_var[0]} - {cl_var[-1]} -> {cl_var[-1] - cl_var[0] +1}\n')
 
 
 print('variables***')
@@ -141,7 +143,7 @@ ML_W = SOFT_CLAUSE_W
 # hard clauses
 HARD_CLAUSE_W = CL_W*len(CL) + ML_W*len(ML) + 1
 # num vars
-stage1_Num_VARS = cl_var[-1]
+stage1_Num_VARS = start_ind-1
 
 print(f'[debug] --> CL ML ratio {CL_ML_r}')
 
