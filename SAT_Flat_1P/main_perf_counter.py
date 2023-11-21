@@ -71,9 +71,9 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 
 
 file_list = consts_path_query(consts_df,  
-                                    in_data=["spam"],
-                                    in_seed=[1732],
-                                    in_kappa=[0.1, 0.25, 0.5, 1.0, 1.5, 2.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
+                                    in_data=[],
+                                    in_seed=[],
+                                    in_kappa=[0.0,0.1,0.25,0.5,1.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
 stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
 obj_ = ["mdms", "md"][0]
