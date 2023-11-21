@@ -646,9 +646,9 @@ if use_SmartPair=='smart':
                     f'-DhardClauseWeight={HARD_CLAUSE_W}', 
                     f'-DdistanceClassPath={tmp_solution_path}DC', 
                     f'-DoutFileName={clause_file_name}', 
-                    # f'-Dobj_={obj_}', 
+                    f'-Dobj_={obj_}', 
                     '-jar', 
-                    'smart-pair.jar'] # smart-pair_obj_j11
+                    'smart-pair_obj_j11.jar'] # smart-pair_obj_j11.jar  | smart-pair.jar
     if 'mc0.0' not in consts_path.split('/')[-1]:
         paramConsts = f'-DconstsPath={consts_path}'
         command.insert(1, paramConsts)

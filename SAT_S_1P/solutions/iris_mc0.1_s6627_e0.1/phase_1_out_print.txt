@@ -1,0 +1,66 @@
+--- len ml cl ---   ml: 7, cl: 8
+num branch_node: 7
+num leaf_node: 8
+num feature: 4
+tree_depth: 3
+nDC: 1219
+
+a: 1 - 28 -> 28  
+s: 29 - 1078 -> 1050
+z: 1079 - 2278 -> 1200
+g: 2279 - 2302 -> 24
+x: 2303 - 2752 -> 450
+b0: 2753 - 3971 -> 1219
+b1: 3972 - 5190 -> 1219
+ ---> [debug] ---> (2438, 1)   ndc: 1219
+./content/instance_iris ./consts/6627/consts_k0.1_s6627/iris_mc0.1_s6627 ./solutions/iris_mc0.1_s6627_e0.1/ ./solutions/iris_mc0.1_s6627_e0.1/clauses_iris_mc0.1_s6627
+Smart Pair jar 
+java -DconstsPath=./consts/6627/consts_k0.1_s6627/iris_mc0.1_s6627 -DdataPath=./content/instance_iris -DxStartInd=2303 -Db0StartInd=2753 -DhardClauseWeight=2439 -DdistanceClassPath=./solutions/iris_mc0.1_s6627_e0.1/DC -DoutFileName=./solutions/iris_mc0.1_s6627_e0.1/clauses_iris_mc0.1_s6627 -Dobj_=mdms -jar smart-pair_obj_j11.jar
+========= Smart Pair started =========
+extracting DC from ./solutions/iris_mc0.1_s6627_e0.1/DC
+df length: 150, num label: 3, num DC: 1219
+x: 150-3, b0: 1219, b1: 1219
+flags: l, 150, 4, 3
+distance class size : 1219 
+consts size ml: 7, cl: 8
+12-20 crossing break[2439 -4008 0] |pairInd: 77:116 |cc: 1:2
+21-29 crossing break[2439 -4008 0, 2439 3156 0] |pairInd: 131:137 |cc: 4:4
+SmartPair Finished, 17319 clauses write to ./solutions/iris_mc0.1_s6627_e0.1/clauses_iris_mc0.1_s6627
+clauseList_22_23: 16
+clauseList_24: 8
+clauseList_25_26: 28
+clauseList_27_28: 11198
+clauseList_29: 5599
+clauseList_30_31: 468
+clauseList_b0_b1: 2
+========= Smart Pair Finished =========
+
+df_consts -time: 0.02074 -dim: nan
+DC -time: 0.04532 -dim: 1219
+tree_var -time: 0.00014 -dim: nan
+7 -time: 0.00033 -dim: (42, 2)
+8 -time: 0.00011 -dim: (7, 4)
+9 -time: 0.01341 -dim: (4172, 3)
+10 -time: 0.02626 -dim: (3339, 3)
+11_12 -time: 0.00951 -dim: [3600, 2]
+13 -time: 0.00415 -dim: (1200, 4)
+14_15 -time: 0.00188 -dim: [56, 2]
+16 -time: 0.00013 -dim: (8, 2)
+17_18 -time: 0.02085 -dim: [4800, 3]
+19 -time: 0.00009 -dim: (2, 1)
+20 -time: 0.01079 -dim: (1, 150)
+21 -time: 0.00008 -dim: (1, 150)
+32_33_34 -time: 0.00954 -dim: (3655, 2)
+smtPr_22_31 -time: 0.38405 -dim: nan
+cl_file_header -time: 0.12217 -dim: nan
+*solver* -time: 0.30190 -dim: nan
+Total -time: 1.02559 -dim: nan
+-- SUM CL TIME: 0.72369          |  solver Time: 0.3019          |  SUM TIME: 1.02559
+
+
+loandra header: p wcnf 5190 40787 2439
+
+*loandra status: OPTIMUM FOUND
+ARI: 0.6192980989128112
+b0_final: 726 | 0_ind: 726
+b1_final: 7 | 0_ind: 7
