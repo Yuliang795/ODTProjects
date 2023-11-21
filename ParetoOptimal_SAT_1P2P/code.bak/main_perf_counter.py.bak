@@ -1,0 +1,168 @@
+
+import os,sys,re, time
+import pandas as pd
+# iterate over directory
+dir_path = r'content/'
+
+# list to store files
+file_list = []
+# Iterate directory
+# for path in os.listdir(dir_path):
+#     if os.path.isfile(os.path.join(dir_path, path)):
+#         file_list.append(os.path.join(dir_path, path))
+
+file_list = ['instance_iris', 'instance_wine', 'instance_glass',
+             'instance_ionosphere', 'instance_seeds','instance_libras',
+             'instance_spam', 'instance_lsun', 'instance_chainlink',
+             'instance_target', 'instance_wingnut']
+
+tree_depth_list = [3,3,4,3,3,5,3,3,3,4,3]
+epsilon_list = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]
+
+data_param_dict = {key: [tree_depth, epsilon] for key, tree_depth, epsilon in zip(file_list,tree_depth_list,epsilon_list)}
+
+##
+# t1 = file_list[:3]
+# ##
+# tree_depth_list = tree_depth_list
+# epsilon_list=epsilon_list
+
+# iterate over directory
+dir_path = r'./consts/'
+
+# list to store files
+file_list = []
+# Iterate directory
+# for root, dirs, files in os.walk("./consts", topdown=False):
+#     for name in files:
+#       file_list.append(os.path.join(root, name))
+def consts_path_query(consts_df, in_data=[],in_seed=[],in_kappa=[]):
+    tmp_df = consts_df
+    if len(in_data)>0:
+        if '~' in in_data:
+            tmp_df = tmp_df[~tmp_df['data'].isin(in_data)]
+        else:
+            tmp_df = tmp_df[tmp_df['data'].isin(in_data)]
+    if len(in_seed)>0:
+        tmp_df = tmp_df[tmp_df['seed'].isin([str(i) for i in in_seed])]
+    if len(in_kappa)>0:
+        tmp_df = tmp_df[tmp_df['kappa'].isin([str(i) for i in in_kappa])]
+    return tmp_df.sort_values(by=['seed','data','kappa'])['path'].tolist()
+
+consts_folder_path = './consts_collection/'
+consts_df = pd.DataFrame(columns=['data','epsilon', 'kappa', 'seed', 'path'])
+consts_list = []
+for root, dirs, files in os.walk(consts_folder_path, topdown=False):
+    for name in files:
+        consts_path = os.path.join(root, name)
+        consts_list.append([re.sub(r'^(s|mc|s)(\d+)',r'\2',i) for i in name.split('_')]+[consts_path])
+consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.columns)], ignore_index=True)
+
+
+# 'iris', 'wine', 'glass',
+# 'ionosphere', 'seeds','libras',
+# 'spam', 'lsun', 'chainlink',
+# 'target', 'wingnut'
+
+# 'chainlink','glass','ionosphere'
+# 'iris','libras','lsun'
+# 'seeds','spam','wine'
+# 'target', 'wingnut'
+file_list = consts_path_query(consts_df,  
+                                    in_data=['iris'],
+                                    in_seed=[2352],
+                                    in_kappa=[0.0])
+
+
+# file_list
+# ML_CL_ratio = '1'
+for ML_CL_ratio in ['1']:
+    print('*'*50 + f'Start to iterate data files with ratio{ML_CL_ratio}' + '*'*50)
+    for consts_path in file_list:
+        consts_name=consts_path.split('/')[-1] 
+        data_file_name = 'instance_' + consts_name.split('_')[0]
+        tmp_solution_path = './solutions/'+f'{consts_name}_r{ML_CL_ratio}'+'/'
+        # print('='*30 + f'')
+        print('='*35 + f"start to execute {data_file_name}" + '='*35)
+        # - (1) data file path
+        # - (2) tree_depth 
+        # - (3) epsilon 
+        # - (4) consts path
+        # - (5) solution_path 
+        # - (6) CL ML ratio
+        # - output path
+        cmd = 'python clauses_gen_phase1.py ' + data_file_name + ' ' \
+            + str(data_param_dict[data_file_name][0]) + ' '  \
+            + str(data_param_dict[data_file_name][1] )+ ' ' \
+            + consts_path + ' ' \
+            + tmp_solution_path + ' ' \
+            + ML_CL_ratio +' ' \
+            + '>'+tmp_solution_path +'phase_1_out_print.txt'
+        #
+
+        print('phase1')
+        # create the folder for the constraints
+        if not os.path.exists(tmp_solution_path):
+            os.mkdir(tmp_solution_path)
+        # time
+        phase1_start = time.perf_counter()
+        # print(cmd)
+        if 'mc0.0' not in consts_name:
+            os.system(cmd)
+            pass
+        phase1_end = time.perf_counter()
+
+
+        ## phase 2  
+        # - (1)data file path
+        # - (2) tree_depth 
+        # - (3) epsilon 
+        # - (4) consts 
+        # - (5) solution_path 
+        # - (6) phase1 loandra result path
+        # - output path
+        ## For no Constarints ##
+        cmd = 'python clauses_gen_phase2.py ' + data_file_name + ' ' \
+            + str(data_param_dict[data_file_name][0]) + ' ' \
+            + str(data_param_dict[data_file_name][1]) + ' ' \
+            + consts_path + ' ' \
+            + tmp_solution_path + ' ' \
+            + tmp_solution_path + 'phase_1_loandra_res'\
+            + '>' + tmp_solution_path  + 'phase_2_out_print.txt'
+        # print(cmd)
+        print('phase2')
+
+        # time
+        phase2_start = time.perf_counter()
+    #     print(cmd)
+        os.system(cmd)
+        phase2_end = time.perf_counter()
+
+
+
+        ### verify
+        phase2_verify = True
+        cmd = 'python phase2_verify.py ' + data_file_name + ' ' \
+            + str(data_param_dict[data_file_name][0]) + ' ' \
+            + str(data_param_dict[data_file_name][1]) + ' ' \
+            + consts_path + ' ' \
+            + tmp_solution_path + ' ' \
+            + tmp_solution_path + 'phase_1_loandra_res'\
+            + '>' + tmp_solution_path  + 'phase_2_out_print_verify.txt'
+        # print(cmd)
+        # time
+        if phase2_verify:
+            print('phase2 verify')
+            os.system(cmd)
+
+        # one line res
+        # cmd = 'python one_line_res.py ' + tmp_solution_path +' ' +'>' + tmp_solution_path  + 'one_line_res.txt'
+        # os.system(cmd)
+
+        print(f'{consts_name}  -finished  phase1 time: {phase1_end - phase1_start} | phase2 time: {phase2_end - phase2_start}')
+        print('='*30)
+        ## !!! CLEAN CLAUSE FILES !!! ##
+        cmd = 'find . -type f -name "*clauses_final*" -exec rm {} +'
+        # os.system(cmd)
+
+        time.sleep(3)

@@ -1,0 +1,1 @@
+data,seed,e,kappa,cl_ml_ratio,pareto_index,chain,ml_sat,ml_unsat,cl_sat,cl_unsat,lm_lambda_minus,lm_lambda_plus,lp_lambda_minus,lp_lambda_plus,ARI,p1_slvr_status,p1_clause_gen,p1_solver,p1_total,p2_lm_slvr_status,p2_lm_clause_gen,p2_lm_solver,p2_lm_total,p2_lp_slvr_status,p2_lp_clause_gen,p2_lp_solver,p2_lp_total,total_slvr_time

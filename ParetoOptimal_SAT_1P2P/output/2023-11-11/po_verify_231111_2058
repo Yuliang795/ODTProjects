@@ -1,0 +1,4 @@
+data,seed,e,kappa,cl_ml_ratio,chain,p2_lm_b0,p2_lm_b1,p2_lm_loandra_status,p2_lm_solver_time,p2_lp_b0,p2_lp_b1,p2_lp_loandra_status,p2_lp_solver_time
+iris,1358,0.1,0.0,1,nochain,726,5,OPTIMUM,0.31081,1219,153,OPTIMUM,1.11548
+iris,1358,0.1,0.1,1,nochain,755,2,OPTIMUM,0.19125,1219,36,OPTIMUM,0.18164
+iris,1358,0.1,0.25,1,nochain,755,5,OPTIMUM,0.21676,1219,36,OPTIMUM,0.19484

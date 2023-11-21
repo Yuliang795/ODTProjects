@@ -1,0 +1,7 @@
+data,seed,e,kappa,cl_ml_ratio,chain,p2_opt_lm_b0,p2_opt_lp_b1,p2_lm_loandra_status,p2_lm_solver_time,p2_lp_loandra_status,p2_lp_solver_time
+chainlink,1358,0.1,0.0,1,nochain,928,39,OPTIMUM,3.24914,OPTIMUM,19.64059
+chainlink,1358,0.1,0.1,1,nochain,989,12,OPTIMUM,6.25054,OPTIMUM,4.33114
+chainlink,1358,0.1,0.25,1,nochain,0,0,UNSATISFIABLE,1.35069,UNSATISFIABLE,1.25567
+iris,1358,0.1,0.0,1,nochain,726,153,OPTIMUM,0.46235,OPTIMUM,1.13675
+iris,1358,0.1,0.1,1,nochain,755,36,OPTIMUM,0.18141,OPTIMUM,0.20101
+iris,1358,0.1,0.25,1,nochain,755,36,OPTIMUM,0.21073,OPTIMUM,0.22651
