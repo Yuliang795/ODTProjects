@@ -112,7 +112,7 @@ baseStartInd = start_ind
 # introduce new vars ml_var, cl_var
 ml_var = np.arange(start_ind, start_ind+len(ML))
 start_ind += len(ML)
-cl_var = np.arange(start_ind, start_ind+len(CL))
+cl_var = np.arange(start_ind, start_ind+len(CL)) ## None
 start_ind += len(CL)
 
 print('***variables')
@@ -609,7 +609,8 @@ TC.counter(stage1_Total_time_counter_start,
            np.nan)
 
 # read loandra res
-loandra_status, ml_res, cl_res = output_1p(loandra_res_file_name,ML,ml_var, CL, cl_var,ML_W, CL_W, TC)
+print(f"ML {len(ML)},ml_var: {len(ml_var)}, CL: {len(CL)}, cl_var: {len(cl_var)}")
+loandra_status, ml_res, cl_res = output_1p(loandra_res_file_name,ML,ml_var, CL, cl_var)
 
 TC.print_dict()
 if loandra_status not in ["OPTIMUM FOUND", "SATISFIABLE"]:
@@ -795,8 +796,6 @@ TC.counter(stage2_Total_time_counter_start,
 TC.print_dict()
 
 
-Read_res = True
-if Read_res:
-  output_final_stage(loandra_res_file_name, b0,b1,x,y,n_points, n_labels)
+output_final_stage(loandra_res_file_name, b0,b1,x,y,n_points, n_labels)
 
 stage2MsgOut.close()

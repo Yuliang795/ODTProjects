@@ -628,7 +628,33 @@ def consts_euc_chain_block_sep_forward(df,ML, CL,ml_var,ml_block_var, cl_var,cl_
     write_chain_2part(cl_block_var,cl_var_chain_block,block_size, HARD_CLAUSE_W, f)
 
 ###### Print result output
-def output_1p(loandra_res_file_name,ML,ml_var, CL, cl_var,ML_W, CL_W, TC):
+# def output_1p(loandra_res_file_name,ML,ml_var, CL, cl_var,ML_W, CL_W, TC):
+#   print('\nStart to read loandra res')
+#   loandra_status, res_list='StatusNotFund',''
+#   with open(loandra_res_file_name) as f:
+#     for line in f:
+#       if line[0]=='s':
+#             loandra_status =line[2:].strip(" \n")
+#       if line[0]=='v':
+#         res_list = np.array(list(line.split(' ')[-1][:-1]), dtype='int')
+
+#   print(f'*loandra status: {loandra_status}')
+#   ml_res, cl_res = np.array([]), np.array([])
+#   if len(res_list)>0:
+#     # ml and cl consts vars
+#     ml_res, cl_res = res_list[ml_var[0]-1 : ml_var[-1]], res_list[cl_var[0]-1 : cl_var[-1]]
+#   # print ml cl sat | unsat
+#   print(f'-ml sat and violated: {int(np.sum(ml_res))} | {len(ML) - int(np.sum(ml_res))}  | total #ml: {len(ML)} | -violated weight: {len(np.where(ml_res==0)[0])*ML_W}')
+#   for i in np.where(ml_res==0)[0]:
+#     print(f'{i} -- {ML[i]}')
+#   print(f'-cl sat and violated: {int(np.sum(cl_res))} | {len(CL) - int(np.sum(cl_res))}  | total #cl: {len(CL)} | -violated weight: {len(np.where(cl_res==0)[0])*CL_W}')
+#   for i in np.where(cl_res==0)[0]:
+#     print(f'{i} -- {CL[i]}')
+  
+#   return loandra_status, ml_res, cl_res
+
+
+def output_1p(loandra_res_file_name,ML=[],ml_var=[], CL=[], cl_var=[]):
   print('\nStart to read loandra res')
   loandra_status, res_list='StatusNotFund',''
   with open(loandra_res_file_name) as f:
@@ -642,17 +668,19 @@ def output_1p(loandra_res_file_name,ML,ml_var, CL, cl_var,ML_W, CL_W, TC):
   ml_res, cl_res = np.array([]), np.array([])
   if len(res_list)>0:
     # ml and cl consts vars
-    ml_res, cl_res = res_list[ml_var[0]-1 : ml_var[-1]], res_list[cl_var[0]-1 : cl_var[-1]]
-  # print ml cl sat | unsat
-  print(f'-ml sat and violated: {int(np.sum(ml_res))} | {len(ML) - int(np.sum(ml_res))}  | total #ml: {len(ML)} | -violated weight: {len(np.where(ml_res==0)[0])*ML_W}')
-  for i in np.where(ml_res==0)[0]:
-    print(f'{i} -- {ML[i]}')
-  print(f'-cl sat and violated: {int(np.sum(cl_res))} | {len(CL) - int(np.sum(cl_res))}  | total #cl: {len(CL)} | -violated weight: {len(np.where(cl_res==0)[0])*CL_W}')
-  for i in np.where(cl_res==0)[0]:
-    print(f'{i} -- {CL[i]}')
-  
-  return loandra_status, ml_res, cl_res
+    if len(ML)>0 and len(ml_var)>0:
+      ml_res = res_list[ml_var[0]-1 : ml_var[-1]]
+      # print ml cl sat | unsat
+      print(f'-ml sat and violated: {int(np.sum(ml_res))} | {len(ML) - int(np.sum(ml_res))}  | total #ml: {len(ML)} | ')
+      for i in np.where(ml_res==0)[0]:
+        print(f'{i} -- {ML[i]}')
+    if len(CL)>0 and len(cl_var)>0:
+      cl_res = res_list[cl_var[0]-1 : cl_var[-1]]
+      print(f'-cl sat and violated: {int(np.sum(cl_res))} | {len(CL) - int(np.sum(cl_res))}  | total #cl: {len(CL)} | ')
+      for i in np.where(cl_res==0)[0]:
+        print(f'{i} -- {CL[i]}')
 
+  return loandra_status, ml_res, cl_res
 
 
 def output_final_stage(loandra_res_file_name, b0,b1,x,y,n_points, n_labels):

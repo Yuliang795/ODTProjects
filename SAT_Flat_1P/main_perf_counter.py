@@ -26,21 +26,22 @@ def check_completed_setting(path, stage_num):
         # Check if the item is a directory
         if os.path.isdir(item_path):
             # Initialize a list for the existence status of each file
-            file_exists = [os.path.isfile(os.path.join(item_path, f'phase_{i}_loandra_res')) for i in range(1, stage_num+1)]
+            file_exists = [os.path.isfile(os.path.join(item_path, f'loandra_res'))]
             # Append the result to the list
-            results.append([*[re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in item.split('_')],
+            results.append([*[re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in item.split('_')],
                             sum(file_exists) == stage_num] + file_exists)
     # Generate the column names
-    columns = ['data', 'kappa', 'seed','epsilon', 'cl_ml_ratio', 'useChain', 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
+    columns = ['data', 'kappa', 'seed','epsilon',"obj_", 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
     # Convert the results to a pandas DataFrame
     return pd.DataFrame(results, columns=columns)
 
-
-def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value):
+def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value, obj_):
   mask = (df['data'] == data_value) & \
          (df['kappa'] == kappa_value) & \
          (df['seed'] == seed_value) & \
-         (df['epsilon'] == epsilon_value) 
+         (df['epsilon'] == epsilon_value) & \
+         (df['obj_'] == obj_) 
+         
   if mask.any():
     return df[mask]['complete'].values[0]
   else:
@@ -73,82 +74,84 @@ consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.
 file_list = consts_path_query(consts_df,  
                                     in_data=[],
                                     in_seed=[],
-                                    in_kappa=[0.0,0.1,0.25,0.5,1.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
+                                    in_kappa=[0.0,0.1, 0.25,0.5, 1.0]) #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
 stage1_timeout=1800
 SmartPairFlag=["smart", "nosmart"][0]
-obj_ = ["mdms", "md"][0]
-
+# obj_ = ["mdms", "md"][0]
+obj_list=["mdms", "md"]
 
 
 # check for completed settings
 completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
 
 for consts_path in file_list:
-    consts_name=consts_path.split('/')[-1]
-    data_file_name = 'instance_' + consts_name.split('_')[0]
-    tmp_solution_path = f'./solutions/{consts_name}_e{str(data_param_dict[data_file_name][1])}_{obj_}/'
-    print(f"--------------------------------- start to execute {data_file_name} @{curr_time()}")
+    for obj_ in obj_list:
+        consts_name=consts_path.split('/')[-1]
+        data_file_name = 'instance_' + consts_name.split('_')[0]
+        tmp_solution_path = f'./solutions/{consts_name}_e{str(data_param_dict[data_file_name][1])}_{obj_}/'
+        print(f"--------------------------------- start to execute {data_file_name} @{curr_time()}")
 
-    ###
-    # check if the current setting is already compelted, skip existing solutions
-    data, kappa, seed = [re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in consts_name.split('_')]
-    epsilon = str(data_param_dict[data_file_name][1])
-    if check_complete_status_1stage(df=completed_settings_df,
-                                  data_value=data,
-                                  kappa_value=kappa,
-                                  seed_value=seed,
-                                  epsilon_value=epsilon):
-        print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} |")
-        continue
-    ### Phase 1
-    # - (1) data file path
-    # - (2) tree_depth
-    # - (3) epsilon
-    # - (4) consts path
-    # - (5) solution folder path
-    # - (6) SmartPair Flag <use_SmartPair>
-    # - (7) stage1 solver timeout
-    # - (8) obj 
-    # - output path
-    ## generate cmd
-    cmd = 'python3 clauses_gen.py ' +data_file_name + ' ' \
-        + str(data_param_dict[data_file_name][0]) + ' ' \
-        + str(data_param_dict[data_file_name][1] ) + ' ' \
-        + consts_path + ' ' \
-        + tmp_solution_path + ' ' \
-        + SmartPairFlag   +' ' \
-        + str(stage1_timeout) +' ' \
-        + obj_
+        ###
+        # check if the current setting is already compelted, skip existing solutions
+        data, kappa, seed = [re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in consts_name.split('_')]
+        epsilon = str(data_param_dict[data_file_name][1])
+        if check_complete_status_1stage(df=completed_settings_df,
+                                    data_value=data,
+                                    kappa_value=kappa,
+                                    seed_value=seed,
+                                    epsilon_value=epsilon,
+                                    obj_=obj_):
+            print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} | obj: {obj_}")
+            continue
+        ### Phase 1
+        # - (1) data file path
+        # - (2) tree_depth
+        # - (3) epsilon
+        # - (4) consts path
+        # - (5) solution folder path
+        # - (6) SmartPair Flag <use_SmartPair>
+        # - (7) stage1 solver timeout
+        # - (8) obj 
+        # - output path
+        ## generate cmd
+        cmd = 'python3 clauses_gen.py ' +data_file_name + ' ' \
+            + str(data_param_dict[data_file_name][0]) + ' ' \
+            + str(data_param_dict[data_file_name][1] ) + ' ' \
+            + consts_path + ' ' \
+            + tmp_solution_path + ' ' \
+            + SmartPairFlag   +' ' \
+            + str(stage1_timeout) +' ' \
+            + obj_
 
-    #
-    # create the folder for the constraints
-    if not os.path.exists(tmp_solution_path):
-        os.mkdir(tmp_solution_path)
-    # time
-    phase1_start = time.perf_counter()
-    # print(cmd)
-    phase1_cmd_status = subprocess.call(cmd, shell=True)
-    phase1_end = time.perf_counter()
-    
+        #
+        # create the folder for the constraints
+        if not os.path.exists(tmp_solution_path):
+            os.mkdir(tmp_solution_path)
+        # time
+        phase1_start = time.perf_counter()
+        # print(cmd)
+        phase1_cmd_status = subprocess.call(cmd, shell=True)
+        phase1_end = time.perf_counter()
+        
 
-    print(f'{consts_name}  -finished  @{curr_time()} | '
-        f'phase1 time: {phase1_end - phase1_start} | '
-        )
-    print(f'='*33 +"\n")
+        print(f'{consts_name}  -finished  @{curr_time()} | '
+            f'phase1 time: {phase1_end - phase1_start} | '
+            )
+        print(f'='*33 +"\n")
 
-    # take a rest
-    time.sleep(1)
+        # take a rest
+        time.sleep(1)
 
 
-    ## !!! CLEAN ALL CLAUSE FILES !!! ##
-    cmd = f'find {tmp_solution_path} -type f -name "*clauses_final" -exec rm {{}} +'
-    # print(cmd)
-    os.system(cmd) 
-    ## !!! CLEAN ALL DC FILES !!! ##
-    cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
-    os.system(cmd) 
+        ## !!! CLEAN ALL CLAUSE FILES !!! ##
+        cmd = f'find {tmp_solution_path} -type f -name "*clauses_final" -exec rm {{}} +'
+        # print(cmd)
+        os.system(cmd) 
+        ## !!! CLEAN ALL DC FILES !!! ##
+        cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
+        os.system(cmd) 
 
-## generate csv from solutions
-# cmd = f'python solution_collect.py ./solutions/ output_csv_name'
-# os.system(cmd) 
+    ## generate csv from solutions
+    # cmd = f'python solution_collect.py ./solutions/ output_csv_name'
+    # os.system(cmd) 
 
