@@ -16,6 +16,34 @@ data_param_dict = {key: [tree_depth, epsilon] for key, tree_depth, epsilon in zi
 def curr_time():
      return datetime.datetime.now().strftime("%H:%M:%S")
 
+def check_completed_setting(path, stage_num):
+    results = []
+    # Iterate over the items in the directory
+    for item in os.listdir(path):
+        # Construct the full path
+        item_path = os.path.join(path, item)
+        # Check if the item is a directory
+        if os.path.isdir(item_path):
+            # Initialize a list for the existence status of each file
+            file_exists = [os.path.isfile(os.path.join(item_path, f'ParetoOptimalInfo'))]
+            # Append the result to the list
+            results.append([*[re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in item.split('_')],
+                            sum(file_exists) == stage_num] + file_exists)
+    # Generate the column names
+    columns = ['data', 'kappa', 'seed','epsilon', 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
+    # Convert the results to a pandas DataFrame
+    return pd.DataFrame(results, columns=columns)
+
+def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value):
+  mask = (df['data'] == data_value) & \
+         (df['kappa'] == kappa_value) & \
+         (df['seed'] == seed_value) & \
+         (df['epsilon'] == epsilon_value)
+  if mask.any():
+    return df[mask]['complete'].values[0]
+  else:
+    return False
+
 def consts_path_query(consts_df, in_data=[],in_seed=[],in_kappa=[]):
     tmp_df = consts_df
     if len(in_data)>0:
@@ -36,114 +64,92 @@ for root, dirs, files in os.walk(consts_folder_path, topdown=False):
 consts_df = pd.concat([consts_df, pd.DataFrame(consts_list, columns = consts_df.columns)], ignore_index=True)
 
 file_list = consts_path_query(consts_df,
-                                    in_data=["iris"],
-                                    in_seed=[1358],
-                                    in_kappa=[0.0,0.1]) 
-                                    # kappa cannot be 0.0 must >0
+                                    in_data=[],
+                                    in_seed=[],
+                                    in_kappa=[0.0,0.1,0.25]) 
+                                    # 0.0,0.1,0.25
                                     #0.1,0.25,0.5,0.75,1.0,1.25,1.5,1.75,2.0,2.25,2.5
-use_Chain=["nochain","euc"][0]
-ML_CL_ratio_set = ["1"]
-stage1_timeout, stage2_timeout = [1800, 1800]
-verify_b0b1=True
+global_solver_timeout = 1800
+verify_b0b1=True  ## whether to genreate boundary solution
 
+# check for completed settings
+completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
+for consts_path in file_list:
+    consts_name=consts_path.split('/')[-1]
+    data_file_name = 'instance_' + consts_name.split('_')[0]
+    tmp_solution_path = './solutions/'+f'{consts_name}_e{str(data_param_dict[data_file_name][1])}'+'/'
+    print(f"------------- start to execute {consts_name} @{curr_time()}")
 
-for ML_CL_ratio in ML_CL_ratio_set: 
-    # print('*'*50 + f'Start to iterate data files with ratio{ML_CL_ratio}' + '*'*50)
-    for consts_path in file_list:
-        consts_name=consts_path.split('/')[-1]
-        data_file_name = 'instance_' + consts_name.split('_')[0]
-        tmp_solution_path = './solutions/'+f'{consts_name}_e{str(data_param_dict[data_file_name][1])}_r{ML_CL_ratio}_{use_Chain}'+'/'
-        # print('='*30 + f'')
-        print('='*35 + f"start to execute {consts_name} MLCL ratio: {ML_CL_ratio} @{curr_time()}" + '='*35)
-        if "mc0.0" not in consts_name:
-            # - (1) data file path
-            # - (2) tree_depth 
-            # - (3) epsilon 
-            # - (4) consts path
-            # - (5) solution_path 
-            # - (6) CL ML ratio
-            # - (7) EucChainFlag 
-            # - (8) stage1 solver time out (s)
-            # - (9) stage2 solver time out (s)
-            # - output path
-            cmd = 'python3 clauses_gen_allPhases.py ' + data_file_name + ' ' \
-                + str(data_param_dict[data_file_name][0]) + ' '  \
-                + str(data_param_dict[data_file_name][1] )+ ' ' \
-                + consts_path  + ' ' \
-                + tmp_solution_path + ' ' \
-                + ML_CL_ratio +' ' \
-                + use_Chain  +' ' \
-                + str(stage1_timeout)  +' ' \
-                + str(stage2_timeout) 
-        else:
-            # - (1)data file path
-            # - (2) tree_depth 
-            # - (3) epsilon 
-            # - (4) consts 
-            # - (5) solution_path 
-            # - (6) final stage solver time out (s)
-            # - output path
-            ## For no Constarints ##
-            # cmd = 'python3 clauses_gen_allPhases_noConsts.py ' + data_file_name + ' ' \
-            #     + str(data_param_dict[data_file_name][0]) + ' ' \
-            #     + str(data_param_dict[data_file_name][1]) + ' ' \
-            #     + consts_path + ' ' \
-            #     + tmp_solution_path +' ' \
-            #     + str(stage2_timeout) 
-            cmd = 'python3 clauses_gen_allPhases.py ' + data_file_name + ' ' \
-                + str(data_param_dict[data_file_name][0]) + ' '  \
-                + str(data_param_dict[data_file_name][1] )+ ' ' \
-                + consts_path  + ' ' \
-                + tmp_solution_path + ' ' \
-                + '1' +' ' \
-                + 'nochain'  +' ' \
-                + str(stage1_timeout)  +' ' \
-                + str(stage2_timeout) 
-                
+    # check if the current setting is already compelted, skip existing solutions
+    data, kappa, seed = [re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in consts_name.split('_')]
+    epsilon = str(data_param_dict[data_file_name][1])
+    if check_complete_status_1stage(df=completed_settings_df,
+                                  data_value=data,
+                                  kappa_value=kappa,
+                                  seed_value=seed,
+                                  epsilon_value=epsilon):
+        print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} | ")
+        continue
+
+    # - (1) data file path
+    # - (2) tree_depth
+    # - (3) epsilon
+    # - (4) consts path
+    # - (5) solution folder path
+    # - (6) global solver timeout
+    cmd = 'python3 clauses_gen_ParetoOptimal.py ' +data_file_name + ' ' \
+        + str(data_param_dict[data_file_name][0]) + ' ' \
+        + str(data_param_dict[data_file_name][1] ) + ' ' \
+        + consts_path + ' ' \
+        + tmp_solution_path + ' ' \
+        + str(global_solver_timeout) 
+    
+    #
+    # create the folder for the solutions
+    if not os.path.exists(tmp_solution_path):
+        os.makedirs(tmp_solution_path)
+    # time
+    phase1_start = time.perf_counter()
+    # print(cmd)
+    phase1_cmd_status = subprocess.call(cmd, shell=True)
+    phase1_end = time.perf_counter()
+    if phase1_cmd_status!=0:
+        print(f'***{curr_time()} {consts_path}\nstage-1 status error code: {phase1_cmd_status}\n')
+        # sys.exit()
+        continue
+    print(f"finished successfully @{curr_time()}")
+    
+
+    ## Verify
+    if verify_b0b1:
+        print(f"generating boundary b- and b+ @{curr_time()}")
+        ## generate cmd
+        cmd = 'python3 1p_clauses_gen.py ' +data_file_name + ' ' \
+            + str(data_param_dict[data_file_name][0]) + ' ' \
+            + str(data_param_dict[data_file_name][1] ) + ' ' \
+            + consts_path + ' ' \
+            + tmp_solution_path + ' ' \
+            + "smart"   +' ' \
+            + str(global_solver_timeout)  +' ' \
+            + "ms"
         
-        #
-
-        # create the folder for the solutions
-        if not os.path.exists(tmp_solution_path):
-            os.makedirs(tmp_solution_path)
-        # time
-        phase1_start = time.perf_counter()
         # print(cmd)
-        phase1_cmd_status = subprocess.call(cmd, shell=True)
-        phase1_end = time.perf_counter()
-        if phase1_cmd_status!=0:
-            print(f'***{curr_time()} {consts_path}\nstage-1 status error code: {phase1_cmd_status}\n')
-            # sys.exit()
-            continue
-        print(f"finished successfully @{curr_time()}")
-       
-
-       ## Verify
-        if verify_b0b1:
-            cmd = 'python3 b0b1_verify.py ' + data_file_name + ' ' \
-                + str(data_param_dict[data_file_name][0]) + ' ' \
-                + str(data_param_dict[data_file_name][1]) + ' ' \
-                + consts_path + ' ' \
-                + tmp_solution_path + ' ' \
-                + tmp_solution_path + 'phase_1_loandra_res'
-            
-            # print(cmd)
-            os.system(cmd)
-
-
-        time.sleep(2)
-
-
-
-        #     ## !!! CLEAN CLAUSE FILES !!! ##
-        # this one deletes all matches under current directory
-        # cmd = 'find . -type f -name "*clauses_final" -exec rm {} +' 
-        # this one only deletes the matches under the current solution folder
-        cmd = f'find {tmp_solution_path} -type f -name "*clauses_final*" -exec rm {{}} +'
         os.system(cmd)
-        ## !!! CLEAN ALL DC FILES !!! ##
-        # cmd = 'find . -type f -name "DC" -exec rm {} +'
-        cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
-        os.system(cmd)
+        print(f"boundary b- and b+ finished @{curr_time()}")
+
+    time.sleep(2)
+
+
+
+    #     ## !!! CLEAN CLAUSE FILES !!! ##
+    # this one deletes all matches under current directory
+    # cmd = 'find . -type f -name "*clauses_final" -exec rm {} +' 
+    # this one only deletes the matches under the current solution folder
+    cmd = f'find {tmp_solution_path} -type f -name "*clauses_final*" -exec rm {{}} +'
+    os.system(cmd)
+    ## !!! CLEAN ALL DC FILES !!! ##
+    # cmd = 'find . -type f -name "DC" -exec rm {} +'
+    cmd = f'find {tmp_solution_path} -type f -name "DC" -exec rm {{}} +'
+    os.system(cmd)
 
 

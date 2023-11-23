@@ -134,22 +134,25 @@ start_ind +=  n_points*n_labels
 b0 = np.arange(start_ind, start_ind + len(Distance_Class))
 start_ind +=  len(Distance_Class)
 # b1 {n_DC}
-b1 = np.arange(start_ind, start_ind + len(Distance_Class))
+if obj_=="mdms":
+    b1 = np.arange(start_ind, start_ind + len(Distance_Class))
+    start_ind +=  len(Distance_Class)
+    print(f'b1: {b1[0]} - {b1[-1]} -> {b1[-1] - b1[0] +1}')
 
 print(f'a: {a[0,0]} - {a[-1,-1]} -> {a[-1,-1] - a[0,0] +1}  \n'
       f's: {s[0,0]} - {s[-1,-1]} -> {s[-1,-1] - s[0,0] +1}\n'
       f'z: {z[0,0]} - {z[-1,-1]} -> {z[-1,-1] - z[0,0] +1}\n'
       f'g: {g[0,0]} - {g[-1,-1]} -> {g[-1,-1] - g[0,0] +1}\n'
       f'x: {x[0,0]} - {x[-1,-1]} -> {x[-1,-1] - x[0,0] +1}\n'
-      f'b0: {b0[0]} - {b0[-1]} -> {b0[-1] - b0[0] +1}\n'
-      f'b1: {b1[0]} - {b1[-1]} -> {b1[-1] - b1[0] +1}')
+      f'b0: {b0[0]} - {b0[-1]} -> {b0[-1] - b0[0] +1}\n')
+
 
 # ************** Vars
 NUM_DISTANCE_CLASS = len(Distance_Class)
 # 2*NUM_DISTANCE_CLASS for md+ms
 HARD_CLAUSE_W = 2*NUM_DISTANCE_CLASS +1
 SOFT_CLAUSE_W = 1
-Num_VARS = b1[-1]
+Num_VARS = start_ind-1
 
 
 tmp_time_counter_end = time.perf_counter()
@@ -170,12 +173,14 @@ except OSError:
 f = open(clause_file_name, "a",100*(2**20))  # Textual write and read
 
 ### Obj  SOFT CLAUSES
-#   # (37) Not(b0[w]) weight='1'
-#   # (38) b1[w] weight='1'
 # The length of the list of the two objectives is 2*n_DC
-np.savetxt(f ,np.hstack((np.repeat(SOFT_CLAUSE_W,2*n_DC).reshape(-1,1), np.vstack((-b0, b1)).reshape(-1,1) , np.zeros(2*n_DC).reshape(-1,1))), fmt='%d')
-
-print(f' ---> [debug] ---> {np.vstack((-b0, b1)).reshape(-1,1).shape}   ndc: {n_DC}')
+if obj_=="mdms":
+    write_clauses_to_file(f, b1.reshape(-1,1), SOFT_CLAUSE_W)
+    write_clauses_to_file(f, -b0.reshape(-1,1), SOFT_CLAUSE_W)
+    print(f' ---> [obj] ---> b0: {b0.reshape(-1,1).shape} |b1: {b1.reshape(-1,1).shape} | num dc: {n_DC}')
+elif obj_ == "md":
+    write_clauses_to_file(f, -b0.reshape(-1,1), SOFT_CLAUSE_W)
+    print(f' ---> [obj] ---> b0: {b0.reshape(-1,1).shape} | ndc: {n_DC}')
 ### Base Hard Clauses
 
 # (7)
@@ -615,23 +620,33 @@ if use_SmartPair!='smart':
 
 
 # (32) (33) (34)
-# total list length is 3*n_DC -2
-# w>1 -> w starts from the second DC, that is (index) 1
-tmp_time_counter_start = time.perf_counter()
+if obj_ == "mdms":
+    # (32) (33) (34)
+    # total list length is 3*n_DC -2
+    # w>1 -> w starts from the second DC, that is (index) 1
+    tmp_time_counter_start = time.perf_counter()
 
-clause_list_32_33_34 = np.vstack((np.vstack((-b0[1:], b0[:-1])).T,
-                                  np.vstack((-b1[1:], b1[:-1])).T,
-                                  np.vstack((-b1, b0)).T))
+    clause_list_32_33_34 = np.vstack((np.vstack((-b0[1:], b0[:-1])).T,
+                                    np.vstack((-b1[1:], b1[:-1])).T,
+                                    np.vstack((-b1, b0)).T))
+    
+    write_clauses_to_file(f, clause_list_32_33_34, HARD_CLAUSE_W)
+    tmp_time_counter_end = time.perf_counter()
+    TC.counter(tmp_time_counter_start,
+                tmp_time_counter_end,
+                '32_33_34',
+                clause_list_32_33_34.shape)
+else:
+    tmp_time_counter_start = time.perf_counter()
+    clause_list_32 = np.vstack((-b0[1:], b0[:-1])).T
+    write_clauses_to_file(f, clause_list_32, HARD_CLAUSE_W)
+    tmp_time_counter_end = time.perf_counter()
+    TC.counter(tmp_time_counter_start,
+                tmp_time_counter_end,
+                '32',
+                clause_list_32.shape)
 
-np.savetxt(f, np.hstack((np.repeat(HARD_CLAUSE_W, 3 * n_DC - 2).reshape(-1, 1),
-                         clause_list_32_33_34,
-                         np.zeros(3 * n_DC - 2).reshape(-1, 1))), fmt='%d')
 
-tmp_time_counter_end = time.perf_counter()
-TC.counter(tmp_time_counter_start,
-               tmp_time_counter_end,
-               '32_33_34',
-               clause_list_32_33_34.shape)
 ### Finish File I/O
 f.close()
 
@@ -667,7 +682,6 @@ if use_SmartPair=='smart':
                 np.nan)
 
 
-#
 
 ### Add header to clause
 tmp_time_counter_start = time.perf_counter()
@@ -690,8 +704,6 @@ TC.counter(tmp_time_counter_start,
                tmp_time_counter_end,
                'cl_file_header',
                np.nan)
-
-
 
 
 # loandra solver
@@ -718,7 +730,11 @@ TC.counter(stage1_Total_time_counter_start,
 TC.print_dict()
 
 print(f'\nloandra header: {loandra_param}')
+if obj_=="mdms":
+    output_final_stage_allObj(loandra_res_file_name, x,y,n_points, n_labels, b0,b1)
+elif obj_=="md":
+    output_final_stage_allObj(loandra_res_file_name, x,y,n_points, n_labels, b0=b0)
 
-output_final_stage(loandra_res_file_name, b0,b1,x,y,n_points, n_labels)
+    
 
 stage1MsgOut.close()

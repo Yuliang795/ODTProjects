@@ -31,15 +31,16 @@ def check_completed_setting(path, stage_num):
             results.append([*[re.sub(r'^(mc|s|e)(\d+)', r'\2', i) for i in item.split('_')],
                             sum(file_exists) == stage_num] + file_exists)
     # Generate the column names
-    columns = ['data', 'kappa', 'seed','epsilon', 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
+    columns = ['data', 'kappa', 'seed','epsilon',"obj_", 'complete'] + [f'P{i}_res_exists' for i in range(1, stage_num+1)]
     # Convert the results to a pandas DataFrame
     return pd.DataFrame(results, columns=columns)
 
-def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value):
+def check_complete_status_1stage(df, data_value,kappa_value ,seed_value,epsilon_value, obj_):
   mask = (df['data'] == data_value) & \
          (df['kappa'] == kappa_value) & \
          (df['seed'] == seed_value) & \
-         (df['epsilon'] == epsilon_value) 
+         (df['epsilon'] == epsilon_value) & \
+         (df['obj_'] == obj_) 
   if mask.any():
     return df[mask]['complete'].values[0]
   else:
@@ -72,11 +73,11 @@ file_list = consts_path_query(consts_df,
                                     in_data=[],
                                     in_seed=[],
                                     in_kappa=[0.0,0.1, 0.25,0.5, 1.0]) 
-                                        # 0.1, 0.25, 0.5, 1.0, 1.5, 2.0
+                                        # 0.0,0.1, 0.25,0.5, 1.0
                                         #0.0,0.1,0.25,0.5,0.75,1.0,1.25,1.5
 stage1_timeout=1800
-SmartPairFlag=["smart", "nosmart"][0]
-obj_ = ["mdms", "md"][0] # md not ready yet
+SmartPairFlag=["smart", "nosmart"][0] # Note ablation study only available for mdms
+obj_ = ["mdms", "md"][1] 
 
 # check for completed settings
 completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
@@ -85,7 +86,7 @@ completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
 for consts_path in file_list:
     consts_name=consts_path.split('/')[-1]
     data_file_name = 'instance_' + consts_name.split('_')[0]
-    tmp_solution_path = f'./solutions/{consts_name}_e{str(data_param_dict[data_file_name][1])}/'
+    tmp_solution_path = f'./solutions/{consts_name}_e{str(data_param_dict[data_file_name][1])}_{obj_}/'
     print(f"------------- start to execute {consts_name} @{curr_time()}")
 
     # check if the current setting is already compelted, skip existing solutions
@@ -95,8 +96,9 @@ for consts_path in file_list:
                                   data_value=data,
                                   kappa_value=kappa,
                                   seed_value=seed,
-                                  epsilon_value=epsilon):
-        print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} |")
+                                  epsilon_value=epsilon,
+                                    obj_=obj_):
+        print(f"*SKIPPING@{curr_time()}* solution existed | data: {data} | kappa: {kappa} | seed: {seed} | e:{epsilon} | obj: {obj_}")
         continue
 
     ### Phase 1

@@ -697,7 +697,37 @@ def output_final_stage(loandra_res_file_name, b0,b1,x,y,n_points, n_labels):
   print(f'b0_final: {int(np.sum(b0_res))} | 0_ind: {np.where(b0_res==0)[0][0] if len(np.where(b0_res==0)[0])>0 else 0}')
   print(f'b1_final: {int(np.sum(b1_res))} | 0_ind: {np.where(b1_res==0)[0][0] if len(np.where(b1_res==0)[0])>0 else 0}')
 
- 
+def output_final_stage_allObj(loandra_res_file_name,x,y,n_points, n_labels, b0=[],b1=[]):
+  loandra_status, res_list='StatusNotFund',''
+  with open(loandra_res_file_name) as f:
+    for line in f:
+      if line[0]=='s':
+        loandra_status =line[2:].strip(" \n")
+      if line[0]=='v':
+        res_list = np.array(list(line.split(' ')[-1][:-1]), dtype='int')
+
+  print(f'*loandra status: {loandra_status}')
+  b0_res, b1_res = np.array([]), np.array([])
+  if len(res_list)>0:
+    ### objective
+    if len(b0)>0:
+       b0_res = get_res(res_list, b0)
+    if len(b1)>0:
+       b1_res = get_res(res_list, b1)
+    print(f'len(b0)>0: {len(b0)>0} | len(b1)>0: {len(b1)>0}')
+     ### ARI
+    x_res_mat = res_list[x-1].reshape(n_points, -1)[:, :-1]
+    label_list = np.arange(n_labels)+1
+    x_pred = label_list[np.sum(x_res_mat, axis=1)-1]
+    ari_odt = adjusted_rand_score(y, x_pred)
+    print(f"ARI: {ari_odt}")
+
+  print(f'b0_final: {int(np.sum(b0_res))} | 0_ind: {np.where(b0_res==0)[0][0] if len(np.where(b0_res==0)[0])>0 else 0}')
+  print(f'b1_final: {int(np.sum(b1_res))} | 0_ind: {np.where(b1_res==0)[0][0] if len(np.where(b1_res==0)[0])>0 else 0}')
+
+  return loandra_status, b0_res, b1_res
+
+## Time counter
 
 ## Time counter
 

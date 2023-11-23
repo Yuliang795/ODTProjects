@@ -42,7 +42,7 @@ out_file_name=f'ParetoOptimal_df_'+current_time
 # out_file_handle = open(out_folder+out_file_name,'w')
 
 main_df_columns = ['data','seed','e',
-                   'kappa','cl_ml_ratio','pareto_index','chain',
+                   'kappa','pareto_index',
                    'ml_sat','ml_unsat','cl_sat','cl_unsat',
                    'lm_lambda_minus','lm_lambda_plus',
                    'lp_lambda_minus','lp_lambda_plus','ARI',
@@ -116,12 +116,12 @@ for root, folders, files in os.walk(solution_path):
                     p2_lp_clg_time = str(castFloat(p2_lp_sum_time) - castFloat(p2_lp_solver_time))
 
                     sol_folder_path = folder_path
-                    data, kappa, seed,epsilon, cl_ml_ratio, use_chain = [re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
+                    data, kappa, seed,epsilon = [re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
 
                     # b0_sum_time = '0'#b0_sum_time if b0_sum_time!= '' else '0'
                     p1_sum_time = p1_sum_time  if p1_sum_time != '' else '0'
-                    one_line_res = ','.join([data, seed, epsilon, kappa,cl_ml_ratio,\
-                                             match_b0.group(1), use_chain, #match_b0.group(1) is the iter digit 
+                    one_line_res = ','.join([data, seed, epsilon, kappa,\
+                                             match_b0.group(1), #match_b0.group(1) is the iter digit 
                                             ml_sat,ml_unsat,cl_sat,cl_unsat,\
                                             p2_lm_b0,p2_lm_b1,p2_lp_b0,p2_lp_b1,p2_lp_ARI,\
                                             p1_loandra_status, p1_clg_time, p1_solver_time, p1_sum_time,\
@@ -130,8 +130,8 @@ for root, folders, files in os.walk(solution_path):
             
                                             str(sum([float(t) for t in [p1_sum_time,p2_lm_solver_time,p2_lp_solver_time] if t!='']))])
 
-                    out_df.loc[len(out_df)]=[data, seed, epsilon, kappa,cl_ml_ratio,\
-                                             match_b0.group(1), use_chain, #iter digit 
+                    out_df.loc[len(out_df)]=[data, seed, epsilon, kappa,\
+                                             match_b0.group(1), #iter digit 
                                             ml_sat,ml_unsat,cl_sat,cl_unsat,\
                                             p2_lm_b0,p2_lm_b1,p2_lp_b0,p2_lp_b1,p2_lp_ARI,\
                                             p1_loandra_status, p1_clg_time, p1_solver_time, p1_sum_time,\
@@ -142,5 +142,6 @@ for root, folders, files in os.walk(solution_path):
                     # print(one_line_res)
                     # out_file_handle.write(one_line_res+'\n')
 
+print(out_df.shape)
 out_df.to_csv(out_folder+out_file_name,index=False)
 # out_file_handle.close()

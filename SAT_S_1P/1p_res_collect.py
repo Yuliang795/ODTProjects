@@ -27,9 +27,7 @@ def get_var(pattern, txt, group_ind):
         return ''
 
 
-
-
-out_columns = ["data","seed","e","kappa",
+out_columns = ["data","seed","e","kappa","obj",
                "lambda_minus","lambda_plus","ARI",
                "p1_slvr_status","p1_clause_gen","p1_solver","p1_total"
                ]
@@ -51,12 +49,12 @@ for root, folders, files in os.walk(solution_path):
             p1_loandra_status = get_var(loandra_status_r, line, 1)
             
             sol_folder_path = folder_path
-            data, kappa,seed, epsilon, = [re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
+            data, kappa,seed, epsilon, obj = [re.sub(r'^(mc|s|r|e)(\d+)', r'\2', i) for i in sol_folder_path.strip(""" ./""").split('/')[-1].split('_')]
             
             # set the clauses generation time to total system time - solver time
             p1_clg_time = str(castFloat(p1_sum_time) - castFloat(p1_solver_time))
 
-            out_df.loc[len(out_df)]=[data, seed, epsilon, kappa,\
+            out_df.loc[len(out_df)]=[data, seed, epsilon, kappa, obj,\
                                     b0,b1,ARI,\
                                     p1_loandra_status, p1_clg_time, p1_solver_time, p1_sum_time
                                     ]

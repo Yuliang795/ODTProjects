@@ -1,8 +1,0 @@
-num branch_node: 7
-num leaf_node: 8
-num feature: 3
-tree_depth: 3
-num label: 2
-nDC: 990
-
-***variables
