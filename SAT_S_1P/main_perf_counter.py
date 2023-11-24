@@ -3,6 +3,9 @@ import os,sys,re, time, datetime
 import pandas as pd
 import subprocess
 
+
+os.makedirs('./solutions', exist_ok=True)
+
 # datafile list
 file_list = ['instance_iris', 'instance_wine', 'instance_glass',
              'instance_ionosphere', 'instance_seeds','instance_libras',
@@ -81,8 +84,7 @@ obj_ = ["mdms", "md"][1]
 
 # check for completed settings
 completed_settings_df = check_completed_setting(path='./solutions', stage_num=1)
-# print(completed_settings_df)
-# sys.exit()
+
 for consts_path in file_list:
     consts_name=consts_path.split('/')[-1]
     data_file_name = 'instance_' + consts_name.split('_')[0]
@@ -124,7 +126,7 @@ for consts_path in file_list:
     #
     # create the folder for the constraints
     if not os.path.exists(tmp_solution_path):
-        os.mkdir(tmp_solution_path)
+        os.makedirs(tmp_solution_path, exist_ok=True)
     # time
     phase1_start = time.perf_counter()
     # print(cmd)

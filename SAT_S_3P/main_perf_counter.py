@@ -3,6 +3,8 @@ import os,sys,re, time, datetime
 import pandas as pd
 import subprocess
 
+os.makedirs('./solutions', exist_ok=True)
+
 file_list = ['instance_iris', 'instance_wine', 'instance_glass',
              'instance_ionosphere', 'instance_seeds','instance_libras',
              'instance_spam', 'instance_lsun', 'instance_chainlink',
